@@ -73,7 +73,7 @@
         <b>Tipo de cuenta: </b>Ahorros <br>
         <b>Cédula: </b>060000000000 <br>
         <b>Correo: </b>stalin@hotmail.com<br>
-        <b>Whatsapp: </b>099999999999<br>
+        <b>Whatsapp: </b>099999999999<br> 
     </p>
     <p>
         <b>Nota: </b> Si el deposito o transferencia no se realiza dentro de las 72 horas de creada la reserva se elimnara su reserva. 
