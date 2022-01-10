@@ -6,7 +6,7 @@
 
     @php
     $order = DB::table('orders')
-        ->where('user_id', Auth::id())->select('payment_id','total','date','status')
+        ->where('user_id', Auth::id())->select('id','payment_id','total','date','status')
         ->orderBy('id', 'DESC')
         ->limit(10)
         ->get();
@@ -43,6 +43,7 @@
                         <thead>
                             <tr>
                                 <th># </th>
+                                <th>Orden </th>
                                 <th>Tipo pago </th>
                                 <th>Total </th>
                                 <th>Fecha </th>
@@ -53,6 +54,7 @@
                             @foreach ($order as $key=>$row)
                                 <tr>
                                     <td>{{ $key + 1 }} </td>
+                                    <td>{{formatOrderNumber($row->id)}}</td>
                                     <td>{{ $row->payment_id }} </td>
                                     <td>${{ number_format($row->total , 2) }}</td> 
                                     <td>{{$row->date}}</td>

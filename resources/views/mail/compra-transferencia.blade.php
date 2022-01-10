@@ -93,7 +93,7 @@
        
     </p>
     <p>
-        |&nbsp; &nbsp; <b># Orden: </b>{{ $shipping['order_id'] }}<br>
+        |&nbsp; &nbsp; <b># Orden: </b>{{ formatOrderNumber($shipping['order_id']) }}<br>
         |&nbsp; &nbsp; <b>Comprador: </b>{{ $shipping['ship_name'] }}<br>
         |&nbsp; &nbsp; <b>Teléfono: </b>{{ $shipping['ship_phone'] }}<br>
         |&nbsp; &nbsp; <b>Correo: </b>{{ $shipping['ship_email'] }}<br>

@@ -62,7 +62,7 @@
                     @forelse ($order as $key=>$o)
                         <tr style="border: white 5px solid" @if($o->payment_id === 'paypal') class="table-success" @else class="" @endif>
                             <td>{{$key + 1}}</td>
-                            <td>{{$o->id}}</td>
+                            <td>{{ formatOrderNumber($o->id) }}</td>
                             <td>{{$o->name}}</td>
                             <td>
                             @if ($o->payment_id === 'paypal')

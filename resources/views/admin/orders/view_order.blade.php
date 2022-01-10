@@ -24,7 +24,7 @@
             </div>
             <div class="card-body"> 
                 <ul class="list-group">
-                    <li class="list-group-item"><b>Numero:</b>&nbsp;{{$order->id}}</li>
+                    <li class="list-group-item"><b>Numero:</b>&nbsp;{{ formatOrderNumber($order->id) }}</li>
                     <li class="list-group-item"><b>Usuario:</b>&nbsp;{{$order->name}}</li>
                     <li class="list-group-item"><b>Tipo de pago:</b>&nbsp;{{$order->payment_id}}</li>
                     <li class="list-group-item"><b>Total de la orden:</b>&nbsp;{{$order->total}}$</li>

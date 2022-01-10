@@ -76,7 +76,7 @@
         gracias por preferirnos.
     </p>
     <p>
-        <b>Numero de orden: </b>{{$orden->id}} <br>
+        <b>Numero de orden: </b>{{ formatOrderNumber($orden->id) }} <br>
         <b>Tipo de pago: </b>{{$orden->payment_id}}<br>
         <b>Costo de envio: </b> ${{number_format($orden->shipping, 2)}} <br>
         <b>Total de la orden: </b> ${{number_format($orden->total, 2)}} <br>
