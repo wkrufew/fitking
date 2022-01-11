@@ -44,7 +44,9 @@ class HomeController extends Controller
                                     ->take(5)
                                     ->get(),
                 'mas' => DB::table('ordersdetails')
+                                ->join('orders', 'ordersdetails.order_id','orders.id')
                                 ->select('product_name',DB::raw('SUM(totalprice) as total_product'),DB::raw('count(totalprice) as cont_product'))
+                                ->whereBetween('orders.status', [1,3])
                                 ->groupBy('product_name')
                                 ->orderBy('total_product', 'desc')
                                 ->take(5)

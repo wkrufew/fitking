@@ -22,9 +22,11 @@ class PlanController extends Controller
                             ->where('status', 3)
                             ->take(2)
                             ->get();
-                            //->random();lessons
+                            //->random()
 
-                        $plan = $plan->where('id',$plan->id)->with('sections')->with('sections.lessons')->first();
+                        $plan = $plan->where('id',$plan->id)
+                        ->with(['image','teacher','students','reviews','sections','sections.lessons'])
+                        ->first();
                         //dd($plan);
                             
         return view('planes.show', compact('plan','similares'));

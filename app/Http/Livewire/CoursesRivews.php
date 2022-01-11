@@ -19,7 +19,6 @@ class CoursesRivews extends Component
     public function render()
     {
         $course = Course::find($this->course_id);
-        
         return view('livewire.courses-rivews', compact('course'));
     }
 

@@ -45,8 +45,8 @@
 
     <div class="card  px-0">
         <div class="py-2 px-2 md:py-3 md:px-4 bg-white">
-            <p class="text-gray-800 text-xs md:text-lg mb-2"><b>Valoraciones: &nbsp;</b>{{ $course->reviews->count()}}</p>
-
+            {{-- <p class="text-gray-800 text-xs md:text-lg mb-2"><b>Valoraciones: &nbsp;</b>{{ $course->reviews->count()}}</p> --}}
+            <p class="text-gray-800 text-xs md:text-lg mb-2"><b>Valoraciones: &nbsp;</b>{{ $course->reviews_count}}</p>
             @forelse ($course->reviews->reverse() as $review)
                 <article class="flex mb-4 text-gray-800 select-none ">
                     <img class="rounded-full h-12 w-12 object-cover shadow-lg border-2 border-white" src="{{$review->user->profile_photo_url}}" alt="">

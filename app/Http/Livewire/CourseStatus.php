@@ -17,7 +17,11 @@ class CourseStatus extends Component
 
     public function mount(Course $plan)
     {
-        $this->plan = $plan;
+
+        $this->plan = /* $plan;
+        $plan = */ $plan->where('id',$plan->id)/* ->with('sections','sections.lessons','students') */
+                        
+                        ->first();
         foreach ($plan->lessons as $lesson) {
             if (!$lesson->completed) {
                 $this->current = $lesson;

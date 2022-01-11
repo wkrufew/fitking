@@ -9,7 +9,7 @@
 
            @auth
             <button x-on:click=" open = true " class="focus:outline-none bg-white shadow-md h-12 px-4 rounded-lg text-gray-700 mr-4">
-                <i class="fas fa-archway text-xs mr-2"></i>
+                <i class="fas fa-user text-xs mr-2"></i>
                 Mis planes
             </button>
            @endauth

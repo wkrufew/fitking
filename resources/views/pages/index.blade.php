@@ -1,31 +1,25 @@
 @extends('layouts.appRO')
-
 @section('content')
-
     @include('layouts.menubar')
     @include('layouts.slider')
-
     @php
     $featured = DB::table('products')
         ->where('status', 1)
         ->orderBy('id', 'desc')
         ->limit(12)
         ->get();
-
     $trend = DB::table('products')
         ->where('status', 1)
         ->where('trend', 1)
         ->orderBy('id', 'desc')
         ->limit(8)
         ->get();
-
     $best = DB::table('products')
         ->where('status', 1)
         ->where('best_rated', 1)
         ->orderBy('id', 'desc')
         ->limit(8)
         ->get();
-
     $hot = DB::table('products')
         ->join('brands', 'products.brand_id', 'brands.id')
         ->select('products.*', 'brands.brand_name')
@@ -34,9 +28,7 @@
         ->orderBy('id', 'desc')
         ->limit(3)
         ->get();
-
     @endphp
-
     <div class="characteristics">
         <div class="container">
             <div class="row">
@@ -103,7 +95,6 @@
                                             <div class="deals_info_line d-flex flex-row justify-content-start">
                                                 <div class="deals_item_category"><a href="#">{{ $ht->brand_name }}</a>
                                                 </div>
-
                                                 @if ($ht->discount_price == null)
                                                 @else
                                                     <div class="deals_item_price_a ml-auto">${{ $ht->selling_price }}
@@ -114,17 +105,13 @@
                                                 <div class="deals_item_name">
                                                 <a href="{{ url('product/details/' . $ht->id . '/' . $ht->product_name ) }}">{{ $ht->product_name }}</a>
                                                 </div>
-
                                                 @if ($ht->discount_price == null)
                                                     <div class="deals_item_price ml-auto">${{ $ht->selling_price }}</div>
                                                 @else
-
                                                 @endif
-
                                                 @if ($ht->discount_price != null)
                                                     <div class="deals_item_price ml-auto">${{ $ht->discount_price }}</div>
                                                 @else
-
                                                 @endif
                                             </div>
                                             <div class="available">
@@ -235,14 +222,11 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Visualiza la segunda categoria -->
-
     @php
     $cats = DB::table('categories')
         ->where('estado', 1)
@@ -255,9 +239,7 @@
         ->limit(10)
         ->orderBy('id', 'DESC')
         ->get();
-
     @endphp
-
     <div style="margin-top: -50px" class="new_arrivals">
         <div class="container">
             <div class="row">
@@ -330,38 +312,26 @@
                                     </div>
                                     <div class="featured_slider_dots_cover"></div>
                                 </div>
-
                             </div>
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
     <!-- Visualiza la categoria dos -->
-
     @php
     $cats = DB::table('categories')
         ->skip(3)
         ->first();
     $catid = $cats->id;
-
     $product = DB::table('products')
         ->where('category_id', $catid)
         ->where('status', 1)
         ->limit(10)
         ->orderBy('id', 'DESC')
         ->get();
-
     @endphp
-
     <div style="margin-top: -170px" class="new_arrivals">
         <div class="container">
             <div class="row">
@@ -371,17 +341,14 @@
                             <div class="new_arrivals_title">{{ $cats->name }}</div>
                             <ul class="clearfix">
                                 <li class="active"> </li>
-
                             </ul>
                             <div class="tabs_line"><span></span></div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12" style="z-index:1;">
-
                                 <!-- Product Panel -->
                                 <div class="product_panel panel active">
                                     <div class="arrivals_slider slider">
-
                                         @foreach ($product as $row)
                                             <!-- Slider Item -->
                                             <div class="featured_slider_item">
@@ -393,7 +360,6 @@
                                                         <img src="{{ Storage::url($row->image_one) }}" alt=""
                                                             style="height: 120px; width: 100px;"></div>
                                                     <div class="product_content">
-
                                                         @if ($row->discount_price == null)
                                                             <div class="product_price discount">
                                                                 ${{ $row->selling_price }}<span> </div>
@@ -402,9 +368,6 @@
                                                                 ${{ $row->discount_price }}<span>${{ $row->selling_price }}</span>
                                                             </div>
                                                         @endif
-
-
-
                                                         <div class="product_name">
                                                             <div>
                                                                 <a href="{{ url('product/details/' . $row->id . '/' . $row->product_name) }}">
@@ -413,7 +376,6 @@
                                                             </div>
                                                         </div>
                                                         <div class="product_extras">
-
                                                             {{-- <button class="product_cart_button">Añadir al carrito</button> --}}
                                                             <button id="{{ $row->id }}"
                                                                 class="product_cart_button addcart" data-toggle="modal"
@@ -421,8 +383,6 @@
                                                                 onclick="productview(this.id)">Añadir al carrito</button>
                                                         </div>
                                                     </div>
-
-
                                                     <ul class="product_marks">
                                                         @if ($row->discount_price == null)
                                                             <li class="product_mark product_discount"
@@ -431,39 +391,25 @@
                                                             <li class="product_mark product_discount">
                                                                 @php
                                                                     $amount = $row->selling_price - $row->discount_price;
-                                                                    $discount = ($amount / $row->selling_price) * 100;
-                                                                    
+                                                                    $discount = ($amount / $row->selling_price) * 100;  
                                                                 @endphp
-
                                                                 {{ intval($discount) }}%
-
                                                             </li>
                                                         @endif
-
-
-
                                                     </ul>
                                                 </div>
                                             </div>
                                         @endforeach
-
                                     </div>
                                     <div class="featured_slider_dots_cover"></div>
                                 </div>
-
                             </div>
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
     <!-- Banner 
         style="background-image:url(images/banner_2_background.jpg)"-->
     <!-- CONSULTA DE EL SLIDER MEDIO-->
@@ -475,17 +421,13 @@
         ->limit(6)
         ->get();
     @endphp
-
-
     <div style="margin-top: -100px" class="banner_2">
         <div class="banner_2_background"
             style="background-image:url({{ asset('frontend/images/banner_2_background.jpg') }})"></div>
         <div class="banner_2_container">
             <div class="banner_2_dots"></div>
             <!-- Banner 2 Slider -->
-
             <div class="owl-carousel owl-theme banner_2_slider">
-
                 <!-- Banner 2 Slider Item -->
                 @foreach ($slidermedio as $medio)
                     <div class="owl-item">
@@ -506,14 +448,12 @@
                                                 <h4>{{ $medio->brand_name }}</h4> <br>
                                                 <h3><b>${{ $medio->selling_price }}</b></h3>
                                             </div>
-
                                             <div class="button banner_2_button">
                                                 <a href="#" id="{{ $medio->id }}" class="addcart"
                                                     data-toggle="modal" data-target="#cartmodal"
                                                     onclick="productview(this.id)">Explorar</a>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="col-lg-8 col-md-6 fill_height">
                                         <div class="banner_2_image_container">
@@ -526,21 +466,15 @@
                         </div>
                     </div>
                 @endforeach
-
             </div>
         </div>
     </div>
-
-
-
     <!-- Trends -->
-
     <div class="trends">
         <div class="trends_background" style=""></div>
         <div class="trends_overlay"></div>
         <div class="container">
             <div class="row">
-
                 <!-- Trends Content -->
                 <div class="col-lg-3">
                     <div class="trends_container">
@@ -554,7 +488,6 @@
                         </div>
                     </div>
                 </div>
-
                 @php
                     $nuevos = DB::table('products')
                         ->where('status', 1)
@@ -566,11 +499,8 @@
                 <!-- Trends Slider -->
                 <div class="col-lg-9">
                     <div class="trends_slider_container">
-
                         <!-- Trends Slider -->
-
                         <div class="owl-carousel owl-theme trends_slider">
-
                             <!-- Trends Slider Item -->
                             @foreach ($nuevos as $nuevo)
                                 <div class="owl-item">
@@ -616,9 +546,7 @@
             </div>
         </div>
     </div>
-
     <!-- Popular Categories -->
-
     <div class="popular_categories">
         <div class="container">
             <div class="row">
@@ -634,7 +562,6 @@
                         <div class="popular_categories_link"><a href="#">Catalogo completo</a></div>
                     </div>
                 </div>
-
                 <!-- Consulta de las categorias -->
                 @php
                     $categorias = DB::table('categories')
@@ -645,7 +572,6 @@
                 <div class="col-lg-9">
                     <div class="popular_categories_slider_container">
                         <div class="owl-carousel owl-theme popular_categories_slider">
-
                             <!-- Popular Categories Item -->
                             @foreach ($categorias as $categoria)
                                 <div class="owl-item">
@@ -663,10 +589,6 @@
             </div>
         </div>
     </div>
-
-
-
-
     <!-- Modal -->
     <!-- Modal -->
     <div class="modal fade" id="cartmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLavel"
@@ -691,12 +613,13 @@
                         </div>
                         <div class="col-md-4">
                             <ul class="list-group">
-                                <li class="list-group-item">Codido:&nbsp;<span id="pcode"></span> </li>
-                                <li class="list-group-item">Categoria: &nbsp;<span id="pcat"></span></li>
-                                <li class="list-group-item">Subcategoria: &nbsp;<span id="psub"></span></li>
-                                <li class="list-group-item">Marca:&nbsp;<span id="pbrand"></span> </li>
-                                <li class="list-group-item">Stock: &nbsp;<span class="badge"
-                                        style="background: green;color: white;"> Disponible</span> </li>
+                                <li class="list-group-item"><b>Codido:</b> &nbsp;<span id="pcode"></span> </li>
+                                <li class="list-group-item"><b>Categoria:</b>  &nbsp;<span id="pcat"></span></li>
+                                <li class="list-group-item"><b>Subcategoria:</b>  &nbsp;<span id="psub"></span></li>
+                                <li class="list-group-item"><b>Marca:</b> &nbsp;<span id="pbrand"></span> </li>
+                                <li class="list-group-item"><b>Stock: </b> <span id="constock" class="badge badge-success">Con Stock <b id="pcantidad"></b></span>
+                                    <span id="sinstock" class="badge badge-danger">Sin Stock <b id="pcantidad"></b></span>
+                                </li>
                             </ul>
                         </div>
                         <div class="col-md-4">
@@ -704,20 +627,24 @@
                                 @csrf
                                 <input type="hidden" name="product_id" id="product_id">
                                 <div class="form-group">
-                                    <label for="exampleInputcolor">Color</label>
+                                    <label for="exampleInputcolor"><b>Color</b> </label>
                                     <select name="color" class="form-control" id="color">
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputcolor">Talla</label>
+                                    <label for="exampleInputcolor"><b>Talla</b> </label>
                                     <select name="size" class="form-control" id="size">
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputcolor">Catidad</label>
+                                    <label for="exampleInputcolor"><b>Catidad</b> </label>
                                     <input type="number" class="form-control" name="qty" value="1">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Añadir al carrito </button>
+                                {{-- <li class="list-group-item"><span id="pcantidad"></span> </li> --}}
+                                <div id="boton">
+                                    <button type="submit" class="btn btn-primary btn-block">Añadir al carrito </button>
+                                </div>
+                                <div id="texto" class="btn btn-danger btn-block" onClick="reply_click()">Sin Stock</div>
                             </form>
                         </div>
                     </div>
@@ -734,41 +661,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js">
     </script>
-    <script type="text/javascript">
-        /*$(document).ready(function(){
-          $('.addcart').on('click', function(){
-             var id = $(this).data('id');
-             if (id) {
-                 $.ajax({
-                     url: " {{ url('/add/to/cart/') }}/"+id,
-                     type:"GET",
-                     datType:"json",
-                     success:function(data){
-                      
-                        Swal.fire({
-                        position: 'top-end',
-                        width: 400,
-                       
-                        toast: true,
-                        timerProgressBar: true,
-                        icon: 'success',
-                        title: 'Añadido al carrido de compras',
-                        showConfirmButton: false,
-                        timer: 3000
-                        })
-                     },
-                    
-                 });
-     
-             }else{
-                 alert('Error');
-             }
-          });
-     
-        });*/
-
+    <script type="text/javascript">    
         function productview(id) {
-
             $.ajax({
                 url: "{{ url('/cart/product/view/') }}/" + id,
                 type: "GET",
@@ -779,6 +673,20 @@
                     $('#psub').text(data.product.subcategory_name);
                     $('#pbrand').text(data.product.brand_name);
                     $('#pname').text(data.product.product_name);
+                    $('#pcantidad').text(data.product.product_quantity);
+                    if (data.product.product_quantity > 0) {
+                        $('#texto').hide();
+                        $('#constock').show();
+                        $('#sinstock').hide();
+                        $('#boton').show();
+                    }
+                    if (data.product.product_quantity <= 0){
+                        $('#texto').show();
+                        $('#sinstock').show();
+                        $('#constock').hide();
+                        $('#boton').hide();
+                    }
+
                     $('#pimage').attr('src', "/storage/" + data.product.image_one);
                     $('#product_id').val(data.product.id);
 
@@ -793,11 +701,12 @@
                         $('select[name="size"]').append('<option value="' + value + '">' + value +
                             '</option>');
                     });
-
                 }
             })
         }
+        function reply_click()
+        {
+            alert('Este producto no dispone de stock por el momento');
+        }   
     </script>
-
-
 @endsection

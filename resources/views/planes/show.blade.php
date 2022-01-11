@@ -217,9 +217,9 @@
             </section>
 
             <aside class="hidden lg:block select-none md:sticky md:top-64 interesar">
-                @if ($similares->count())
+                @empty($similares)
                     <h1 class="font-bold text-2xl mb-2 text-gray-700">Te puede interesar</h1>
-                @endif
+                @endempty
                 @foreach ($similares as $similar)
                     <article
                         class="card rounded-lg object-cover overflow-hidden flex mb-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
