@@ -21,10 +21,13 @@
                     Fin de suscripcion          
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Estado del plan         
+                        Suscripcion        
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Opciones         
+                        Perfil         
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Opciones         
                     </th>
               </tr>
             </thead>
@@ -50,27 +53,23 @@
                     <div class="text-sm text-gray-900">{{$student->pivot->created_at->addMonth(1)->locale('es')->isoFormat('dddd D MMMM')}} del {{ $student->pivot->created_at->locale('es')->isoFormat('YYYY') }}</div>
                 </td>
                 
-                <td class="px-2 py-2 whitespace-nowrap">
+                <td class="px-2 text-center py-2 whitespace-nowrap">
                     @if ($student->pivot->created_at->addMonth() < now())
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-700 text-white">
-                        Suscripcion terminada
+                        Terminada
                     </span>
                     @else
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-600 text-white">
-                        Suscripcion activa
+                        Activa
                     </span>
-                    @endif()
-                    
-                    
+                    @endif
                 </td>
-                {{-- <td class="px-6 py-2 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">{{$student->created_at->locale('es')->isoFormat('dddd D MMMM') }} del {{ $student->created_at->locale('es')->isoFormat('YYYY, h:mm a') }}</div>
-                </td> --}}
-                {{-- <td class="px-6 py-2 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">{{$student->email}}</div>
-                </td> --}}
-                <td class="px-2 py-2 whitespace-nowrap text-right text-sm font-medium" >
-                    <button class="btn btn-danger btn-sm" wire:click="baja({{$student->id}})" >Dar de baja</button>
+                <td class="px-2 text-center py-2 whitespace-nowrap  text-sm font-medium">
+                    @livewire('instructor.edit-student', ['student' => $student], key('edit-student-' .
+                    $student->id))
+                </td>
+                <td class="px-1 py-2 whitespace-nowrap text-center text-sm font-medium" >
+                    <button class="btn btn-danger btn-sm" wire:click="baja({{$student->id}})" ><i class="fas fa-power-off"></i></button>
                 </td>
               </tr>
               @endforeach

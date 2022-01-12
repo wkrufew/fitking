@@ -17,8 +17,8 @@ class CoursesStudents extends Component
     use WithPagination; 
 
     public $course, $search;
-    //para eliminar matricula del uduario
-    public $user_id;
+
+    public $user_id,$valor;
 
     public function mount(Course $course)
     {
