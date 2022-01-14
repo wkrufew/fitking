@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\RolController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ControllerSlider;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PirceController;
@@ -81,4 +81,10 @@ Route::get('delivery/done/{id}' , [OrderController::class, 'DeleveryDone']);
 //datos de la tienda
 Route::resource('settings', SettingsController::class)->only(['index','edit', 'update'])->names('settings');
 
-/* Route::get('/', [DashboardController::class, 'index']); */
+Route::get('/sliders', [ControllerSlider::class, 'index'])->name('sliders.index');
+Route::get('sliders/create', [ControllerSlider::class, 'create'])->name('sliders.create');
+Route::post('sliders', [ControllerSlider::class,'store'])->name('sliders.store');
+Route::get('sliders/{slider}/edit', [ControllerSlider::class, 'edit'])->name('sliders.edit');
+Route::put('sliders/{slider}', [ControllerSlider::class, 'update'])->name('sliders.update');
+Route::delete('sliders/{slider}', [ControllerSlider::class, 'destroy'])->name('sliders.destroy');
+

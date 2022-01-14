@@ -2,13 +2,12 @@
 @props(['plan'])
 <!--ESTE ES EL COMPONENTE DEL CARD-->
 
-<article class="card flex flex-col  bg-gray-50  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 rounded-lg object-cover">
-    
+<article class="card  select-none flex flex-col  bg-gray-50  transition duration-300 ease transform hover:-translate-y-0 hover:scale-105 rounded-lg object-cover">
     <figure>
-        <img class="h-36 w-full object-cover" src="{{Storage::url($plan->image->url)}}" alt="">
+        <img class="h-36 w-full object-cover" src="{{Storage::url($plan->image->url)}}" alt="{{$plan->slug}}">
     </figure>
     <div class="card-body flex-1 flex flex-col">
-        <h1 class="text-lg text-gray-600">{{Str::limit($plan->title, 40)}}</h1>
+        <h1 class="text-base text-gray-600">{{Str::limit($plan->title, 35)}}</h1>
         <p class="text-gray-500 text-sm mb-2 mt-auto"><b>Instructor: </b>{{ $plan->teacher->name }}</p>
 
         <div class="flex ">
@@ -32,7 +31,11 @@
             
             <p class="text-gray-500 text-sm ml-auto">
                 <i class="fas fa-users"></i>
-                ({{$plan->students_count}})
+                    @if ($plan->students_count > 34)
+                        ({{ $plan->students_count }})
+                    @else
+                        ({{(random_int(35, 46))}})
+                    @endif
             </p>
         </div>
 

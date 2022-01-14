@@ -22,9 +22,9 @@ class UsersIndex extends Component
         return view('livewire.administrador.users-index', compact('users')); 
     }
 
-    public function limpiar_page()
+    public function updatingSearch()
     {
-        $this->reset('page');
+        $this->resetPage();
     }
     
 }

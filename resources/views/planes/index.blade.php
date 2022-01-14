@@ -9,7 +9,5 @@
             </div>
         </div>
     </section>
-
     @livewire('plan-index') 
-    
 </x-app-layout>

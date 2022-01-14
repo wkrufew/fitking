@@ -85,7 +85,6 @@
 
                     @switch($course->status)
                         @case(1)
-
                             <form class="mx-5" action="{{route('instructor.courses.status', $course)}}" method="POST">
                                 @csrf
                                 <button class="btn btn-danger" type="submit">Solicitar Aprobacion</button>
@@ -106,12 +105,9 @@
                             </div>
                         </div>
                             @break
-                        @default
-                            
+                        @default      
                     @endswitch
-
                 </aside>
-
                 <div class="col-span-4 card">
                     <main class="card-body text-gray-600">
                         {{$slot}}
@@ -119,11 +115,8 @@
                 </div> 
             </div>
             </div>
-
         @stack('modals')
-
         @livewireScripts
-
         @isset($js)
             {{$js}}
         @endisset

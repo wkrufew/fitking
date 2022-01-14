@@ -10,7 +10,7 @@
 
 <div class="card">
     <div class="card-header">
-        <input wire.keydown="limpiar_page" wire:model="search" class="form-control w-100" placeholder="Escribe un nombre">
+        <input wire:model="search" class="form-control w-100" placeholder="Escribe un nombre">
     </div>
     <div class="card-body table-responsive">
         <table class="table table-striped table-hover table-sm">

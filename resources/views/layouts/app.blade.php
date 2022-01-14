@@ -11,20 +11,23 @@
     <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/1.jpeg') }}" type="image/x-icon">
     <meta name="description"
         content="Una plataforma fitnes donde puedes encontrar el curso ideal para tu cuerpo para verte saludable y bien">
-        <style>
-            ::-webkit-scrollbar{
-                width: 15px;
-            }
-            ::-webkit-scrollbar-track{
-                border: 5px;
-                box-shadow: inset 0 0 15px #b8b8b8;
-            }
-            ::-webkit-scrollbar-thumb{
-                /* background: linear-gradient(#eecda3,#ef629f); */
-                background: #000000;
-                border-radius: 25px;
-            }
-        </style>
+    <style>
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+        ::-webkit-scrollbar-track {
+            border: 5px;
+            box-shadow: inset 0 0 15px #b8b8b8;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            /* background: linear-gradient(#eecda3,#ef629f); */
+            background: #000000;
+            border-radius: 25px;
+        }
+
+    </style>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Oswald:wght@300&display=swap"
@@ -40,11 +43,12 @@
     @stack('css')
 
     <!-- Scripts -->
-   
+
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}"></script>
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script> --}}
@@ -55,7 +59,7 @@
 <body class="font-sans antialiased">
     <x-jet-banner />
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-white"> 
         @livewire('navigation-menu')
         <!-- Page Content -->
         <main>
@@ -143,8 +147,8 @@
                         <a href="https://www.facebook.com/smith.aviles3/" class="text-gray-400 hover:text-gray-100">Ing.
                             Smith Aviles</a>.
                         <a href="https://www.facebook.com/smith.aviles3/"
-                            class="p-3 w-1 h-1 overflow-hidden bg-white shadow-lg m-auto rounded-full inline-flex items-center justify-center">
-                            <i class="fab fa-facebook text-lg text-blue-600"></i>
+                            class="p-3 w-1 h-1 overflow-hidden  shadow-lg  rounded-full inline-flex items-center justify-center">
+                            <i class="fab fa-facebook text-lg text-white"></i>
                         </a>
                     </div>
                 </div>
@@ -156,7 +160,8 @@
     @stack('modals')
 
     @livewireScripts
-    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
+    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
+        data-turbolinks-eval="false" data-turbo-eval="false"></script>
     @isset($js)
         {{ $js }}
     @endisset
@@ -183,34 +188,33 @@
             .click(function(event) {
                 // On-page links
                 if (
-                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-                && 
-                location.hostname == this.hostname
+                    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+                    location.hostname == this.hostname
                 ) {
-                // Figure out element to scroll to
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                // Does a scroll target exist?
-                if (target.length) {
-                    // Only prevent default if animation is actually gonna happen
-                    event.preventDefault();
-                    $('html, body').animate({
-                    scrollTop: target.offset().top
-                    }, 1000, function() {
-                    // Callback after animation
-                    // Must change focus!
-                    var $target = $(target);
-                    $target.focus();
-                    if ($target.is(":focus")) { // Checking if the target was focused
-                        return false;
-                    } else {
-                        $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-                        $target.focus(); // Set focus again
-                    };
-                    });
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000, function() {
+                            // Callback after animation
+                            // Must change focus!
+                            var $target = $(target);
+                            $target.focus();
+                            if ($target.is(":focus")) { // Checking if the target was focused
+                                return false;
+                            } else {
+                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                                $target.focus(); // Set focus again
+                            };
+                        });
+                    }
                 }
-                }
-                });
+        });
     </script>
 </body>
 

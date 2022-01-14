@@ -18,12 +18,12 @@ class CoursesIndex extends Component
         $courses = Course::where('user_id', auth()->user()->id)
                            ->where('title', 'LIKE', '%' . $this->search . '%') 
                            ->latest('id')
-                            ->paginate(6);
+                            ->paginate(5);
         return view('livewire.instructor.courses-index', compact('courses'));
     }
 
-    public function limpiar_page()
+    public function updatingSearch()
     {
-        $this->reset('page');
+        $this->resetPage();
     }
 }

@@ -10,16 +10,9 @@
             'route' => route('cursos.index'),
             'active' => request()->routeIs('planes.*','cursos.*')
         ],
-        
-        /* [
-            'name' => 'ORDENES TIENDA',
-            'route' => route('pages.perfiltienda'),
-            'active' => request()->routeIs('pages.perfiltienda.*')
-        ], */
-       
     ]
 @endphp
-<div class="w-full bg-transparent fixed top-0 left-0 z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-0 transition-all duration-500 ease-in" id="navbar">
+<div data-turbolinks-permanent class="w-full bg-transparent fixed top-0 left-0 z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-0 transition-all duration-500 ease-in" id="navbar">
 
 <nav x-data="{ open: false }" class="">
     <!-- Primary Navigation Menu -->
@@ -257,37 +250,6 @@
                             Cerrar Sesion
                         </x-jet-responsive-nav-link>
                     </form>
-
-                    <!-- Team Management -->
-                    {{-- @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                        <div class="border-t border-gray-200"></div>
-
-                        <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Manage Team') }}
-                        </div>
-
-                        <!-- Team Settings -->
-                        <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.show')">
-                            {{ __('Team Settings') }}
-                        </x-jet-responsive-nav-link>
-
-                        @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                            <x-jet-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
-                                {{ __('Create New Team') }}
-                            </x-jet-responsive-nav-link>
-                        @endcan
-
-                        <div class="border-t border-gray-200"></div>
-
-                        <!-- Team Switcher -->
-                        <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Switch Teams') }}
-                        </div>
-
-                        @foreach (Auth::user()->allTeams() as $team)
-                            <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link" />
-                        @endforeach
-                    @endif --}}
                 </div>
             </div>
         @else

@@ -8,12 +8,11 @@
             </button>
 
            @auth
-            <button x-on:click=" open = true " class="focus:outline-none bg-white shadow-md h-12 px-4 rounded-lg text-gray-700 mr-4">
-                <i class="fas fa-user text-xs mr-2"></i>
-                Mis planes
-            </button>
+                <button x-on:click=" open = true " class="focus:outline-none bg-white shadow-md h-12 px-4 rounded-lg text-gray-700 mr-4">
+                    <i class="fas fa-user text-xs mr-2"></i>
+                    Mis planes
+                </button>
            @endauth
-          
             <!-- Dropdown Categorias -->
             {{-- <div class="relative mr-4" x-data="{ open: false }">
                 <button class="bg-white shadow-md block h-12 w-full px-4 text-gray-700 rounded-lg overflow-hidden focus:outline-none" x-on:click="open = true">
@@ -32,7 +31,6 @@
                 <!-- // Dropdown Body -->
             </div> --}}
             <!-- // Dropdown -->
-
              <!-- Dropdown Niveles-->
              {{-- <div class="relative" x-data="{ open: false }">
                 <button class="bg-white shadow-md block h-12 w-full px-4 text-gray-700 rounded-lg overflow-hidden focus:outline-none" x-on:click="open = true">
@@ -51,29 +49,28 @@
                 <!-- // Dropdown Body -->
             </div> --}}
             <!-- // Dropdown -->
-
         </div>
     </div>
-
-    <!--Cargado de planes-->
-    <div x-show="!open" class="max-w-7xl mx-auto mt-12 px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8 mb-10">
-        
+    <!--Cargado de todos los planes-->
+    <div x-show="!open" class="max-w-7xl mx-auto mt-12 px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8 mb-10">  
             @foreach ($planes as $plan)
-                @can('enrolled', $plan)
-                    
-                @else 
                 <x-course-card :plan="$plan"/>
-                @endcan
             @endforeach
-        
     </div>
+    <!--Cargado de los planes del usuario-->
     <div x-show="open" class="max-w-7xl mx-auto mt-12 px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8 mb-10"> 
-        @foreach ($planes as $plan)
+            @foreach ($planes as $plan)
+                   
+            @endforeach
+            @forelse ($planes as $plan)
                 @can('enrolled', $plan)
-                <x-course-card :plan="$plan"/>
-                @else              
+                    <x-course-card :plan="$plan"/>
+                @else   
+                              
                 @endcan
-        @endforeach
+            @empty
+                No dispones de planes 
+            @endforelse
     </div>
     <div class="max-w-7xl mx-auto mt-4 px-4 sm:px-6 lg:px-8 py-4">
         {{$planes->links()}}

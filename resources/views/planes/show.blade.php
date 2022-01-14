@@ -103,7 +103,7 @@
             </div>
         </div>
     @endif 
-    <div class="container grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="container grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white">
         <div class="order-2 lg:col-span-2 lg:order-1">
             <section class="card mb-6 md:mb-12 select-none">
                 <div class="card-body">

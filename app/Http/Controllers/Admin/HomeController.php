@@ -18,9 +18,11 @@ class HomeController extends Controller
     {
         $cursos= Course::has('students', '>=', 1)->get();
         $suma =0;
-            foreach ($cursos as $item){
+
+        foreach ($cursos as $item)
+        {
             $suma =  $suma + ($item->students_count * $item->price->value);
-            }
+        }
         /* $r = DB::table('categories as c')
                     ->select('c.id', 'c.name', DB::raw('COUNT(p.id) as num'))
                     ->leftJoin('products as p', 'c.id', 'p.product_type')
@@ -32,6 +34,8 @@ class HomeController extends Controller
                 'ordenes' => DB::table('orders')->whereBetween('status', [1,3])->sum('total'),
                 'reacciones' => DB::table('reviews')->avg('rating'),
                 'planes' => DB::table('course_user')->count(),
+                'rplanes' => DB::table('compradors')->count(),
+                'rordenes' => DB::table('orders')->where('status', 0)->where('payment_id','transferencia')->count(),
                 'cursos' => $suma,
                 'compradores' => DB::table('shipping')->count(),
                 'productos' => DB::table('products')->count(),

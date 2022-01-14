@@ -241,6 +241,13 @@ return [
             'can'         => 'Ver Dashboard'
         ],
         [
+            'text'        => 'Slider',
+            'route'         => 'admin.sliders.index',
+            'icon'        => 'far fa-fw fa-images',
+            'can'         => 'Ver Dashboard',
+            'active'      => ['admin/sliders*']
+        ],
+        [
             'text'        => 'Configuraciones',
             'route'         => 'admin.settings.index',
             'icon'        => 'fas fa-fw fa-cogs',

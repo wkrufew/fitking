@@ -1,8 +1,3 @@
-{{-- @php
-$setting = DB::table('sitesetting')->first();
-
- @endphp --}}
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -40,13 +35,9 @@ $setting = DB::table('sitesetting')->first();
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/slick-1.8.0/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
-
     <!-- chart -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
-    {{-- <link rel="stylesheet" href="sweetalert2.min.css"> --}}
-    {{-- <script src="https://js.stripe.com/v3/"></script> --}}
 </head>
 <body>
     <div class="super_container">
@@ -302,16 +293,10 @@ $setting = DB::table('sitesetting')->first();
     <script src="{{ asset('frontend/plugins/slick-1.8.0/slick.js') }}"></script>
     <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
-
-
     <script src="{{ asset('frontend/plugins/parallax-js-master/parallax.min.js') }}"></script>
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}"></script>
-
-
     <script>
         @if (Session::has('messege'))
         
@@ -377,8 +362,6 @@ $setting = DB::table('sitesetting')->first();
         
         @endif
     </script>
-
-
     <script>
         $(document).on("click", "#return", function(e) {
             e.preventDefault();
@@ -399,6 +382,5 @@ $setting = DB::table('sitesetting')->first();
                 });
         });
     </script>
-    
 </body>
 </html>
