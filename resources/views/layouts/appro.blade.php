@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>FitKING</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="OneTech shop project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'FitKing') }}</title>
+    <!-- icono de la app -->
+    <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/marca1.webp') }}" type="image/x-icon">
+    <meta name="description"
+        content="Una plataforma fitnes donde puedes encontrar el curso ideal para tu cuerpo para verte saludable y bien">
     <style>
         ::-webkit-scrollbar{
             width: 15px;
