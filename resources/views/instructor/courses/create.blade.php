@@ -18,8 +18,14 @@
             </div>
         </div>
     </div>
-    <x-slot name="js">
+    {{-- <x-slot name="js">
         <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
         <script src="{{asset('js/instructor/courses/form.js')}}"></script>
-    </x-slot>
+    </x-slot> --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script src="{{asset('js/instructor/courses/form.js')}}"></script>
+    {{-- @push('js')
+        <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
+        <script src="{{asset('js/instructor/courses/form.js')}}"></script>
+    @endpush --}}
 </x-app-layout>

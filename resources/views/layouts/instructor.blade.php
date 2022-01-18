@@ -8,11 +8,11 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Oswald:wght@300&display=swap" rel="stylesheet">
+        {{-- <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Oswald:wght@300&display=swap" rel="stylesheet"> --}}
 
         <!-- Styles -->
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
 
@@ -22,8 +22,8 @@
         <!-- Scripts -->
         
         <script src="{{ mix('js/app.js') }}" defer></script>
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+        <script src="{{ asset('https://code.jquery.com/jquery-3.4.1.min.js') }}"></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -117,9 +117,9 @@
             </div>
         @stack('modals')
         @livewireScripts
-        @isset($js)
+        {{-- @isset($js)
             {{$js}}
-        @endisset
-        
+        @endisset --}}
+        {{-- @stack('js') --}}
     </body>
 </html>

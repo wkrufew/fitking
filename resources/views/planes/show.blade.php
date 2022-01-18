@@ -118,24 +118,33 @@
                     </ul>
                 </div>
             </section>
-
+            
             <section class="mb-6 md:mb-12 select-none card">
                 <h1 class="font-bold text-lg md:text-2xl mb-2 text-gray-700 mx-4 pt-2">Temario</h1>
-
                 @foreach ($plan->sections as $section)
                 <article class="" @if ($loop->first)
                         x-data="{ open: true }"
                     @else
                         x-data="{ open: false }"
                     @endif>
-                    <header class=" px-4 py-3 cursor-pointer bg-gray-100 flex justify-between border-b-2 border-gray-200" x-on:click=" open = !open ">
-                        <h1 class="font-semibold text-sm md:text-sm  text-gray-800">{{ $section->name }}</h1><i class=" transform rotate-90 fas fa-play-circle mr-2 text-gray-600"></i>
+                    <header class="px-4 py-3 cursor-pointer bg-gray-100 flex justify-between border-b-2 border-gray-200" x-on:click=" open = !open ">
+                        <h1 class="font-semibold text-sm md:text-sm  text-gray-800">{{ $section->name }}</h1>
+                            <i 
+    :class="{'transform rotate-0 text-gray-500 fa-plus': ! open, 'transform rotate-180 text-gray-500 fa-minus': open }" 
+    {{-- :class="open ? 'transform rotate-180 text-gray-500 fa-minus': 'transform rotate-0 text-gray-500 fa-plus'" --}}                         
+    class="fas transition ease-in-out duration-500 mr-2 "></i>
                     </header>
-                    {{-- <div class="border border-gray-200 px-8"></div> --}}
-                    <div class="bg-white py-2 px-4" x-show="open">
+                    <div class="bg-white py-2 px-4" x-show="open"
+                                    {{-- x-transition:enter="transition-all duration-700"
+                                    x-transition:enter-start="opacity-0 scale-90"
+                                    x-transition:enter-end="opacity-100 scale-100" 
+                                    x-transition:leave="transition-all duration-150"
+                                    x-transition:leave-start="opacity-100 scale-100"
+                                    x-transition:leave-end="bg-opacity-0 scale-90"--}}
+                                    x-collapse.duration.1000ms>
                         <ul class="grid grid-cols-1 gap-2">
                             @foreach ($section->lessons as $lesson)
-                                <li class="text-gray-600 font-semibold text-xs md:text-sm"><i class="fas fa-play-circle mr-2 text-gray-600"></i>
+                                <li class="text-gray-600 font-semibold text-xs md:text-sm"><i class="fas fa-play-circle ml-6 text-yellow-500"></i>
                                     {{ $lesson->name }}</li>
                             @endforeach
                         </ul>
@@ -242,4 +251,9 @@
             </aside>
         </div>
     </div>
+    
+    @push('js')
+        <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @endpush
 </x-app-layout>

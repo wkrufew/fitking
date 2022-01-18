@@ -10,10 +10,15 @@
             {!! Form::submit('Actualizar Plan', ['class' => 'btn btn-primary cursor-pointer']) !!}
         </div>
     {!! Form::close() !!}
-           
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script src="{{asset('js/instructor/courses/form.js')}}"></script>
         
-        <x-slot name="js">
+        {{-- <x-slot name="js">
             <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
             <script src="{{asset('js/instructor/courses/form.js')}}"></script>
-        </x-slot>
+        </x-slot> --}}
+       {{--  @push('js')
+            <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+            <script src="{{asset('js/instructor/courses/form.js')}}"></script>
+        @endpush --}}
 </x-instructor-layout> 

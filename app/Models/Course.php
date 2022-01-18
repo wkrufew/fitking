@@ -115,6 +115,4 @@ class Course extends Model
     {
         return $this->hasManyThrough('App\Models\Lesson', 'App\Models\Section');
     }
-
-
 }

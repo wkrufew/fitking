@@ -12,7 +12,7 @@
         ],
     ]
 @endphp
-<div data-turbolinks-permanent class="w-full bg-transparent fixed top-0 left-0 z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-0 transition-all duration-500 ease-in" id="navbar">
+<div {{-- data-turbolinks-permanent  --}}class="w-full bg-transparent fixed top-0 left-0 z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-0 transition-all duration-500 ease-in" id="navbar">
 
 <nav x-data="{ open: false }" class="">
     <!-- Primary Navigation Menu -->
@@ -31,7 +31,7 @@
 
                     @foreach ($nav_links as $nav_link)
                  
-                    <x-jet-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                    <x-jet-nav-link href="{{ $nav_link['route'] }}" {{-- :active="$nav_link['active']" --}}>
                         <div  class="text-gray-50 text-md hover:text-yellow-500">{{ $nav_link['name'] }}</div>
                     </x-jet-nav-link>
 

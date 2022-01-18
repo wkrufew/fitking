@@ -26,7 +26,8 @@ class PlanController extends Controller
 
                         $plan = $plan->where('id',$plan->id)
                         ->with(['image','teacher','students','reviews','sections','sections.lessons'])
-                        ->first();
+                        ->withCount('reviews')
+                        ->firstOrFail();
                         //dd($plan);
                             
         return view('planes.show', compact('plan','similares'));

@@ -8,7 +8,7 @@
 
     <title>{{ config('app.name', 'FitKing') }}</title>
     <!-- icono de la app -->
-    <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/1.jpeg') }}" type="image/x-icon">
+    <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/marca1.webp') }}" type="image/x-icon">
     <meta name="description"
         content="Una plataforma fitnes donde puedes encontrar el curso ideal para tu cuerpo para verte saludable y bien">
     <style>
@@ -24,14 +24,15 @@
         ::-webkit-scrollbar-thumb {
             /* background: linear-gradient(#eecda3,#ef629f); */
             background: #000000;
+            border: 2px solid #d18708;
             border-radius: 25px;
         }
 
     </style>
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    {{-- <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Oswald:wght@300&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"> --}}
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -45,27 +46,25 @@
     <!-- Scripts -->
 
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js') }}" defer></script>
+    <script src="{{ asset('https://unpkg.com/swiper@7/swiper-bundle.min.js') }}" defer></script>
+    <script src="{{ asset('https://code.jquery.com/jquery-3.4.1.min.js') }}" defer></script>
+    {{-- <script src="{{ asset('https://cdn.jsdelivr.net/npm/sweetalert2@9') }}" defer></script> --}}{{-- 
+    <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}" defer></script> --}}
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script> --}}
 
 
 </head>
 
 <body class="font-sans antialiased">
-    <x-jet-banner />
+    {{-- <x-jet-banner /> --}}
 
-    <div class="min-h-screen bg-white"> 
+    <div class="min-h-screen bg-white">
         @livewire('navigation-menu')
         <!-- Page Content -->
         <main>
             {{ $slot }}
         </main>
-    </div>
     </div>
     <!-- Pie de pagina  -->
     <footer class="relative bg-black pt-10 pb-1">
@@ -162,13 +161,13 @@
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
         data-turbolinks-eval="false" data-turbo-eval="false"></script>
-    @isset($js)
+    {{-- @isset($js)
         {{ $js }}
-    @endisset
+    @endisset --}}
 
     @stack('js')
     <script>
-        @if (Session::has('mensaje2'))
+        /* @if (Session::has('mensaje2'))
             Swal.fire({
             position: 'top-end',
             width: 400,
@@ -179,7 +178,7 @@
             showConfirmButton: false,
             timer: 4000
             })
-        @endif
+        @endif */
         //esto es para el smooth    
         $('a[href*="#"]')
             // Remove links that don't actually link to anything
@@ -214,7 +213,7 @@
                         });
                     }
                 }
-        });
+            });
     </script>
 </body>
 
