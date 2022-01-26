@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="py-7 md:py-5 bg-black"></div>
+    <div class="h-10 bg-black"></div>
     <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink">
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -26,7 +26,7 @@
             </g>
         </g>
     </svg>
-    <div class="flex h-screen">
+    <div class="max-w-7xl md:max-w-xl mx-auto px-4 h-screen">
         <div class="mx-auto">
             <div class="px-6 w-auto md:w-96">
                 
@@ -36,8 +36,14 @@
                     </div>
                 @endif
             </div>
-            <div class=" flex justify-center py-4">
-                <x-jet-authentication-card-logo />
+            <div class=" flex justify-center pb-2">
+                {{-- <x-jet-authentication-card-logo /> --}}
+                <div class="flex-shrink-0 flex items-center mt-4 mb-2">
+                    <a href="{{ route('home') }}">
+                        {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
+                        <img class="block h-56 md:h-44" src="{{ asset('img/home/logo2.webp') }}">
+                    </a>
+                </div> 
             </div>
             <div class="p-6 rounded-lg border border-gray-200 shadow-lg ">
                 <x-jet-validation-errors class="mb-4"/>

@@ -1,5 +1,5 @@
-<div class="bg-gray-100" x-data="{ open: false }">
-    <div class="bg-black py-4">
+<div class="bg-black" x-data="{ open: false }">
+    <div class="py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex">
             {{-- <button x-on:click=" open = false " class="focus:outline-none bg-white shadow-md h-12 px-4 rounded-lg text-gray-700 mr-4" wire:click="resetFilter"> --}}
             <button x-on:click=" open = false " class="focus:outline-none bg-white shadow-md h-12 px-4 rounded-lg text-gray-700 mr-4">

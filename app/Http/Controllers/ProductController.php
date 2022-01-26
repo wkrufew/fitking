@@ -38,10 +38,7 @@ class ProductController extends Controller
             $data['options']['size'] = $request->size;
             Cart::add($data);
 
-            
-               return Redirect()->back()->with('messege','Exito');
-
-           
+            return Redirect()->back()->with('messege','Exito');
             
         } else {
             $data['id'] = $product->id;

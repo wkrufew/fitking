@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="es">
+{{-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> --}}
 
 <head>
     <meta charset="utf-8">
@@ -9,8 +10,7 @@
     <title>{{ config('app.name', 'FitKing') }}</title>
     <!-- icono de la app -->
     <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/marca1.webp') }}" type="image/x-icon">
-    <meta name="description"
-        content="Una plataforma fitnes donde puedes encontrar el curso ideal para tu cuerpo para verte saludable y bien">
+    <meta name="description" content="Una plataforma fitnes donde puedes encontrar el curso ideal para tu cuerpo para verte saludable y bien">
     <style>
         ::-webkit-scrollbar {
             width: 15px;
@@ -29,31 +29,39 @@
         }
 
     </style>
-    <!-- Fonts -->
-    {{-- <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Oswald:wght@300&display=swap"
-        rel="stylesheet"> --}}
-
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-    {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> --}}
 
     @livewireStyles
     @stack('css')
-
     <!-- Scripts -->
-
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js') }}" defer></script>
     <script src="{{ asset('https://unpkg.com/swiper@7/swiper-bundle.min.js') }}" defer></script>
-    <script src="{{ asset('https://code.jquery.com/jquery-3.4.1.min.js') }}" defer></script>
-    {{-- <script src="{{ asset('https://cdn.jsdelivr.net/npm/sweetalert2@9') }}" defer></script> --}}{{-- 
-    <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}" defer></script> --}}
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script> --}}
+    <!-- SEO -->
+    <meta name="DC.Language" scheme="RFC1766" content="Spanish">
+    <meta http-equiv="content-language" content="es">
+    <meta name="author" content="Stalin Pilco">
+    <meta name="copyright" content="fitking">
+    <meta name="reply-to" content="fitking@hotmail.com">
+    <link REV="made" href="mailto:fitking@hotmail.com">
+    <meta name="description" content="Pagina donde puedes conseguir el plan ideal para llevar tu cuerpo al siguiente nivel estando bien por fuera y por dentro.">
+    <meta name="keywords" content="planes,plataforma de  planes,fitness,entrenamientos personalizados,productos fitness,venta de accesorios fitness,venta de suplementos,gym">
+    <meta name="Resource-type" content="Document">
+    <meta name="DateCreated" content="Tue, 25 January 2022 00:00:00 GMT+1">
+    <meta name="Revisit-after" content="1 days">
+    <meta http-equiv="cache-control" content="cache">
+    <meta name="robots" content="all">
 
-
+    <!-- Open Graph data -->
+    <meta property="og:title" content="fitking" />
+    <meta property="og:type" content="sport" />
+    <meta property="og:url" content="{{ config('app.url', 'FitKing') }}" />
+    {{-- FOTO DONDE SALE LA BIOGRAFIA --}}
+    <meta property="og:image" content="{{ asset('img/home/marca1.webp') }}" />
+    <meta property="og:description" content="Pagina donde puedes conseguir el plan ideal para llevar tu cuerpo al siguiente nivel estando bien por fuera y por dentro." />
 </head>
 
 <body class="font-sans antialiased">

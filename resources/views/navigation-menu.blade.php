@@ -22,33 +22,21 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <x-jet-application-mark class="block h-16 w-auto" />
                     </a>
                 </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
-
-                    @foreach ($nav_links as $nav_link)
-                 
-                    <x-jet-nav-link href="{{ $nav_link['route'] }}" {{-- :active="$nav_link['active']" --}}>
-                        <div  class="text-gray-50 text-md hover:text-yellow-500">{{ $nav_link['name'] }}</div>
-                    </x-jet-nav-link>
-
-                    @endforeach
-
-                    <x-jet-nav-link href="{{route('tienda')}}" target="_blank">
-                        <div  class="text-gray-50 text-md hover:text-yellow-500">TIENDA </div>
-                    </x-jet-nav-link>
-
-                   {{--  <x-jet-nav-link href="{{route('show.cart')}}">
-                        <div  class="text-gray-50 text-md hover:text-yellow-500"> &nbsp;<i class="fas fa-shopping-cart"></i> ({{Cart::count()}})</div>
-                    </x-jet-nav-link>
- --}}
-  
-                </div>
             </div>
-
+            <!-- Navigation Links -->
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
+                @foreach ($nav_links as $nav_link)
+                <x-jet-nav-link href="{{ $nav_link['route'] }}" {{-- :active="$nav_link['active']" --}}>
+                    <div  class="text-gray-50 text-md hover:text-yellow-500">{{ $nav_link['name'] }}</div>
+                </x-jet-nav-link>
+                @endforeach
+                <x-jet-nav-link href="{{route('tienda')}}" target="_blank">
+                    <div  class="text-gray-50 text-md hover:text-yellow-500">TIENDA </div>
+                </x-jet-nav-link>  
+            </div>
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 {{-- @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -142,7 +130,6 @@
                                         Administrador
                                     </x-jet-dropdown-link>
                                 @endcan
-
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                     <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">

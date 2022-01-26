@@ -12,6 +12,41 @@
             document.querySelector(".interesar").style.opacity = opacity; //asigno el valor del opcity al div que tiene la clase interesar
         });
     </script>
+
+    <section class="overflow-hidden block md:hidden">
+        <div class="fixed z-50 right-0 bottom-1 w-full -mb-2 shadow-xl bg-white border-t-2 rounded-t-2xl">
+            <div class="w-full p-2 mx-auto">
+                <div class="flex justify-center">
+                    <img class="h-12 w-12 object-cover rounded-full shadow-lg"
+                    src="{{ $plan->teacher->profile_photo_url }}" alt="{{ $plan->teacher->name }}">
+                    <div class="ml-4">
+                        <h1 class="font-bold text-gray-800 text-sm">Instructor: {{ $plan->teacher->name }}</h1>
+                        <a class="text-blue-500 text-sm" href="">{{ '@' . Str::slug($plan->teacher->name) }}</a>
+                    </div>
+                </div>
+            </div>
+           <div class="px-4 pb-2">
+            @can('enrolled', $plan)
+                 <a class="btn btn-primary btn-block"
+                 href="{{ route('planes.status', $plan) }}">Continua con el plan</a>
+            @else
+                @if ($plan->price->value == 0)
+                    <p class="text-green-600 text-lg mb-2 mt-1 font-bold">Gratis</p>
+                    <form action="{{ route('planes.enrolled', $plan) }}" method="POST">
+                        @csrf
+                        <button type="submit"
+                            class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 btn btn-danger btn-block mt-4">Adquiere
+                            este plan</button>
+                    </form>
+                @else
+                    <p class="text-blue-500 text-base mb-2 mt-1 font-bold  text-center">
+                        Precio:&nbsp;$ {{ $plan->price->value }}</p>
+                    <a href="{{ route('payment.checkout', $plan) }}" class="btn btn-danger btn-block mt-2">Comprar este curso</a>
+                @endif
+            @endcan
+           </div>
+        </div>
+    </section>
     <section class="bg-black pb-10 mb-8 md:mb-12 pt-16 md:pt-32 relative">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-16">
             <figure>
@@ -37,7 +72,7 @@
     </section>
     @if (session('notificacion'))
         <div x-data="{ open: true }" class="my-6">
-            <div x-show="open" class="bg-blue-500 border border-blue-600 text-blue-100 px-4 py-3 rounded relative"
+            <div x-show="open" class="bg-blue-500 border border-blue-600 text-blue-100 px-4 py-3 rounded relative max-w-7xl mx-auto"
                 role="alert">
                 <strong class="font-bold">Ok!</strong>
                 <span class="block sm:inline">{{ session('notificacion') }}</span>
@@ -54,7 +89,7 @@
     @endif
     @if (session('notificacion2'))
         <div x-data="{ open: true }" class="my-6">
-            <div x-show="open" class="bg-red-500 border border-red-600 text-red-100 px-4 py-3 rounded relative"
+            <div x-show="open" class="bg-red-500 border border-red-600 text-red-100 px-4 py-3 rounded relative max-w-7xl"
                 role="alert">
                 <strong class="font-bold">Ups!</strong>
                 <span class="block sm:inline">{{ session('notificacion2') }}</span>
@@ -71,7 +106,7 @@
     @endif 
     @if (session('errorpaypal'))
         <div x-data="{ open: true }" class="my-6">
-            <div x-show="open" class="bg-red-500 border border-red-600 text-red-100 px-4 py-3 rounded relative"
+            <div x-show="open" class="bg-red-500 border border-red-600 text-red-100 px-4 py-3 rounded relative max-w-7xl mx-auto"
                 role="alert">
                 <strong class="font-bold">Ups!</strong>
                 <span class="block sm:inline">{{ session('errorpaypal') }}</span>
@@ -88,7 +123,7 @@
     @endif  
     @if (session('notificacionreserva'))
         <div x-data="{ open: true }" class="my-6">
-            <div x-show="open" class="bg-red-500 border border-red-600 text-red-100 px-4 py-3 rounded relative"
+            <div x-show="open" class="bg-red-500 border border-red-600 text-red-100 px-4 py-3 rounded relative max-w-7xl mx-auto"
                 role="alert">
                 <strong class="font-bold">Ups!</strong>
                 <span class="block sm:inline">{{ session('notificacionreserva') }}</span>
@@ -108,7 +143,7 @@
             <section class="card mb-6 md:mb-12 select-none">
                 <div class="card-body">
                     <h1 class="font-bold text-lg md:text-2xl mb-2 text-gray-700">Lo que aprenderas</h1>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 list-none list-inside">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 list-outside">
                         @foreach ($plan->goals as $goal)
                         <li class="text-gray-700 text-sm md:text-base">
                             <i class="fas text-xs fa-check text-gray-600 mr-1"></i> 
@@ -135,13 +170,13 @@
     class="fas transition ease-in-out duration-500 mr-2 "></i>
                     </header>
                     <div class="bg-white py-2 px-4" x-show="open"
-                                    {{-- x-transition:enter="transition-all duration-700"
+                                    x-transition:enter="transition-all duration-1000"
                                     x-transition:enter-start="opacity-0 scale-90"
                                     x-transition:enter-end="opacity-100 scale-100" 
-                                    x-transition:leave="transition-all duration-150"
+                                    x-transition:leave="transition-all duration-300"
                                     x-transition:leave-start="opacity-100 scale-100"
-                                    x-transition:leave-end="bg-opacity-0 scale-90"--}}
-                                    x-collapse.duration.1000ms>
+                                    x-transition:leave-end="bg-opacity-0 scale-90"
+                                    {{-- x-collapse.duration.1000ms --}}>
                         <ul class="grid grid-cols-1 gap-2">
                             @foreach ($section->lessons as $lesson)
                                 <li class="text-gray-600 font-semibold text-xs md:text-sm"><i class="fas fa-play-circle ml-6 text-yellow-500"></i>
@@ -192,7 +227,7 @@
 
         </div>
 
-        <div class="order-1 lg:order-2 select-none">
+        <div class="order-1 lg:order-2 select-none hidden md:block">
             <section class="card mb-6 md:sticky md:top-20 z-10">
                 <div class="card-body">
 
@@ -252,8 +287,8 @@
         </div>
     </div>
     
-    @push('js')
+{{--     @push('js')
         <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    @endpush
+    @endpush --}}
 </x-app-layout>

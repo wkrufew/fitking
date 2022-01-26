@@ -19,6 +19,10 @@ module.exports = {
     variants: {
         extend: {
             opacity: ['responsive','hover','focus','disabled','dark'],
+            width: ["responsive", "hover", "focus"],
+            height: ["responsive", "hover", "focus"],
+            borderWidth: ["responsive", "hover", "focus"],
+            display: ["hover"],
         },
     },
     corePlugins: {

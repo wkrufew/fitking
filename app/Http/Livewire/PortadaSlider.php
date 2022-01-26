@@ -3,9 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Slider;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-use SoapClient;
 
 class PortadaSlider extends Component
 {
