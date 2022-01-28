@@ -51,13 +51,13 @@
                     @csrf
         
                     <div>
-                        <x-jet-label for="email" value="{{ __('Email') }}" />
+                        <x-jet-label for="email" value="{{ __('Correo') }}" />
                         <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
                             required autofocus />
                     </div>
                    
                     <div class="grid grid-cols-2 gap-1 mt-4">
-                        <x-jet-label for="password" value="{{ __('Password') }}" />
+                        <x-jet-label for="password" value="{{ __('Contraseña') }}" />
                         <div class="relative col-span-4" x-data="{ver: false}">
                             <input :type="ver ? 'text' : 'password'" name="password" id="password" class="w-full pl-2 pr-4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" required>
                             <button @click="ver = !ver" type="button" :class="{'hidden': ver , 'block': !ver }" class="absolute w-8 inset-y-0 right-0 pr-3 flex items-center focus:outline-none">
@@ -119,7 +119,7 @@
                     <div class="block mt-4">
                         <label for="remember_me" class="flex items-center">
                             <x-jet-checkbox id="remember_me" name="remember" />
-                            <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                            <span class="ml-2 text-sm text-gray-600">{{ __('Recordarme') }}</span>
                         </label>
                     </div>
         
@@ -127,12 +127,12 @@
                         @if (Route::has('password.request'))
                             <a class="underline text-sm text-gray-600 hover:text-gray-900"
                                 href="{{ route('password.request') }}">
-                                {{ __('Forgot your password?') }}
+                                {{ __('Olvido su contraseña?') }}
                             </a>
                         @endif
         
                         <x-jet-button class="ml-4">
-                            {{ __('Login') }}
+                            {{ __('Ingresar') }}
                         </x-jet-button>
                     </div>
                 </form>

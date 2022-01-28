@@ -75,7 +75,7 @@
         </main>
     </div>
     <!-- Pie de pagina  -->
-    <footer class="relative bg-black pt-10 pb-1">
+    <footer class="relative bg-black pt-10 pb-1 border-t-2 border-yellow-500">
 
         <div class="container justify-center">
             <div class="flex flex-wrap justify-between">

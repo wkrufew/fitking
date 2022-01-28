@@ -12,14 +12,12 @@
     }
     @media screen and (max-width: 950px) {
         .alturaslidercarga {
-            height: 26vh;
+            height: 272.39px;
         }
     }
-
-
-</style>
-  @if (count($sliders))
-    <section class="altura portada filo relative filo bg-black">
+</style>        
+    <section class="altura portada filo relative bg-black">
+        @if (count($sliders))
         <div class="swiper">
             <div class="swiper-wrapper relative">
                 @foreach ($sliders as $slider)
@@ -28,10 +26,11 @@
                     </div>
                 @endforeach
             </div>
-    </section>
-  @else
-    <div class="mb-4 alturaslidercarga flex justify-center items-center bg-transparent shadow-xl bg-black">
-        <div class="rounded animate-spin ease duration-300 w-16 h-16 border-2 border-yellow-500"></div>
-    </div>
-  @endif      
+        </div>
+        @else
+            <div class="alturaslidercarga flex justify-center items-center bg-transparent shadow-xlbg-black">
+                <div class="animate-spin ease duration-300 w-16 h-16 border-2 border-yellow-500"></div>
+            </div>
+        @endif 
+    </section>            
 </div>

@@ -14,59 +14,57 @@
     </script>
 
     <section class="overflow-hidden block md:hidden">
-        <div class="fixed z-50 right-0 bottom-1 w-full -mb-2 shadow-xl bg-white border-t-2 rounded-t-2xl">
-            <div class="w-full p-2 mx-auto">
-                <div class="flex justify-center">
-                    <img class="h-12 w-12 object-cover rounded-full shadow-lg"
-                    src="{{ $plan->teacher->profile_photo_url }}" alt="{{ $plan->teacher->name }}">
-                    <div class="ml-4">
-                        <h1 class="font-bold text-gray-800 text-sm">Instructor: {{ $plan->teacher->name }}</h1>
-                        <a class="text-blue-500 text-sm" href="">{{ '@' . Str::slug($plan->teacher->name) }}</a>
-                    </div>
-                </div>
-            </div>
-           <div class="px-4 pb-2">
+        <div class="fixed z-50 right-0 bottom-1 w-full -mb-2 shadow-xl bg-black border-t-2 border-yellow-500 rounded-t-2xl">
+           <div class="px-4 pb-7">
             @can('enrolled', $plan)
-                 <a class="btn btn-primary btn-block"
-                 href="{{ route('planes.status', $plan) }}">Continua con el plan</a>
+                 <a class="px-4 py-2 border-2 mt-6 border-yellow-500 text-yellow-500 btn-block"
+                 href="{{ route('planes.status', $plan) }}">Continue con su plan</a>
             @else
                 @if ($plan->price->value == 0)
-                    <p class="text-green-600 text-lg mb-2 mt-1 font-bold">Gratis</p>
+                    <div class="flex justify-evenly py-3">
+                        <h1 class="font-semibold text-white text-base mt-2">Instructor: {{ $plan->teacher->name }}</h1>
+                        <p class="text-yellow-500 text-base mt-2 font-semibold">Gratis</p>
+                    </div>
                     <form action="{{ route('planes.enrolled', $plan) }}" method="POST">
                         @csrf
                         <button type="submit"
-                            class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 btn btn-danger btn-block mt-4">Adquiere
+                            class="px-4 py-2 border-2 border-yellow-500 text-yellow-500 btn-block">Adquiere
                             este plan</button>
                     </form>
                 @else
-                    <p class="text-blue-500 text-base mb-2 mt-1 font-bold  text-center">
-                        Precio:&nbsp;$ {{ $plan->price->value }}</p>
-                    <a href="{{ route('payment.checkout', $plan) }}" class="btn btn-danger btn-block mt-2">Comprar este curso</a>
+                    <div class="flex justify-evenly py-3">
+                        <h1 class="font-bold text-white text-base mt-2">Instructor: {{ $plan->teacher->name }}</h1>
+                        <p class="text-yellow-500 text-base mt-2 font-bold  text-center">Precio:&nbsp;$ {{ $plan->price->value }}</p>
+                    </div>
+                    <a href="{{ route('payment.checkout', $plan) }}" class="px-4 py-2 border-2 border-yellow-500 text-yellow-500 btn-block">Comprar este curso</a>
                 @endif
             @endcan
            </div>
         </div>
     </section>
-    <section class="bg-black pb-10 mb-8 md:mb-12 pt-16 md:pt-32 relative">
+    <section class="bg-black pb-4 md:pb-8 mb-8 md:mb-12 pt-20 md:pt-32 relative rounded-b-2xl border-b-2 border-yellow-500 select-none">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-16">
             <figure>
-                <img class="h-auto md:h-72 w-full object-cover bg-cover rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+                <img class="h-auto md:h-72 w-full object-cover bg-cover border-2 border-yellow-500 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
                     src="{{ Storage::url($plan->image->url) }}" alt="">
             </figure>
             <div class="text-white px-2 md:px-0 my-auto">
-                <h1 class="text-lg md:text-3xl">Titulo: {{ $plan->title }}</h1>
+                <h1 class="text-lg md:text-3xl text-yellow-500 uppercase font-semibold">Titulo: {{ $plan->title }}</h1>
                 <p class="text-sm md:text-xl mb-3 mt-2">Subtitulo: {{ $plan->subtitle }}</p>
-                <p class="mb-2 text-xs md:text-xl"><i class="fas fa-chart-line"></i> Nivel: {{ $plan->level->name }}</p>
-                <p class="mb-2 text-xs md:text-xl"><i class="fas fa-clone"></i> Categoria: {{ $plan->category->name }}</p>
-                <p class="mb-2 text-xs md:text-xl"><i class="fas fa-users"></i> Estudiantes: 
-                    @if ($plan->students_count > 34)
-                        {{ $plan->students_count }}
-                    @else
-                        {{(random_int(35, 46))}}
-                    @endif
-                </p>
-                <p class=" text-xs md:text-xl"><i class="fas fa-star"></i> Calificación: {{ $plan->rating }}</p>
-
+                <div class="flex justify-between">
+                    <p class="mb-2 text-sm md:text-xl"><i class="fas fa-chart-line"></i> Nivel: {{ $plan->level->name }}</p>
+                    <p class="mb-2 text-sm md:text-xl"><i class="fas fa-clone"></i> Categoria: {{ $plan->category->name }}</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="mb-2 text-sm md:text-xl"><i class="fas fa-users"></i> Estudiantes: 
+                        @if ($plan->students_count > 34)
+                            {{ $plan->students_count }}
+                        @else
+                            {{(random_int(35, 46))}}
+                        @endif
+                    </p>
+                    <p class="text-xs md:text-xl"><i class="fas fa-star"></i> Calificación: {{ $plan->rating }}</p>
+                </div>
             </div>
         </div>
     </section>
@@ -165,9 +163,9 @@
                     <header class="px-4 py-3 cursor-pointer bg-gray-100 flex justify-between border-b-2 border-gray-200" x-on:click=" open = !open ">
                         <h1 class="font-semibold text-sm md:text-sm  text-gray-800">{{ $section->name }}</h1>
                             <i 
-    :class="{'transform rotate-0 text-gray-500 fa-plus': ! open, 'transform rotate-180 text-gray-500 fa-minus': open }" 
-    {{-- :class="open ? 'transform rotate-180 text-gray-500 fa-minus': 'transform rotate-0 text-gray-500 fa-plus'" --}}                         
-    class="fas transition ease-in-out duration-500 mr-2 "></i>
+                                :class="{'transform rotate-0 text-gray-500 fa-plus': ! open, 'transform rotate-180 text-gray-500 fa-minus': open }" 
+                                {{-- :class="open ? 'transform rotate-180 text-gray-500 fa-minus': 'transform rotate-0 text-gray-500 fa-plus'" --}}                         
+                                class="fas transition ease-in-out duration-500 mr-2 "></i>
                     </header>
                     <div class="bg-white py-2 px-4" x-show="open"
                                     x-transition:enter="transition-all duration-1000"
@@ -224,13 +222,10 @@
             </section>
             {{-- RENDERIZA LA VISTA DE LOS COMENTARIOS --}}
             @livewire('courses-rivews', ['plan' => $plan])
-
         </div>
-
         <div class="order-1 lg:order-2 select-none hidden md:block">
             <section class="card mb-6 md:sticky md:top-20 z-10">
                 <div class="card-body">
-
                     <div class="flex items-center">
                         <img class="h-12 w-12 object-cover rounded-full shadow-lg"
                             src="{{ $plan->teacher->profile_photo_url }}" alt="{{ $plan->teacher->name }}">

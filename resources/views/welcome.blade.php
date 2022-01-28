@@ -111,7 +111,7 @@
     @endpush
     <!--SLIDER-->
     {{-- CONTENIDO CENTRADO DE LA PORTADA DONDE ESTA LE BUSCADOR --}}
-    <section class="absolute z-30 text-center inset-0 h-40 top-20 sm:top-32 md:top-52 lg:top-52 xl:top-52 px-10 md:px-0 ">
+    <section class="absolute z-30 text-center inset-0 h-40 top-24 sm:top-32 md:top-52 lg:top-52 xl:top-52 px-10 md:px-0 ">
         <div
             class="sm:max-w-2xl md:max-w-2xl lg:max-w-3xl mx-auto px-2 md:px-4 sm:px-6 lg:px-16 py-5 md:py-10 bg-black bg-opacity-60 rounded-xl">
             <div class="w-full select-none justify-center ">
@@ -138,12 +138,12 @@
     </section>
     <div id="fitking"></div>
     {{-- SECCION DEL DUEÑO BIOGRAFIA --}}
-    <section class="bg-black py-6 md:py-20 select-none">
+    <section class="bg-black py-8 md:py-10 select-none">
         {{-- <div class="py-3">
             <h1 class="text-yellow-500 text-center font-bold text-5xl py-4 md:mb-6">FitKing
             </h1>
         </div> --}}
-        <div class="py-1">
+        <div>
             <div class="flex-shrink-0 flex justify-center">
                 <img class="block h-60 object-center" src="{{ asset('img/home/logo3.jpg') }}">
             </div> 
@@ -178,7 +178,6 @@
                     Andre deiu , Silvestre Stallone , Jeff Seid , zyzz .</p>
             </article>
         </div>
-
     </section>
     {{-- SECCION DE LO QUE OFRECE EL SISTEMA --}}
     <section class="bg-black py-10 select-none relative -mt-0.5 md:-mt-0">
@@ -240,7 +239,6 @@
             </article>   
         </div>
     </section>
-   
     {{-- FRANJA DONDE ESTA EL BOTON ADQUIRIR UN PLAN --}}
     <section class="relative bg-black text-gray-50 text-center -mt-0.5 md:-mt-0 pt-28 pb-44 px-6 select-none">
         
@@ -250,9 +248,9 @@
         <p class="text-lg md:text-2xl font-semibold">
             VE AL CATALOGO DE PLANES, ELIJE EL MEJOR Y EMPIEZA AHORA.
         </p>
-        <div class="flex justify-center py-4">
+        <div class="flex justify-center mt-8">
             <a href="{{ route('cursos.index') }}"
-                class="transition duration-300 ease transform hover:-translate-y-1 hover:scale-110 center py-4 px-5 bg-yellow-500 text-white font-semibold rounded-full shadow-md hover:bg-white hover:text-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75">
+                class="transition duration-300 ease transform hover:-translate-y-1 hover:scale-110 center py-3 px-5 bg-black text-yellow-500 font-semibold border border-yellow-500 shadow-md hover:bg-yellow-500 hover:text-black focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-75">
                 ENTRENA CONMIGO
             </a>
         </div>
@@ -264,8 +262,7 @@
         </div>
     </section>
      {{-- MUESTRA DE LOS SERVICIOS QUE OFRECE FITKINS --}}
-     
-     <section class="bg-white select-none py-10 relative mb-14 md:mb-24">
+    <section class="bg-white select-none py-10 relative mb-14 md:mb-24">
         
         <div class="container mx-auto px-4 lg:pt-2 lg:pb-9">
             <div class="flex flex-wrap text-center justify-center">

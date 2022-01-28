@@ -1,8 +1,8 @@
 <form class="pt-2 relative mx-auto text-gray-600" autocomplete="off">
-     <input wire:model="search" class="focus:bg-white focus:ring-yellow-500 focus:outline-none border-2 focus:border-yellow-500 focus:ring-1 w-full rounded-full h-12 px-5 text-sm"
-         type="search" name="search" placeholder="Busca un plan">
+     <input wire:model="search" class="focus:bg-white border-2 border-yellow-500 focus:ring-yellow-500 focus:outline-none focus:border-yellow-500 focus:ring-1 w-full h-10 px-5 text-sm"
+         type="search" name="search" placeholder="Busca un plan ..">
      @if ($search)
-         <ul class="absolute left-0 w-full bg-white mt-1 rounded-2xl overflow-hidden z-50 divide-y divide-gray-300">
+         <ul class="absolute left-0 w-full bg-white mt-1 overflow-hidden z-50 divide-y divide-gray-300">
             @forelse ($this->results as $result)
                 <div wire:loading wire:target="search" class=" px-4 w-full mx-auto">
                     <div class="animate-pulse flex space-x-4">
