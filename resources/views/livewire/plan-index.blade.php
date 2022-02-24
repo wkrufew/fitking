@@ -26,13 +26,13 @@
         </div>
     </div>
     <!--Cargado de todos los planes-->
-    <div x-show="!open" class="max-w-7xl mx-auto mt-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8 mb-10">  
+    <div x-show="!open" class="max-w-7xl mx-auto mt-8 px-12 md:px-4 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8 mb-10">  
             @foreach ($planes as $plan)
                 <x-course-card :plan="$plan"/>
             @endforeach
     </div>
     <!--Cargado de los planes del usuario-->
-    <div x-show="open" class="max-w-7xl mx-auto mt-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8 mb-10"> 
+    <div x-show="open" class="max-w-7xl mx-auto mt-8 px-12 md:px-4 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8 mb-10"> 
            {{--  @foreach ($planes as $plan)
                    
             @endforeach --}}

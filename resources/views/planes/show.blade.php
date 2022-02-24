@@ -1,18 +1,4 @@
 <x-app-layout>
-    <script>
-        const puntoquiebre = 1410;//este es el punto en pixeles que quieres que el objeto desaparezca completamente 
-    
-        window.addEventListener("scroll", () => {
-            const currentScroll = window.pageYOffset; //Obtiener valor del scroll en el eje Y
-            if (currentScroll <= puntoquiebre) { 
-                opacity = (1 - currentScroll / puntoquiebre)+0;   //calculo para reduccion del opciti del valor uno hasta llegar a cero 
-            } else {
-                opacity = 0; //cuando el valor del scroll es menor o igual que el punto que yo eleji es por defecto 0 y asi se pierde el div 
-            }
-            document.querySelector(".interesar").style.opacity = opacity; //asigno el valor del opcity al div que tiene la clase interesar
-        });
-    </script>
-
     <section class="overflow-hidden block md:hidden">
         <div class="fixed z-50 right-0 bottom-1 w-full -mb-2 shadow-xl bg-black border-t-2 border-yellow-500 rounded-t-2xl">
            <div class="px-4 pb-7">
@@ -254,11 +240,24 @@
                     @endcan
                 </div>
             </section>
-
+            <script>
+                //este es el punto en pixeles que quieres que el objeto desaparezca completamente 
+                window.addEventListener("scroll", () => {
+                    //const puntoquiebre = 1410;
+                    const currentScroll = window.pageYOffset; //Obtiener valor del scroll en el eje Y
+                    if (currentScroll <= 1410) { 
+                        opacity = (1 - currentScroll / 1810)+0.3;   //calculo para reduccion del opciti del valor uno hasta llegar a cero 
+                        //alert(opacity);
+                    } else {
+                        opacity = 0; //cuando el valor del scroll es menor o igual que el punto que yo eleji es por defecto 0 y asi se pierde el div 
+                    }
+                    document.querySelector(".interesar").style.opacity = opacity; //asigno el valor del opcity al div que tiene la clase interesar
+                });
+            </script>
             <aside class="hidden lg:block select-none md:sticky md:top-64 interesar">
-                @empty($similares)
-                    <h1 class="font-bold text-2xl mb-2 text-gray-700">Te puede interesar</h1>
-                @endempty
+                @if($similares)
+                    <h1 class="font-bold text-lg md:text-2xl mb-2 text-gray-700">Te puede interesar</h1>
+                @endif
                 @foreach ($similares as $similar)
                     <article
                         class="card rounded-lg object-cover overflow-hidden flex mb-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">

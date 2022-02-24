@@ -38,8 +38,9 @@
     @stack('css')
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js') }}" defer></script>
+    {{-- <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js') }}" defer></script> --}}
     <script src="{{ asset('https://unpkg.com/swiper@7/swiper-bundle.min.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- SEO -->
     <meta name="DC.Language" scheme="RFC1766" content="Spanish">
     <meta http-equiv="content-language" content="es">
@@ -84,10 +85,10 @@
                         class="text-gray-900 p-3 w-8 h-8 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
                         <i class="fas fa-at text-xl"></i>
                     </div>
-                    <h5 class="text-xs md:text-sm mt-2 font-semibold text-gray-400">
+                    <h5 class="text-xs md:text-sm mt-2 font-semibold text-white select-none">
                         Correo Electronico
                     </h5>
-                    <p class="mt-2 mb-4 text-xs text-gray-400">
+                    <p class="mt-2 mb-4 text-xs text-white hover:text-yellow-500 cursor-pointer">
                         kitking@hotmail.com
                     </p>
                 </div>
@@ -96,10 +97,10 @@
                         class="text-gray-900 p-3 w-8 h-8 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
                         <i class="fas fa-phone text-xl"></i>
                     </div>
-                    <h5 class="text-xs md:text-sm mt-2 font-semibold text-gray-400">
+                    <h5 class="text-xs md:text-sm mt-2 font-semibold text-white select-none">
                         Telefono
                     </h5>
-                    <p class="mt-2 text-xs mb-4 text-gray-400">
+                    <p class="mt-2 text-xs mb-4 text-white hover:text-yellow-500 cursor-pointer">
                         0999999999
                     </p>
                 </div>
@@ -108,40 +109,40 @@
                         class="text-gray-900 p-3 w-8 h-8 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
                         <i class="fas fa-route text-xl"></i>
                     </div>
-                    <h5 class="text-xs md:text-sm mt-2 font-semibold text-gray-400">Direccion domiciliaria</h5>
-                    <p class="mt-2 text-xs mb-4 text-gray-400">
+                    <h5 class="text-xs md:text-sm mt-2 font-semibold text-white select-none">Direccion domiciliaria</h5>
+                    <p class="mt-2 text-xs mb-4 text-white hover:text-yellow-500 cursor-pointer">
                         Av. Los Puentas
                     </p>
                 </div>
             </div>
             <div class="flex justify-center items-center text-center mt-2">
                 <div class="w-full lg:w-6/12 px-4 ">
-                    <h4 class="text-xs md:text-sm font-semibold text-gray-400">Sigueme en mis redes sociales!</h4>
+                    <h4 class="text-xs md:text-sm font-semibold text-white">Sigueme en mis redes sociales!</h4>
 
                     <div class="mt-3 justify-between items-center text-center">
                         <a href=""
                             class="text-gray-900 mr-2 w-10 h-10 shadow-lg m-auto rounded-full inline-flex items-center justify-center">
-                            <i class="fab fa-facebook text-lg text-blue-600"></i>
+                            <i class="fab fa-facebook text-lg text-white hover:text-yellow-500"></i>
                         </a>
                         <a href=""
                             class="text-gray-900 mr-2 w-10 h-10 shadow-lg m-auto rounded-full inline-flex items-center justify-center">
-                            <i class="fab fa-instagram text-lg text-red-500"></i>
+                            <i class="fab fa-instagram text-lg text-white hover:text-yellow-500"></i>
                         </a>
                         <a href=""
                             class="text-gray-900 w-10 h-10 shadow-lg m-auto rounded-full inline-flex items-center justify-center">
-                            <i class="fab fa-whatsapp text-lg text-green-500 "></i>
+                            <i class="fab fa-whatsapp text-lg text-white hover:text-yellow-500"></i>
                         </a>
                     </div>
                 </div>
 
             </div>
 
-            <hr class="border-gray-400 mb-2 mt-4" />
+            <hr class="border-yellow-500 mb-2 mt-4" />
 
             <div class="flex items-center md:justify-between justify-center">
                 <div class="w-full md:w-4/12 px-4 lg:w-auto mx-auto text-center">
-                    <div class="text-xs text-gray-400 font-semibold py-1">
-                        Copyright © 2021 Todos los derechos reservados por FitKing
+                    <div class="text-xs text-white font-semibold py-1">
+                        Copyright © 2022 Todos los derechos reservados por FitKing
 
                     </div>
                 </div>
@@ -149,13 +150,13 @@
 
             <div class="flex flex-wrap items-center md:justify-between justify-center mt-2">
                 <div class="w-full md:w-4/12  mx-auto text-center">
-                    <div class="text-xs text-gray-400 font-semibold py-1">
+                    <div class="text-xs text-white font-semibold py-1">
                         Desarrollado por:
-                        <a href="https://www.facebook.com/smith.aviles3/" class="text-gray-400 hover:text-gray-100">Ing.
-                            Smith Aviles</a>.
-                        <a href="https://www.facebook.com/smith.aviles3/"
-                            class="p-3 w-1 h-1 overflow-hidden  shadow-lg  rounded-full inline-flex items-center justify-center">
-                            <i class="fab fa-facebook text-lg text-white"></i>
+                        <a href="https://www.facebook.com/smith.aviles3" class="text-white hover:text-yellow-500">Ing.
+                            Smith Aviles</a>
+                        <a href="https://www.facebook.com/smith.aviles3"
+                            class="text-white hover:text-yellow-500 p-3 w-1 h-1 overflow-hidden  shadow-lg  rounded-full inline-flex items-center justify-center">
+                            <i class="fab fa-facebook text-lg"></i>
                         </a>
                     </div>
                 </div>

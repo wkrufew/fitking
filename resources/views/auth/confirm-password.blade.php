@@ -1,11 +1,11 @@
-<x-guest-layout>
+<x-app-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            This is a secure area of the application. Please confirm your password before continuing.
+            Esta es un área segura de la aplicación. Por favor, confirme su contraseña antes de continuar.
         </div>
 
         <x-jet-validation-errors class="mb-4" />
@@ -25,4 +25,4 @@
             </div>
         </form>
     </x-jet-authentication-card>
-</x-guest-layout>
+</x-app-layout>

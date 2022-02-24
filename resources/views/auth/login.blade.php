@@ -1,5 +1,7 @@
 <x-app-layout>
-    <div class="h-10 bg-black"></div>
+    <div class="relative h-20 w-full bg-black">
+      </div>
+    {{-- <div class="h-10 bg-black"></div>
     <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink">
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -25,7 +27,7 @@
                 </g>
             </g>
         </g>
-    </svg>
+    </svg> --}}
     <div class="max-w-7xl md:max-w-xl mx-auto px-4 h-screen">
         <div class="mx-auto">
             <div class="px-6 w-auto md:w-96">

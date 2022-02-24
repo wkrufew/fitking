@@ -152,15 +152,21 @@
                             </x-slot>
                         </x-jet-dropdown>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-50">INGRESAR</a>
-                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-50">REGISTRARME</a>
+                        <div class="flex">
+                            <div class="p-1 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black">
+                                <a href="{{ route('login') }}" class="text-sm font-semibold">INGRESAR</a>
+                            </div>
+                            <div class="p-1 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black border-l-0">
+                                <a href="{{ route('register') }}" class="text-sm font-semibold">REGISTRARME</a>
+                            </div>
+                        </div>
                     @endauth
                 </div>
             </div>
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-100 hover:text-gray-200 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-200 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-100 hover:text-gray-200 hover:bg-gray-100 focus:outline-none focus:bg-transparent focus:text-gray-200 transition duration-500 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
@@ -171,7 +177,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="bg-gray-100 rounded-lg hidden sm:hidden">
+    <div :class="{'block': open, 'hidden': ! open}" class="bg-gray-100 rounded-lg hidden sm:hidden mb-6 border-2 border-yellow-500">
         <div class="pt-2 pb-3 space-y-1">
             
             @foreach ($nav_links as $nav_link)
@@ -190,7 +196,7 @@
 
         <!-- Responsive Settings Options -->
         @auth
-            <div class="pt-4 pb-1 border-t  border-gray-200">
+            <div class="pt-4 pb-1 border-t border-gray-200">
                 <div class="flex items-center px-4">
                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                         <div class="flex-shrink-0 mr-3">
@@ -207,18 +213,18 @@
                 <div class="mt-3 space-y-1">
                     <!-- Account Management -->
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                            Perfil
+                            PERFIL
                     </x-jet-responsive-nav-link>
 
                     @can('Leer Planes')
                         <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">
-                            Instructor
+                            INSTRUCTOR
                         </x-jet-responsive-nav-link>
                     @endcan
 
                     @can('Ver Dashboard')
                         <x-jet-responsive-nav-link href="{{ route('admin.home') }}" :active="request()->routeIs('admin.home')">
-                            Administrador
+                            ADMINISTRADOR
                         </x-jet-responsive-nav-link>
                     @endcan
 
@@ -234,7 +240,7 @@
                         <x-jet-responsive-nav-link href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                            Cerrar Sesion
+                            CERRAR SESIÓN
                         </x-jet-responsive-nav-link>
                     </form>
                 </div>
@@ -254,7 +260,7 @@
 </nav>
 
 </div>
- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+ 
     
     <script>
         $('.navbar-toggler').click(function () {

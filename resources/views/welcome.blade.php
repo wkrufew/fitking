@@ -156,7 +156,7 @@
                         alt="img-propietario">
                 </figure>
             </article> --}}
-            <article class="">
+            <article>
                 <figure class="border-4 border-yellow-500 overflow-hidden h-full relative">
                     <img class="w-full h-full object-cover" src="{{ asset('img/home/sports.jpg') }}" alt="img-propietario">
                     <div class="opacity-0 hover:opacity-100 transition duration-300 ease">
@@ -243,7 +243,7 @@
     <section class="relative bg-black text-gray-50 text-center -mt-0.5 md:-mt-0 pt-28 pb-44 px-6 select-none">
         
         <h1 class="text-2xl md:text-4xl text-center font-semibold py-2">
-            NO SABES QUE PLAN ADQUIRIR ?
+            NO SABES QUE PLAN ADQUIRIR?
         </h1>
         <p class="text-lg md:text-2xl font-semibold">
             VE AL CATALOGO DE PLANES, ELIJE EL MEJOR Y EMPIEZA AHORA.
