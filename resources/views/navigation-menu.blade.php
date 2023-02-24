@@ -12,7 +12,7 @@
         ],
     ]
 @endphp
-<div {{-- data-turbolinks-permanent  --}}class="w-full bg-transparent fixed top-0 left-0 z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-0 transition-all duration-500 ease-in" id="navbar">
+<div {{-- data-turbolinks-permanent  --}}class="w-full bg-transparent fixed top-0 left-0 z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-0 xl:py-4 transition-all duration-500 ease-in" id="navbar">
 
 <nav x-data="{ open: false }" class="">
     <!-- Primary Navigation Menu -->
@@ -107,7 +107,7 @@
                             <div class="p-1 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black">
                                 <a href="{{ route('login') }}" class="text-sm font-semibold">INGRESAR</a>
                             </div>
-                            <div class="p-1 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black border-l-0">
+                            <div class="p-1 border-2 border-yellow-500 bg-yellow-500 text-black border-l-0 hover:text-yellow-500 hover:bg-transparent">
                                 <a href="{{ route('register') }}" class="text-sm font-semibold">REGISTRARME</a>
                             </div>
                         </div>
@@ -211,27 +211,25 @@
 </nav>
 
 </div>
- 
-    
-    <script>
-        $('.navbar-toggler').click(function () {
-        $(this).toggleClass('active');
-        $('.navigation-menu').toggleClass('hidden');
-        $('#navbar').addClass('bg-black');
-        });
-        $(function () {
-        var navigation = $("#navbar");
+<script>
+    $('.navbar-toggler').click(function () {
+    $(this).toggleClass('active');
+    $('.navigation-menu').toggleClass('hidden');
+    $('#navbar').addClass('bg-black');
+    });
+    $(function () {
+    var navigation = $("#navbar");
 
-        $(window).scroll(function () {
-            var scroll = $(window).scrollTop();
-            if (scroll >= 25) {
+    $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
+        if (scroll >= 25) {
             navigation.addClass("bg-black xl:py-0 shadow-md");
-            navigation.removeClass("xl:py-4");
-            } else {
+            navigation.removeClass("xl:py-4 bg-transparent");
+        } else {
             navigation.removeClass("bg-black xl:py-4 shadow-md");
             navigation.addClass("xl:py-4");
-            }
-        });
-        });
-    </script>
+        }
+    });
+    });
+</script>
     
