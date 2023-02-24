@@ -1,88 +1,4 @@
 <x-app-layout>
-    <style>
-        .slider-hidden {
-            overflow: hidden;
-        }
-
-        .swiper {
-            width: 100%;
-            height: 100%;
-            background: rgb(0, 0, 0);
-        }
-
-        .altura {
-            height: 100vh;
-        }
-
-        @media screen and (max-width: 600px) {
-            .swiper {
-                width: 100%;
-                height: 100%;
-                background: rgb(0, 0, 0);
-            }
-
-            .swiper-slide img {
-                display: block;
-                width: 100%;
-                height: 100%;
-            }
-
-            .altura {
-                height: 100%;
-            }
-        }
-        @media screen and (max-width: 768px) {
-            .swiper {
-                width: 100%;
-                height: 100%;
-                background: rgb(0, 0, 0);
-            }
-
-            .swiper-slide img {
-                display: block;
-                width: 100%;
-                height: 100%;
-            }
-
-            .altura {
-                height: 100%;
-            }
-        }
-
-        .filo::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 9px;
-            background: linear-gradient(to top, #000000, transparent);
-            z-index: 4;
-        }
-
-        /* .baner {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        @media screen and (max-width: 600px) {
-            .baner {
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 40%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-            }
-        } */
-
-    </style>
     {{-- COMPONENTE LIVEWIRE DEL SLIDER --}}
     @livewire('portada-slider')
     @push('js')
@@ -183,7 +99,7 @@
     <section class="bg-black py-10 select-none relative -mt-0.5 md:-mt-0">
         <div>
             <div class="bg-yellow-500 h-1 w-11/12 md:w-2/6 mx-auto mb-2"></div>
-            <p class="text-center text-2xl md:text-4xl font-semibold text-yellow-500 overline decoration-white">CONTENIDO DE LOS PLANES</p>
+            <p class="text-center text-2xl md:text-4xl font-semibold text-yellow-500">CONTENIDO DE LOS PLANES</p>
             <div class="bg-yellow-500 h-1 w-11/12 md:w-2/6 mx-auto my-2"></div>
         </div>
         

@@ -68,25 +68,25 @@ class PaymentController extends Controller
     public function approved(Request $request, Course $plan)
     {
         try {
-        //dd(auth()->user()->email);
-        //return $request->all();
-        $apiContext = new \PayPal\Rest\ApiContext(
-            new \PayPal\Auth\OAuthTokenCredential( 
-                config('services.paypal.client_id'),    // ClientID
-                config('services.paypal.client_secret'),      // ClientSecret
-            )
-        );
-        $paymentId = $_GET['paymentId'];
-        $payment = \PayPal\Api\Payment::get($paymentId, $apiContext);
-        $execution = new \PayPal\Api\PaymentExecution();
-        $execution->setPayerId($_GET['PayerID']);
+            //dd(auth()->user()->email);
+            //return $request->all();
+            $apiContext = new \PayPal\Rest\ApiContext(
+                new \PayPal\Auth\OAuthTokenCredential( 
+                    config('services.paypal.client_id'),    // ClientID
+                    config('services.paypal.client_secret'),      // ClientSecret
+                )
+            );
+            $paymentId = $_GET['paymentId'];
+            $payment = \PayPal\Api\Payment::get($paymentId, $apiContext);
+            $execution = new \PayPal\Api\PaymentExecution();
+            $execution->setPayerId($_GET['PayerID']);
 
-        $payment->execute($execution, $apiContext);
-            Mail::to(auth()->user()->email)
-            ->cc('smith93svam@gmail.com')
-            ->send(new CorreoPlan($plan));
+            $payment->execute($execution, $apiContext);
+               /*  Mail::to(auth()->user()->email)
+                ->cc('smith93svam@gmail.com')
+                ->send(new CorreoPlan($plan)); */
 
-        $plan->students()->attach(auth()->user()->id);
+            $plan->students()->attach(auth()->user()->id);
         } catch (Exception $e) {
             $errorpaypal="Estimado ". auth()->user()->name ." ocurrio un problema por favor intenta adquirir el plan mas tarde ";
             return redirect()->route('planes.show', $plan)->with(compact('errorpaypal'));

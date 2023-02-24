@@ -25,7 +25,7 @@ class CourseController extends Controller
     {
         $this->authorize('revision', $course);  
         
-        if($course->lessons || $course->goals || $course->requirements || $course->image)
+        if(!$course->lessons || !$course->goals || !$course->requirements || !$course->image)
         {
             return back()->with('info', 'Nose puede publicar este plan si no esta completa la informacion');
         }

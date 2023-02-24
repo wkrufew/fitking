@@ -30,10 +30,10 @@ class CourseSeeder extends Seeder
                 'course_id' => $course->id
             ]);
 
-            /* Image::factory(1)->create([
+            Image::factory(1)->create([
                 'imageable_id' => $course->id, 
                 'imageable_type' => 'App\Models\Course'
-            ]); */
+            ]);
 
             Requirement::factory(4)->create([
                 'course_id' => $course->id

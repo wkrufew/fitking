@@ -13,15 +13,15 @@
 
         <!-- Styles -->
 
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
         <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
-
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
 
         @stack('css')
         <!-- Scripts -->
         
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        {{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
 
         <script src="{{ asset('https://code.jquery.com/jquery-3.4.1.min.js') }}"></script>
     </head>

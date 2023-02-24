@@ -1,8 +1,10 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+//const colors = require('tailwindcss/colors')
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-    purge: [
-        './vendor/laravel/jetstream/**/*.blade.php',
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
@@ -10,24 +12,16 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Roboto Condensed'],
-                /* sans: ['Nunito', ...defaultTheme.fontFamily.sans], */
+                sans: ['Roboto Condensed', ...defaultTheme.fontFamily.sans],
+               /*  sans: ['Nunito', ...defaultTheme.fontFamily.sans], */
             },
-        },
-    },
-
-    variants: {
-        extend: {
-            opacity: ['responsive','hover','focus','disabled','dark'],
+            /* opacity: ['responsive','hover','focus','disabled','dark'],
             width: ["responsive", "hover", "focus"],
             height: ["responsive", "hover", "focus"],
             borderWidth: ["responsive", "hover", "focus"],
-            display: ["hover"],
+            display: ["hover"], */
         },
     },
-    corePlugins: {
-       container: false,
-      },
 
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+    plugins: [require('@tailwindcss/forms'),require('@tailwindcss/typography')],
 };

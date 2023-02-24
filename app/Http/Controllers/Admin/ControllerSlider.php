@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class ControllerSlider extends Controller
@@ -46,6 +47,8 @@ class ControllerSlider extends Controller
        
         $slider->save();
 
+        Cache::forget('welcome');
+
         return redirect()->route('admin.sliders.index')->with('mensaje','ok');
     }
 
@@ -81,6 +84,8 @@ class ControllerSlider extends Controller
 
         $slider->update($request->only('orden','file'));
 
+        Cache::forget('welcome');
+
         return redirect()->route('admin.sliders.index')->with('mensaje1','ok');
     }
 
@@ -88,6 +93,7 @@ class ControllerSlider extends Controller
     {
         Storage::delete($slider->imagen);
         $slider->delete();
+        Cache::forget('welcome');
         return redirect()->route('admin.sliders.index')->with('mensaje1','ok');
     }
 }

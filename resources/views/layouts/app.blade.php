@@ -11,38 +11,20 @@
     <!-- icono de la app -->
     <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/marca1.webp') }}" type="image/x-icon">
     <meta name="description" content="Una plataforma fitnes donde puedes encontrar el curso ideal para tu cuerpo para verte saludable y bien">
-    <style>
-        ::-webkit-scrollbar {
-            width: 15px;
-        }
-
-        ::-webkit-scrollbar-track {
-            border: 5px;
-            box-shadow: inset 0 0 15px #b8b8b8;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            /* background: linear-gradient(#eecda3,#ef629f); */
-            background: #000000;
-            border: 2px solid #d18708;
-            border-radius: 25px;
-        }
-
-    </style>
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
     @stack('css')
     <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    {{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
     {{-- <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js') }}" defer></script> --}}
     <script src="{{ asset('https://unpkg.com/swiper@7/swiper-bundle.min.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- SEO -->
-    <meta name="DC.Language" scheme="RFC1766" content="Spanish">
+    {{-- <meta name="DC.Language" scheme="RFC1766" content="Spanish">
     <meta http-equiv="content-language" content="es">
     <meta name="author" content="Stalin Pilco">
     <meta name="copyright" content="fitking">
@@ -54,15 +36,15 @@
     <meta name="DateCreated" content="Tue, 25 January 2022 00:00:00 GMT+1">
     <meta name="Revisit-after" content="1 days">
     <meta http-equiv="cache-control" content="cache">
-    <meta name="robots" content="all">
+    <meta name="robots" content="all"> --}}
 
     <!-- Open Graph data -->
-    <meta property="og:title" content="fitking" />
+    {{-- <meta property="og:title" content="fitking" />
     <meta property="og:type" content="sport" />
-    <meta property="og:url" content="{{ config('app.url', 'FitKing') }}" />
+    <meta property="og:url" content="{{ config('app.url', 'FitKing') }}" /> --}}
     {{-- FOTO DONDE SALE LA BIOGRAFIA --}}
-    <meta property="og:image" content="{{ asset('img/home/marca1.webp') }}" />
-    <meta property="og:description" content="Pagina donde puedes conseguir el plan ideal para llevar tu cuerpo al siguiente nivel estando bien por fuera y por dentro." />
+    {{-- <meta property="og:image" content="{{ asset('img/home/marca1.webp') }}" />
+    <meta property="og:description" content="Pagina donde puedes conseguir el plan ideal para llevar tu cuerpo al siguiente nivel estando bien por fuera y por dentro." /> --}}
 </head>
 
 <body class="font-sans antialiased">
@@ -168,8 +150,8 @@
     @stack('modals')
 
     @livewireScripts
-    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
-        data-turbolinks-eval="false" data-turbo-eval="false"></script>
+   {{--  <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
+        data-turbolinks-eval="false" data-turbo-eval="false"></script> --}}
     {{-- @isset($js)
         {{ $js }}
     @endisset --}}
