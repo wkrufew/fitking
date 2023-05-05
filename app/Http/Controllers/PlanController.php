@@ -40,7 +40,7 @@ class PlanController extends Controller
         $plan->students()->attach(auth()->user()->id);
         
         } catch (\Exception $e) {
-            //session()->flash('errores', 'Ocurrio un error, intentalo nuevamente');
+            session()->flash('errores', 'Ocurrio un error, intentalo nuevamente');
             return redirect()->back();
         }
         //$plan->students()->updateExistingPivot(auth()->user()->id, ['estado' => 1]);//atualiza un campo especifico de la tabla pivot osea course_user

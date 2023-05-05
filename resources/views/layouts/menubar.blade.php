@@ -38,9 +38,9 @@ $category = DB::table('categories')->where('estado',1)->get();
                                 <li class="hassubs">
                                     <a href="{{ route('pages.perfiltienda') }}">Mis ordenes</a>
                                 </li>
-                                <li class="hassubs">
+                               {{--  <li class="hassubs">
                                     <a href="{{ route('payment.step') }}">Pago de orden</i></a>
-                                </li>
+                                </li> --}}
                                 <li class="hassubs">
                                     <a href="{{ route('home') }}">Planes</a>                                   
                                 </li>
@@ -75,37 +75,41 @@ $category = DB::table('categories')->where('estado',1)->get();
                             </form>
                         </div>
                         <ul class="page_menu_nav">
-                            <li class="page_menu_item has-children">
+                            <li class="page_menu_item">
                                 <a href="/tienda">Inicio</a>
                             </li>
-                            <li class="page_menu_item has-children">   
+                            <li class="page_menu_item">
                                 <a href="{{ route('pages.perfiltienda') }}">Mis ordenes</a>
                             </li>
-                            <li class="page_menu_item">
+                            {{-- <li class="page_menu_item">
                                 <a href="{{ route('payment.step') }}">Pago de orden</i></a>
-                            </li>
-                            <li class="page_menu_item has-children">
+                            </li> --}}
+                            <li class="page_menu_item">
                                 <a href="{{ route('home') }}">Planes</a>
                             </li>
                             @auth
-                            <li class="page_menu_item has-children">                               
-                                <a href="#">
-                                    <img style="width: 20px; margin-right: 20px; height: 20px; border-radius: 50%;" src="{{ asset('frontend/images/user.svg')}}" alt="">
-                                    {{ Auth::user()->name }}<i class="fa fa-angle-down"></i>
-                                </a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
-                                </ul>
-                            </li>
+                                <li class="page_menu_item">                               
+                                    <a href="#" class="">
+                                       {{--  <img style="width: 20px; margin-right: 20px; height: 20px; border-radius: 50%;" src="{{ asset('frontend/images/user.svg')}}" alt="">
+                                        {{ Auth::user()->name }} --}}
+
+                                        <div class="flex-shrink-0 mr-3">
+                                            <img style="width: 2.5rem; height: 2.5rem; background-image: cover; border-radius: 50%" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                        </div>
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    {{ Auth::user()->name }}
+                                    {{-- <a href="{{ route('logout') }}">Cerrar sesión</a> --}}
+                                </li>
                             @endauth
                            @guest
-                           <li class="page_menu_item"><a href="{{ route('login') }}" class="">Inicio de sesión</a></li>
-                           <li class="page_menu_item"><a href="{{ route('register') }}" class="">Registro</a></li>
+                                <li class="page_menu_item"><a href="{{ route('login') }}" class="">Inicio de sesión</a></li>
+                                <li class="page_menu_item"><a href="{{ route('register') }}" class="">Registro</a></li>
                            @endguest
                         </ul>
                         <div class="menu_contact">
-                            <div class="menu_contact_item"><div class="menu_contact_icon"></div>+593 98 005 3570</div>
-                            <div class="menu_contact_item"><div class="menu_contact_icon"></div><a href="mailto:fastsales@gmail.com">fitking@hotmail.com</a></div>
+                            <div class="menu_contact_item"><div class="menu_contact_icon"></div>{{ $settings['phone'] }}</div>
+                            <div class="menu_contact_item"><div class="menu_contact_icon"></div><a href="mailto:{{ $settings['email'] }}">{{ $settings['email'] }}</a></div>
                         </div>
                     </div>
                 </div>

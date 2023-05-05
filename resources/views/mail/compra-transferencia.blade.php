@@ -76,13 +76,13 @@
         y envies el comprobante al correo o whatsapp que se detallan acontinuacion.
     </p>
     <p>
-        <b>Nombre del beneficiario: </b>Stalin Pilco <br>
-        <b>Banco: </b>PICHINCHA<br>
-        <b># Cuenta: </b>00000000000000 <br>
-        <b>Tipo de cuenta: </b>Ahorros <br>
-        <b>Cédula: </b>060000000000 <br>
-        <b>Correo:</b>stalin@hotmail.com <br>
-        <b>Whatsapp:</b>09999999999
+        <b>Nombre del beneficiario: </b>{{ $settings['beneficiario'] }} <br>
+        <b>Banco: </b>{{ $settings['banco'] }}<br>
+        <b># Cuenta: </b>{{ $settings['cuenta'] }} <br>
+        <b>Tipo de cuenta: </b>{{ $settings['tipocuenta'] }} <br>
+        <b>Cédula: </b>{{ $settings['cedula'] }} <br>
+        <b>Correo: </b>{{ $settings['email'] }}<br>
+        <b>Whatsapp: </b>{{ $settings['phone'] }}<br> 
     </p>
     
         <div class="barra">
@@ -155,10 +155,10 @@
         <h2 class="titulo9"><strong>FitKig</strong></h2>
         <p>Los mejores planes y productos para tu físico ideal</p>
         <p>
-            <b>Teléfono:</b> <a class="titulo1" href="tel:+ 1 (203) 948-4970">+ 593 983935029</a><br>
-            <b>E-mail:</b> <a class="titulo1" href="mailto:admin@dr-pools.com">fitking@gmail.com</a><br>
-            <b>Web:</b> <a class="titulo1" href="http://www.dr-pools.com" target="_blank"
-                rel="noopener noreferrer"></a>www.fitking.com
+            <b>Teléfono:</b> <a class="titulo1" href="tel:{{ $settings['phone'] }}">{{ $settings['phone'] }}</a><br>
+            <b>E-mail:</b> <a class="titulo1" href="mailto:{{ $settings['email'] }}">{{ $settings['email'] }}</a><br>
+            <b>Web:</b> <a class="titulo1" href="https://{{$_SERVER [ 'HTTP_HOST' ];}}" target="_blank"
+                rel="noopener noreferrer"></a>{{$_SERVER [ 'HTTP_HOST' ];}}
         </p>
     </div>
 </body>

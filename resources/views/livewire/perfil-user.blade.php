@@ -204,7 +204,7 @@
             </div>
         </div>
 
-        <div class="grid sm:grid-cols-1 md:grid-cols-2  gap-4">
+        {{-- <div class="grid sm:grid-cols-1 md:grid-cols-2  gap-4">
             <div>
                 <x-jet-label for="fantes" value="Foto Antes" />
                 <x-jet-input wire:model="file1" type="file" accept="image/png, .jpeg, .jpg" class="mb-2 block w-full"/>
@@ -214,8 +214,6 @@
                     @isset($fantes)
                         <img id="picture2" style="border-radius: 8px;" src="{{Storage::url($fantes)}}" width="100px" alt="">
                     @else 
-                       {{--  <img id="picture2" style="border-radius: 8px;" src="https://cdn.pixabay.com/photo/2020/04/06/13/37/coffee-5009730_960_720.png" width="100px" alt=""> --}}
-                        
                     @endisset
                 
             </div>
@@ -228,13 +226,11 @@
                    
                     @isset($fdespues)
                     <img id="picture2" style="border-radius: 8px;" src="{{Storage::url($fdespues)}}" width="100px" alt="">
-                    @else 
-                    {{--  <img id="picture2" style="border-radius: 8px;" src="https://cdn.pixabay.com/photo/2020/04/06/13/37/coffee-5009730_960_720.png" width="100px" alt=""> --}}
-                       
+                    @else    
                     @endisset
                     
             </div>
-        </div>
+        </div> --}}
 
        <div class="justify-end flex mt-6 ">
             <div>

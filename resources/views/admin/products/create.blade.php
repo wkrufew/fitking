@@ -83,7 +83,7 @@
                             @enderror
                     </div>
                     <div class="col m-2">
-                        {!! Form::label('discount_price', 'Descuento: ') !!}
+                        {!! Form::label('discount_price', 'Descuento: $') !!}
                         {!! Form::text('discount_price', null, ['class' => 'form-control' . ($errors->has('discount_price') ? ' is-invalid' : ''), 'placeholder' => 'Escriba un descuento', 'autocomplete' => 'off']) !!}
                         @error('discount_price')
                             <div class="alert alert-danger mt-1" role="alert">
@@ -225,7 +225,7 @@
                 </div>
             </div>
 
-            <div class="col-2">
+           {{--  <div class="col-2">
                 <label>Slider medio: </label>
                 <div>
                     {!! Form::radio('mid_slider', 1, null, ['class' => 'mr-1']) !!}
@@ -235,7 +235,7 @@
                     {!! Form::radio('mid_slider', 0, true, ['class' => 'mr-1']) !!}
                     <b>Desactivado</b>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-2">
                 <label>Nuevo: </label>
                 <div>
@@ -247,7 +247,7 @@
                     <b>Desactivado</b>
                 </div>
             </div>
-            <div class="col-2">
+            {{-- <div class="col-2">
                 <label>Tendencia: </label>
                 <div>
                     {!! Form::radio('trend', 1, null, ['class' => 'mr-1']) !!}
@@ -257,7 +257,7 @@
                     {!! Form::radio('trend', 0, true, ['class' => 'mr-1']) !!}
                     <b>Desactivado</b>
                 </div>
-            </div>
+            </div> --}}
    
            </div>
            <hr>
@@ -280,5 +280,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    {{-- <script> console.log('Hi!'); </script> --}}
 @stop

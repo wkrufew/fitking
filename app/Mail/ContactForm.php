@@ -9,23 +9,15 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class CorreoAceptacionTienda extends Mailable implements ShouldQueue
+class ContactForm extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $data;
-    public $shipping;
-    public $product;
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct($data,$shipping,$product)
+
+    public function __construct($data)
     {
-         $this->data = $data;
-        $this->shipping = $shipping;
-        $this->product = $product;
+        $this->data = $data;
     }
 
     /**
@@ -36,7 +28,7 @@ class CorreoAceptacionTienda extends Mailable implements ShouldQueue
     public function envelope()
     {
         return new Envelope(
-            subject: 'Aprobacion de Pago',
+            subject: 'Contactos',
         );
     }
 
@@ -48,12 +40,10 @@ class CorreoAceptacionTienda extends Mailable implements ShouldQueue
     public function content()
     {
         return new Content(
-            view: 'mail.compra-reserva-tienda',
-            /* with: [
-                'product' => $this->product,
-                'data' => $this->data,
-                'shipping' => $this->shipping
-            ], */
+            markdown: 'mail.contacto-formulario',
+            with: [
+                'data' => $this->data
+            ],
         );
     }
 

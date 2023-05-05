@@ -1,30 +1,14 @@
 <x-app-layout>
+    {{-- INICIO SEO --}}
+        @section('title', 'Inicio')
+        @section('description', 'FITKING, es una empresa dedicada a al entrenamiento presonalizado y venta de prodcutos fitness como proteinas, creatinas, pre-entrenos entre otros.')
+        @section('url', route('home'))
+        @section('img', asset('img/home/logo2.webp'))
+    {{-- FIN SEO --}}
+   {{--  {{route('contact')}} --}}
     {{-- COMPONENTE LIVEWIRE DEL SLIDER --}}
     @livewire('portada-slider')
-    @push('js')
-        <script>
-            Livewire.on('swiper', function() {
-                var swiper = new Swiper('.swiper', {
-                    effect: "fade",
-                    loop: true,
-                    autoplay: true,
-                    speed: 1000,
-                    parallax: true,
-                    centeredSlides: true,
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
-                    /* navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                        nextEl: false,
-                        prevEl: false,
-                    }, */
-                });
-            });
-        </script>
-    @endpush
+    
     <!--SLIDER-->
     {{-- CONTENIDO CENTRADO DE LA PORTADA DONDE ESTA LE BUSCADOR --}}
     <section class="absolute z-30 text-center inset-0 h-40 top-24 sm:top-32 md:top-52 lg:top-52 xl:top-52 px-10 md:px-0 ">
@@ -32,9 +16,8 @@
             class="sm:max-w-2xl md:max-w-2xl lg:max-w-3xl mx-auto px-2 md:px-4 sm:px-6 lg:px-16 py-5 md:py-10 bg-black bg-opacity-60 rounded-xl">
             <div class="w-full select-none justify-center ">
                 <h1 class="text-yellow-500 font-extrabold text-2xl md:text-4xl mb-1 md:mb-6">BIENVENIDO A FITKING</h1>
-                <p class="text-white font-bolt text-sm sm:text-xl lg:text-2xl mb-0 md:mb-4">Platatorma donde puedes conseguir el
-                    plan ideal para
-                    llevar tu cuerpo al siguiente nivel.</p>
+                <p class="text-white font-bolt text-sm sm:text-xl lg:text-2xl mb-0 md:mb-4">
+                    Platatorma donde puedes conseguir el plan ideal para llevar tu cuerpo al siguiente nivel.</p>
                 <!--Aqui va el buscador-->
                 <div class="hidden sm:block">
                     @livewire('search')
@@ -64,37 +47,41 @@
                 <img class="block h-60 object-center" src="{{ asset('img/home/logo3.jpg') }}">
             </div> 
         </div>
-        <div
-            class="object-center  max-w-7xl mx-auto px-8 sm:px-8 lg:px-8 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-6 gap-y-2 md:gap-y-8 ">
+        <div class="object-center max-w-7xl mx-auto px-8 sm:px-8 lg:px-8 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-6 gap-y-2 md:gap-y-8 ">
             {{-- <article class="my-auto">
                 <figure class="border-2 border-yellow-500 overflow-hidden h-auto w-full object-cover">
                     <img src="{{ asset('img/home/sports.jpg') }}"
                         alt="img-propietario">
                 </figure>
             </article> --}}
-            <article>
+            <div >
                 <figure class="border-4 border-yellow-500 overflow-hidden h-full relative">
-                    <img class="w-full h-full object-cover" src="{{ asset('img/home/sports.jpg') }}" alt="img-propietario">
+                    {{-- <img class="w-auto h-auto object-cover" src="{{ asset('img/home/stalin.jpg') }}" alt="img-propietario"> --}}
+                        <img class="w-auto h-auto object-cover" src="{{ asset('img/home/stalin.jpg') }}" alt="img-propietario">
                     <div class="opacity-0 hover:opacity-100 transition duration-300 ease">
                         <div class="absolute inset-0 z-10 bg-gradient-to-t from-black to-transparent"></div>
-                        <div class=" absolute inset-x-0 bottom-0 h-6 text-center z-10 text-yellow-500 text-xs">Foto tomada en guayaquil</div>
+                        <div class=" absolute inset-x-0 bottom-0 h-6 text-center z-10 text-yellow-500 text-xs">FitKing</div>
                     </div>
                 </figure>
-            </article>
+            </div>
             <article class="my-auto">
                 <header class="py-2">
-                    <h2 class="text-center font-semibold text-3xl text-yellow-500">STALIN PILCO
+                    <h2 class="text-center font-semibold text-3xl text-yellow-500">STALIN PHILCO
                     </h2>
                 </header>
-                <p class="text-center text-base px-1 md:px-10 md:text-2xl py-2 text-gray-50">Joven deportista ,
-                    con 22
-                    años estoy creando una comunidad de asesorados
-                    con aspiraciones a una vida Fitness y competencias , me eh inspirado mucho
-                    en los grandes deportistas como ; Arnold Schwarzenegger , Jeremy Buendía ,
-                    Andre deiu , Silvestre Stallone , Jeff Seid , zyzz .</p>
+                <p class="text-center text-base px-1 md:px-10 md:text-2xl py-2 text-gray-50">
+                    Soy un joven deportista, estoy creando una gran comunidad con aspiraciones a una vida Fitness y competencias, 
+                    me he inspirado mucho en los grandes deportistas para brindarles una experiencia total.
+                </p>
+                    <p class="text-center text-base px-1 md:px-10 md:text-2xl py-2 text-gray-50">
+                        Esta plataforma web fue creada para aquellas personas que quieran cambiar su estilo de vida y mejorar su físico,
+                        con mi conocimiento y experiencia para ayudar a facilitar su proceso.
+                    </p>
+                    <p class="text-center text-base px-1 md:px-10 md:text-2xl py-2 text-gray-50">Atleta NPC y entrenador Musclemania</p>
             </article>
         </div>
     </section>
+
     {{-- SECCION DE LO QUE OFRECE EL SISTEMA --}}
     <section class="bg-black py-10 select-none relative -mt-0.5 md:-mt-0">
         <div>
@@ -106,7 +93,7 @@
         <div class="relative max-w-7xl mx-auto px-8 py-10 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <article class="h-80 border-2 hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
                 <figure class="relative">
-                    <img class="h-36 w-full object-cover" src="{{ asset('img/home/sports.jpg') }}" alt="PLAN NUTRICIONAL">
+                    <img class="h-36 w-full object-cover" src="{{ asset('https://cdn.pixabay.com/photo/2015/03/28/10/21/diet-695723_1280.jpg') }}" alt="PLAN NUTRICIONAL">
                    {{--  <div class="absolute flex justify-center left-0 top-0 h-10 w-10 bg-red-500 rounded-full text-xs text-center">
                         <span class="my-auto text-white">Nuevo</span>
                     </div>
@@ -114,53 +101,58 @@
                     <div class=" absolute inset-x-0 bottom-0 h-6 text-center z-10 text-white">HOLA PAPI</div> --}}
                 </figure>
                 <header class="pt-4">
-                    <h1 class="text-center font-bold text-lg text-gray-100">PLAN NUTRICIONAL
-                    </h1>
+                    <h2 class="text-center font-bold text-lg text-gray-100">PLAN NUTRICIONAL
+                    </h2>
                 </header>
-                <p class="text-center text-gray-100 p-4 text-sm">Una alimentacion
-                    inteligente ayuda a tu progreso dando lo necesario a tus musculos</p>
+                <p class="text-center text-gray-100 p-4 text-sm">
+                    Vamos a brindar los mejores menus con varias opciones para que faciliten tu alimentación
+                </p>
             </article>
             <article class="h-80 border-2 hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
                 <figure>
-                    <img class="h-36 w-full object-cover" src="{{ asset('img/home/sports.jpg') }}" alt="ENTRENAMIENTO">
+                    <img class="h-36 w-full object-cover" src="{{ asset('https://images.pexels.com/photos/116077/pexels-photo-116077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') }}" alt="ENTRENAMIENTO">
                 </figure>
                 <header class="pt-4">
-                    <h1 class="text-center font-bold text-lg text-gray-100">ENTRENAMIENTO
-                    </h1>
+                    <h2 class="text-center font-bold text-lg text-gray-100">ENTRENAMIENTO
+                    </h2>
                 </header>
-                <p class="text-center text-gray-100 p-4 text-sm">Una alimentacion
-                    inteligente ayuda a tu progreso dando lo necesario a tus musculos</p>
+                <p class="text-center text-gray-100 p-4 text-sm">
+                    Entrenamiento dirigido por mi con tecnicas y guias para garantizar tus resultados
+                </p>
             </article>
             <article class="h-80 border-2 hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
                 <figure>
-                    <img class="h-36 w-full object-cover" src="{{ asset('img/home/sports.jpg') }}" alt="SEGUIMIENTO">
+                    <img class="h-36 w-full object-cover" src="{{ asset('https://cdn.pixabay.com/photo/2016/08/31/23/16/motivation-1634875_1280.jpg') }}" alt="VIDEOS INSTRUCTIVOS">
                 </figure>
                 <header class="pt-4">
-                    <h1 class="text-center font-bold text-lg text-gray-100">SEGUIMIENTO
-                    </h1>
+                    <h2 class="text-center font-bold text-lg text-gray-100">VIDEOS INSTRUCTIVOS
+                    </h2>
                 </header>
-                <p class="text-center text-gray-100 p-4 text-sm">Una alimentacion
-                    inteligente ayuda a tu progreso dando lo necesario a tus musculos</p>
-            </article>
+                <p class="text-center text-gray-100 p-4 text-sm">
+                    Videos personalizados acorde a cada dia de entrenamiento
+                </p>
+            </article>  
             <article class="h-80 border-2 hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
                 <figure>
-                    <img class="h-36 w-full object-cover" src="{{ asset('img/home/sports.jpg') }}" alt="VIDEOS INSTRUCTIVOS">
+                    <img class="h-36 w-full object-cover" src="{{ asset('https://cdn.pixabay.com/photo/2017/04/25/20/18/woman-2260736_1280.jpg') }}" alt="SEGUIMIENTO">
                 </figure>
                 <header class="pt-4">
-                    <h1 class="text-center font-bold text-lg text-gray-100">VIDEOS INSTRUCTIVOS
-                    </h1>
+                    <h2 class="text-center font-bold text-lg text-gray-100">SEGUIMIENTO PERSONALIZADO
+                    </h2>
                 </header>
-                <p class="text-center text-gray-100 p-4 text-sm">Una alimentacion
-                    inteligente ayuda a tu progreso dando lo necesario a tus musculos</p>
-            </article>   
+                <p class="text-center text-gray-100 p-4 text-sm">
+                    Entrenamiento inteligente conmigo, siendo tu soporte 24/7 para lograr cumplir tu objetivo
+                </p>
+            </article>
+             
         </div>
     </section>
     {{-- FRANJA DONDE ESTA EL BOTON ADQUIRIR UN PLAN --}}
     <section class="relative bg-black text-gray-50 text-center -mt-0.5 md:-mt-0 pt-28 pb-44 px-6 select-none">
         
-        <h1 class="text-2xl md:text-4xl text-center font-semibold py-2">
-            NO SABES QUE PLAN ADQUIRIR?
-        </h1>
+        <h2 class="text-2xl md:text-4xl text-center font-semibold py-2">
+           NO SABES QUE PLAN ADQUIRIR?
+        </h2>
         <p class="text-lg md:text-2xl font-semibold">
             VE AL CATALOGO DE PLANES, ELIJE EL MEJOR Y EMPIEZA AHORA.
         </p>
@@ -183,7 +175,6 @@
         <div class="container mx-auto px-4 lg:pt-2 lg:pb-9">
             <div class="flex flex-wrap text-center justify-center">
                 <div class="w-full lg:w-6/12 px-4">
-                    {{-- <h2 class="text-4xl font-semibold text-gray-800 pt-4 md:pt-0">FITKING</h2> --}}
                     <div class="flex-shrink-0 flex justify-center mb-2">
                             <img class="block h-60 object-center" src="{{ asset('img/home/logo2.webp') }}">
                     </div> 
@@ -202,9 +193,6 @@
                     <h6 class="text-xl mt-5 font-semibold text-gray-600">
                         Suplementos
                     </h6>
-                    <p class="mt-2 mb-4 text-gray-500">
-                        Los mejores productos para darle a tu cuerpo lo que necesita antes y despues de entrenar
-                    </p>
                 </div>
                 <div class="w-full lg:w-3/12 px-4 text-center">
                     <div
@@ -214,9 +202,6 @@
                     <h5 class="text-xl mt-5 font-semibold text-gray-600">
                         Implementos
                     </h5>
-                    <p class="mt-2 mb-4 text-gray-500">
-                        Los mejores productos para darle a tu cuerpo lo que necesita antes y despues de entrenar
-                    </p>
                 </div>
                 <div class="w-full lg:w-3/12 px-4 text-center">
                     <div
@@ -224,9 +209,6 @@
                         <i class="fas fa-tshirt text-xl"></i>
                     </div>
                     <h5 class="text-xl mt-5 font-semibold text-gray-600">Vestimenta</h5>
-                    <p class="mt-2 mb-4 text-gray-500">
-                        Los mejores productos para darle a tu cuerpo lo que necesita antes y despues de entrenar
-                    </p>
                 </div>
             </div>
         </div>
@@ -244,21 +226,10 @@
                         src="{{ asset('img/home/marca1.webp') }}" alt="PROTON">
                 </figure>
                 <header>
-                    <h1 class="my-2 text-center font-bold text-lg text-gray-700">PROTON WHEY
-                    </h1>
+                    <h3 class="my-2 text-center font-bold text-lg text-gray-700">CREATINA
+                    </h3>
                 </header>
-                <p class="text-center text-gray-600 px-2">Es un suplemento inteligente para tu musculo</p>
-            </article>
-            <article class="rounded-lg object-cover">
-                <figure class="flex justify-center">
-                    <img class="h-36 w-36 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
-                        src="{{ asset('img/home/marca2.png') }}" alt="ENTRENAMIENTO">
-                </figure>
-                <header>
-                    <h1 class="text-center my-2 font-bold text-lg text-gray-700 px-10">ENTRENAMIENTO</h1>
-                </header>
-                <p class="text-center text-gray-600 px-2">Estimulacion
-                    inteligente a tus musculos para que sean mas grandes</p>
+                <p class="text-center text-gray-600 px-2">Brinda masa muscular y fuerza</p>
             </article>
             <article class=" text-center">
                 <figure class="flex justify-center">
@@ -266,11 +237,27 @@
                         src="{{ asset('img/home/marca3.jpg') }}" alt="SEGUIMIENTO">
                 </figure>
                 <header>
-                    <h1 class="text-center my-2 font-bold text-lg text-gray-700 px-0">SEGUIMIENTO
-                        PERSONALIZADO</h1>
+                    <h3 class="text-center my-2 font-bold text-lg text-gray-700 px-0">
+                        PROTEINAS
+                    </h3>
                 </header>
-                <p class="text-center text-gray-600 px-2">Pendientes a tu
-                    progreso para guiarte en cada paso que des</p>
+                <p class="text-center text-gray-600 px-2">
+                    Ayuda a la rapida recuperación del musculo
+                </p>
+            </article>
+            <article class="rounded-lg object-cover">
+                <figure class="flex justify-center">
+                    <img class="h-36 w-36 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                        src="{{ asset('img/home/marca2.png') }}" alt="ENTRENAMIENTO">
+                </figure>
+                <header>
+                    <h3 class="text-center my-2 font-bold text-lg text-gray-700 px-10">
+                        BCAA
+                    </h3>
+                </header>
+                <p class="text-center text-gray-600 px-2">
+                    Evita el catabolismo muscular
+                </p>
             </article>
         </div>
 

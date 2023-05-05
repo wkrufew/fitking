@@ -71,7 +71,7 @@
         <h1 class="titulo">Datos del plan</h1>
         <b>Plan:</b> {{ $plan->title }}
         <br>
-        <b>Descripción:</b> {{ $plan->description }}
+        <b>Descripción:</b> {!! $plan->description !!}
         <br>
         <b>Precio:</b> ${{ $plan->price->value }}
         <br>
@@ -84,10 +84,10 @@
         <h2 class="titulo9"><strong>FitKig</strong></h2>
         <p>Los mejores planes y productos para tu físico ideal</p>
         <p>
-            <b>Teléfono:</b> <a class="titulo1" href="tel:+ 1 (203) 948-4970">+ 593 983935029</a><br>
-            <b>E-mail:</b> <a class="titulo1" href="mailto:admin@dr-pools.com">fitking@gmail.com</a><br>
-            <b>Web:</b> <a class="titulo1" href="http://www.dr-pools.com" target="_blank"
-                rel="noopener noreferrer"></a>www.fitking.com
+            <b>Teléfono:</b> <a class="titulo1" href="tel:{{ $settings['phone'] }}">{{ $settings['phone'] }}</a><br>
+            <b>E-mail:</b> <a class="titulo1" href="mailto:{{ $settings['email'] }}">{{ $settings['email'] }}</a><br>
+            <b>Web:</b> <a class="titulo1" href="https://{{$_SERVER [ 'HTTP_HOST' ];}}" target="_blank"
+                rel="noopener noreferrer"></a>{{$_SERVER [ 'HTTP_HOST' ];}}
         </p>
     </div>
 </body>

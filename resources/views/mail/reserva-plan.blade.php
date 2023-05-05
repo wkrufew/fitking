@@ -67,13 +67,13 @@
     </p>
 
     <p>
-        <b>Nombre del beneficiario: </b>Stalin Pilco <br>
-        <b>Banco: </b>PICHINCHA<br>
-        <b># Cuenta: </b>00000000000000 <br>
-        <b>Tipo de cuenta: </b>Ahorros <br>
-        <b>Cédula: </b>060000000000 <br>
-        <b>Correo: </b>stalin@hotmail.com<br>
-        <b>Whatsapp: </b>099999999999<br> 
+        <b>Nombre del beneficiario: </b>{{ $settings['beneficiario'] }} <br>
+        <b>Banco: </b>{{ $settings['banco'] }}<br>
+        <b># Cuenta: </b>{{ $settings['cuenta'] }} <br>
+        <b>Tipo de cuenta: </b>{{ $settings['tipocuenta'] }} <br>
+        <b>Cédula: </b>{{ $settings['cedula'] }} <br>
+        <b>Correo: </b>{{ $settings['email'] }}<br>
+        <b>Whatsapp: </b>{{ $settings['phone'] }}<br> 
     </p>
     <p>
         <b>Nota: </b> Si el deposito o transferencia no se realiza dentro de las 72 horas de creada la reserva se elimnara su reserva. 
@@ -86,7 +86,7 @@
         <h1 class="titulo">Datos del plan</h1>
         <b>Plan:</b> {{ $plan->title }}
         <br>
-        <b>Descripcion:</b> {{ $plan->description }}
+        <b>Descripcion:</b> {!! $plan->description !!}
         <br>
         <b>Precio:</b> ${{ $plan->price->value }}
         <br>
@@ -97,14 +97,13 @@
     <br>
     <div class="espacio">
         <h2 class="titulo9"><strong>FitKig</strong></h2>
-        <p>Los mejores planes y productos para tu fisico ideal</p>
+        <p>Los mejores planes y productos para tu físico ideal</p>
         <p>
-            <b>Telefono:</b> <a class="titulo1" href="tel:+ 1 (203) 948-4970">+ 593 983935029</a><br>
-            <b>E-mail:</b> <a class="titulo1" href="mailto:admin@dr-pools.com">fitking@gmail.com</a><br>
-            <b>Web:</b> <a class="titulo1" href="http://www.dr-pools.com" target="_blank"
-                rel="noopener noreferrer"></a>www.fitking.com
+            <b>Teléfono:</b> <a class="titulo1" href="tel:{{ $settings['phone'] }}">{{ $settings['phone'] }}</a><br>
+            <b>E-mail:</b> <a class="titulo1" href="mailto:{{ $settings['email'] }}">{{ $settings['email'] }}</a><br>
+            <b>Web:</b> <a class="titulo1" href="https://{{$_SERVER [ 'HTTP_HOST' ];}}" target="_blank"
+                rel="noopener noreferrer"></a>{{$_SERVER [ 'HTTP_HOST' ];}}
         </p>
-
     </div>
 
 </body>

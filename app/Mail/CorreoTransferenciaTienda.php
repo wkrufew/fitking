@@ -11,7 +11,7 @@ class CorreoTransferenciaTienda extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $content;
+    public $content,$data,$shipping;
 
     public $subject = "Reserva Tienda FitKing";
 

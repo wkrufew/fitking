@@ -1,4 +1,4 @@
-@extends('layouts.appRO')
+@extends('layouts.appro')
 @section('content')
     @include('layouts.menubar')
     @include('layouts.slider')
@@ -29,52 +29,6 @@
         ->limit(3)
         ->get();
     @endphp
-    <div class="characteristics">
-        <div class="container">
-            <div class="row">
-                <!-- Char. Item -->
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="{{ asset('frontend/images/char_1.png') }}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Char. Item -->
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="{{ asset('frontend/images/char_2.png') }}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Char. Item -->
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="{{ asset('frontend/images/char_3.png') }}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Char. Item -->
-                <div class="col-lg-3 col-md-6 char_col">
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img src="{{ asset('frontend/images/char_4.png') }}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Free Delivery</div>
-                            <div class="char_subtitle">from $50</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Deals of the week -->
     <div class="deals_featured">
         <div class="container">
@@ -413,20 +367,22 @@
     <!-- Banner 
         style="background-image:url(images/banner_2_background.jpg)"-->
     <!-- CONSULTA DE EL SLIDER MEDIO-->
-    @php
+    {{-- @php
     $slidermedio = DB::table('products')
         ->where('status', 1)
         ->where('mid_slider', 1)
         ->orderBy('id', 'desc')
         ->limit(6)
         ->get();
-    @endphp
-    <div style="margin-top: -100px" class="banner_2">
+    @endphp --}}
+    {{-- <div style="margin-top: -100px" class="banner_2">
+        asxasxasxasx
         <div class="banner_2_background"
             style="background-image:url({{ asset('frontend/images/banner_2_background.jpg') }})"></div>
         <div class="banner_2_container">
             <div class="banner_2_dots"></div>
             <!-- Banner 2 Slider -->
+            sagasdfg
             <div class="owl-carousel owl-theme banner_2_slider">
                 <!-- Banner 2 Slider Item -->
                 @foreach ($slidermedio as $medio)
@@ -468,7 +424,7 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Trends -->
     <div class="trends">
         <div class="trends_background" style=""></div>
@@ -546,49 +502,6 @@
             </div>
         </div>
     </div>
-    <!-- Popular Categories -->
-    <div class="popular_categories">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="popular_categories_content">
-                        <div class="popular_categories_title">Categorias populares</div>
-                        <div class="popular_categories_slider_nav">
-                            <div class="popular_categories_prev popular_categories_nav"><i
-                                    class="fas fa-angle-left ml-auto"></i></div>
-                            <div class="popular_categories_next popular_categories_nav"><i
-                                    class="fas fa-angle-right ml-auto"></i></div>
-                        </div>
-                        <div class="popular_categories_link"><a href="#">Catalogo completo</a></div>
-                    </div>
-                </div>
-                <!-- Consulta de las categorias -->
-                @php
-                    $categorias = DB::table('categories')
-                        ->where('estado', 1)
-                        ->get();
-                @endphp
-                <!-- Popular Categories Slider -->
-                <div class="col-lg-9">
-                    <div class="popular_categories_slider_container">
-                        <div class="owl-carousel owl-theme popular_categories_slider">
-                            <!-- Popular Categories Item -->
-                            @foreach ($categorias as $categoria)
-                                <div class="owl-item">
-                                    <div
-                                        class="popular_category d-flex flex-column align-items-center justify-content-center">
-                                        <div class="popular_category_image"><img
-                                                src="{{ asset('frontend/images/popular_1.png') }}" alt=""></div>
-                                        <div class="popular_category_text">{{ $categoria->name }}</div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Modal -->
     <!-- Modal -->
     <div class="modal fade" id="cartmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLavel"
@@ -628,7 +541,7 @@
                                 <input type="hidden" name="product_id" id="product_id">
                                 <div class="form-group">
                                     <label for="exampleInputcolor"><b>Color</b> </label>
-                                    <select name="color" class="form-control" id="color">
+                                    <select style="width: 200.5125px;" name="color" class="form-control" id="color" style="width: 200px !important" >
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -636,6 +549,7 @@
                                     <select name="size" class="form-control" id="size">
                                     </select>
                                 </div>
+                                
                                 <div class="form-group">
                                     <label for="exampleInputcolor"><b>Catidad</b> </label>
                                     <input type="number" class="form-control" name="qty" value="1">

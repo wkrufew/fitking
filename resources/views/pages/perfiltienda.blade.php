@@ -90,7 +90,16 @@
                         </ul>
                         <div class="">
                             <a href="/tienda" class="btn btn-primary btn-sm btn-block">Ir a la tienda</a>
-                            <a href="{{ route('logout') }}" class="btn btn-danger btn-sm btn-block">Cerrar Sesion</a>
+                            
+                            <form method="POST" action="{{ route('logout') }}" class="mt-2">
+                                @csrf
+                                {{-- <x-jet-responsive-nav-link href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    CERRAR SESIÓN
+                                </x-jet-responsive-nav-link> --}}
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="btn btn-danger btn-sm btn-block">Cerrar Sesion</a>
+                            </form>
                         </div>
                     </div>
                 </div>

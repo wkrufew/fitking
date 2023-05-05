@@ -60,14 +60,18 @@ class OrderController extends Controller
           
           //fin de descuento de stock
           $shipping = DB::table('shipping')->where('order_id', $id)->first();
+          
           $data = DB::table('orders')->where('id',$id)->first();
+          
           DB::table('orders')->where('id',$id)->update(['status'=>1]);
 
           DB::afterCommit(function () use ($data,$shipping,$product){
+            
               Mail::to($shipping->ship_email)
               ->cc('smith93svam@gmail.com')
               ->send(new CorreoAceptacionTienda($data,$shipping,$product));
-          });
+              
+            });
 
           DB::commit();
           $variable1 = "El pago fue aceptado con exito";
@@ -75,8 +79,9 @@ class OrderController extends Controller
         
       } catch (\Throwable $th) {
           DB::rollBack();
+          
           $variable1 = "Ocurrio un error al aceptar el pago vuelve a intentarlo mas tarde"; 
-          return redirect()->route('admin.orders.index')->with('error', $variable1);
+          return redirect()->route('admin.orders.index')->with('error', $th);
       }
 
     } 

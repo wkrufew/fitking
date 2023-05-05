@@ -3,7 +3,7 @@
     </div>
 
     <div class="container">
-         @if (session('exitopaypal'))
+        @if (session('exitopaypal'))
             <div x-data="{ open: true }" class="my-6">
                 <div x-show="open" class="bg-blue-500 border border-blue-600 text-blue-100 px-4 py-3 rounded relative"
                     role="alert">
@@ -21,43 +21,62 @@
             </div>
         @endif
     </div>
+
     <div class="container grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-8 select-none">
         <div class="lg:col-span-2 mb-0 md:mb-4">
             <div class="md:sticky md:top-16">
-                <div class="card">
-                    <div class="embed-responsive rounded-t-lg">
-                        {!! $current->iframe !!}
+                <div class="card relative overflow-hidden">
+                        <div class="relative">
+                            <div class="embed-responsive relative w-full aspect-video px-36 md:px-16 lg:px-44 rounded-t-lg select-none">
+                                {!! $current->iframe !!}
+                            </div>
+                            <div class="block lg:hidden">
+                                <div style="z-index: 900" class="absolute top-0 left-0 w-full h-full px-36 md:px-16 lg:px-44 rounded-t-lg select-none portrait:hidden bg-black text-white">
+                                    <h2 class="flex justify-center items-center h-full my-auto">Por favor girar el dispositivo para poder ver el video</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="bg-black relative">
+                        <h2 class="text-sm mx-auto md:text-lg text-yellow-500 font-bold py-2 text-center">
+                            {{ $current->name }}
+                        </h2>
                     </div>
-                    <div class="bg-black">
-                        <h2 class="text-sm mx-auto md:text-lg text-yellow-500 font-bold py-2 text-center">{{ $current->name }}</h2>
+                    <div class="absolute top-0 left-0 w-full h-[80px] lg:h-[400px]" style="z-index: 900">
+                    </div>
+                    <div class="block md:hidden absolute top-0 right-0 w-28 h-[140px] lg:h-[400px]" style="z-index: 910">
                     </div>
                 </div>
                 {{-- @if ($current->description)
                     <div class="text-gray-800 text-xs font-semibold md:text-base text-justify">
-
                         {!! $current->description->name !!}
                     </div>
                 @endif --}}
-
-
                 <div class="flex justify-between">
                     {{-- Seccion de marca seccion como culminada --}}
-                    <div class="card px-4 py-2 w-full  justify-center flex items-center mt-4 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+                    <div class="card px-4 py-2 w-full  justify-center flex flex-1 items-center mt-4 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
                         wire:click="completed">
                         @if ($current->completed)
                             <i class="fas fa-toggle-on text-2xl text-yellow-600"></i>
-                            <p class="text-xs md:text-sm  ml-2 text-gray-800 font-bold">Leccíon culminada</p>
+                            <p class="text-xs md:text-sm  ml-2 text-gray-800 font-bold">
+                                Leccíon culminada
+                            </p>
                         @else
                             <i class="fas fa-toggle-off text-2xl text-gray-800"></i>
-                            <p class="text-xs md:text-sm ml-2 text-gray-800 font-bold">Marcar esta leccion como terminada</p>
+                            <p class="text-xs md:text-sm ml-2 text-gray-800 font-bold">Marcar esta leccion como
+                                terminada
+                            </p>
                         @endif
                     </div>
                     {{-- boton para descargar el recurso --}}
                     @if ($current->resource)
-                        <div class="flex items-center text-blue-500 mt-4 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
-                            wire:click="download">
-                            <i class="fas fa-download text-lg"></i>
-                            <p class="text-sm ml-2 font-bold">Descargar recurso</p>
+                        <div
+                            class="card px-4 ml-4 py-2 w-full  justify-center flex flex-1 items-center mt-4 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                            <div class="flex items-center text-blue-500 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+                                wire:click="download">
+                                <i class="fas fa-download text-lg"></i>
+                                <p class="text-xs md:text-sm ml-2 font-bold">Descargar recurso</p>
+                            </div>
                         </div>
                     @endif
                 </div>
@@ -82,14 +101,15 @@
                             <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 ">
                                 <article>
                                     <figure>
-                                        <img class="rounded-xl h-144 w-full object-cover" src="{{ asset('img/home/dieta.jpg') }}"
-                                            alt="img-propietario">
+                                        <img class="rounded-xl h-144 w-full object-cover"
+                                            src="{{ asset('img/home/dieta.jpg') }}" alt="img-propietario">
                                     </figure>
                                 </article>
-                                
+
                                 <div class="p-4 my-auto">
                                     <div class="flex items-center justify-center">
-                                        <h1 class="text-base md:text-xl font-bold mb-2 md:mb-3 text-center">Dieta diaria</h1>
+                                        <h1 class="text-base md:text-xl font-bold mb-2 md:mb-3 text-center">Dieta diaria
+                                        </h1>
                                         <i class="text-lg md:text-2xl text-red-800 fas fa-apple-alt text-center mb-2 md:mb-5 ml-2"></i>
                                     </div>
                                     <div class="tracking-widest text-xs md:text-sm font-semibold text-justify">
@@ -97,7 +117,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     @endif
                 </div>
@@ -113,11 +133,13 @@
                     </figure>
                     <div>
                         <p class="text-xs md:text-base font-bold">{{ $plan->teacher->name }}</p>
-                        <a class="text-yellow-500 text-xs md:text-base">{{ '@' . Str::slug($plan->teacher->name, '') }}</a>
+                        <a
+                            class="text-yellow-500 text-xs md:text-base">{{ '@' . Str::slug($plan->teacher->name, '') }}</a>
                     </div>
                 </div>
                 <!--BARRA DE PROGRESO-->
-                <p class="text-gray-700 text-xs md:text-sm pt-5 font-bold">{{ $this->advance . '%' . ' ' }}Completado</p>
+                <p class="text-gray-700 text-xs md:text-sm pt-5 font-bold">{{ $this->advance . '%' . ' ' }}Completado
+                </p>
                 <div class="relative pb-2">
                     @if ($this->advance == 100)
                         <p class="text-blue-500 text-lg font-bold">Felicidades has concluido con el plan..!!</p>
@@ -134,7 +156,8 @@
                 <ul>
                     @foreach ($plan->sections as $section)
                         <li class="text-gray-600 mb-4">
-                            <a class="font-bold text-sm md:text-base inline-block mb-3 text-yellow-600">{{ $section->name }}</a>
+                            <a
+                                class="font-bold text-sm md:text-base inline-block mb-3 text-yellow-600">{{ $section->name }}</a>
                             <ul>
                                 @foreach ($section->lessons as $lesson)
                                     <li class="flex">
@@ -169,4 +192,29 @@
         </div>
 
     </div>
+    @push('js')
+        <script>
+            function disableIE() {
+                if (document.all) {
+                    return false;
+                }
+            }
+
+            function disableNS(e) {
+                if (document.layers || (document.getElementById && !document.all)) {
+                    if (e.which == 2 || e.which == 3) {
+                        return false;
+                    }
+                }
+            }
+            if (document.layers) {
+                document.captureEvents(Event.MOUSEDOWN);
+                document.onmousedown = disableNS;
+            } else {
+                document.onmouseup = disableNS;
+                document.oncontextmenu = disableIE;
+            }
+            document.oncontextmenu = new Function("return false");
+        </script>
+    @endpush
 </div>

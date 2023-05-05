@@ -1,16 +1,31 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<html lang="es">
+ 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'FitKing') }}</title>
+    <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/logo4.webp') }}" type="image/x-icon">
+    <title>{{ $settings['shopname'] }} - @yield('title', 'Inicio')</title>
     <!-- icono de la app -->
-    <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/marca1.webp') }}" type="image/x-icon">
-    <meta name="description"
-        content="Una plataforma fitnes donde puedes encontrar el curso ideal para tu cuerpo para verte saludable y bien">
+    {{-- <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/logo4.webp') }}" type="image/x-icon">
+    <title>{{ $settings['shopname'] }} - @yield('title', 'Inicio')</title>
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="STALIN PHILCO">
+    <meta name="description" content="@yield('description', 'Tienda de productos como proteinas, creatinas , pre-entrenos y vestimenta deportiva.')">
+
+    <meta property="og:title" content="{{ $settings['shopname'] }} - @yield('title', 'Inicio')">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="@yield('description', 'Tienda de productos como proteinas, creatinas , pre-entrenos y vestimenta deportiva.')">
+    <meta property="og:url" content="@yield('url', config('app.url'))">
+    <meta property="og:img" content="@yield('img', asset('img/home/logo4.webp'))">
+    <meta property="og:site_name" content="{{ $settings['shopname'] }}"/>
+    <meta name="keywords" content="FITKING, KINGBARBER, BARBERIA KING, VENTAS DE PRODUCTOS FITNESS, FITNESS, ENTENAMIENTOS PERSONALIZADOS, EJERCICIOS, GYM, INSTRUCTOR"> --}}
+    
+    <!-- icono de la app -->
+    <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/logo4.webp') }}" type="image/x-icon">
     <style>
         ::-webkit-scrollbar{
             width: 15px;
@@ -26,7 +41,20 @@
             background: #1d1d1d;
             border-radius: 25px;
         }
-
+        select {
+            width: 100% !important;
+            color: black;
+        }
+        option {
+            width: 100%;
+            white-space:pre-wrap;
+            word-wrap: break-word;
+            color: black;
+        }
+        .form-control
+        {
+            color: black !important;
+        }
     </style>
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/bootstrap4/bootstrap.min.css') }}">
     {{-- <link href="{{ asset('frontend/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet" type="text/css"> --}}
@@ -41,7 +69,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
     <!-- chart -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-
+    @livewireStyles
 </head>
 <body>
     <div class="super_container">
@@ -54,11 +82,11 @@
                         <div class="col d-flex flex-row">
                             <div class="top_bar_contact_item">
                                 <div class="top_bar_icon"><img src="{{ asset('frontend/images/phone.png') }}" alt="">
-                                </div>099999999999999999
+                                </div>{{ $settings['phone'] }}
                             </div>
                             <div class="top_bar_contact_item">
                                 <div class="top_bar_icon"><img src="{{ asset('frontend/images/mail.png') }}" alt="">
-                                </div><a href="#">lksdlaksjdlaskjdlaskd</a>
+                                </div><a href="#">{{ $settings['email'] }}</a>
                             </div>
                             <div class="top_bar_content ml-auto">
                                 @guest
@@ -119,7 +147,7 @@
                         <!-- Logo -->
                         <div class="col-lg-2 col-sm-3 col-3 order-1">
                             <div class="logo_container">
-                                <div class="logo"><a style="color: black" href="/tienda">fitKING</a></div>
+                                <div class="logo"><a style="color: black" href="/tienda">{{ $settings['shopname'] }}</a></div>
                             </div>
                         </div>
                         @php
@@ -201,13 +229,13 @@
                         <div class="col-lg-3 footer_col">
                             <div class="footer_column footer_contact">
                                 <div class="logo_container">
-                                    <div class="logo"><a href="#">fitKING</a></div>
+                                    <div class="logo"><a href="#">{{ $settings['shopname'] }}</a></div>
                                 </div>
                                 <div class="footer_title">LLamanos al:</div>
-                                <div class="footer_phone">+593 998969589</div>
+                                <div class="footer_phone">{{ $settings['phone'] }}</div>
                                 <div class="footer_contact_text">
-                                    <p>Ciudadela Bella Vista</p>
-                                    <p>Cumanda - Chimborazo- Ecuador</p>
+                                    <p>{{ $settings['adderss'] }}</p>
+                                    <p>Cumanda - Chimborazo - Ecuador</p>
                                 </div>
                                 <div class="footer_social">
                                     <ul>
@@ -234,9 +262,7 @@
                                 class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
                                 <div class="copyright_content">
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    <script>
-                                        document.write(new Date().getFullYear());
-                                    </script> Todos los derechos reservados por <b>fitKING</b>
+                                    Copyright © {{ date('Y') }}, {{ $settings['shopname'] }} - Todos los derechos reservados
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </div>
                                 <div class="logos ml-sm-auto">
@@ -252,7 +278,6 @@
                 </div>
             </div>
     </div>
-
     <!--Order Traking Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -270,21 +295,14 @@
                         @csrf
                         <div class="modal-body">
                             <label> Status Code</label>
-                            <input type="text" name="code" required="" class="form-control"
-                                placeholder="Your Order Status Code">
+                            <input type="text" name="code" required="" class="form-control" placeholder="Your Order Status Code">
                         </div>
-
                         <button class="btn btn-danger" type="submit">Track Now </button>
-
                     </form>
-
-
                 </div>
-
             </div>
         </div>
     </div>
-    
     <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('frontend/styles/bootstrap4/popper.js') }}"></script>
     <script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script>
@@ -386,5 +404,7 @@
                 });
         });
     </script>
+    @livewireScripts
+    @stack('js')
 </body>
 </html>

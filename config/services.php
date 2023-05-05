@@ -35,4 +35,8 @@ return [
         'client_secret' => env('PAYPAL_CLIENT_SECRET'),
     ],
 
+    'correo' => [
+        'correo_corporativo' => env('MAIL_FROM_ADDRESS')
+    ],
+
 ];

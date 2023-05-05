@@ -3,10 +3,12 @@
 @section('content')
     @include('layouts.menubar')
 
+    @livewire('payment-tienda')
+    {{-- 
     @php
-    $settings = DB::table('settings')->first();
-    $charge = $settings->shipping_charge;
-    $vat = $settings->vat;
+        $settings = DB::table('settings')->first();
+        $charge = $settings->shipping_charge;
+        $vat = $settings->vat;
     @endphp
 
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/contact_styles.css') }} ">
@@ -38,7 +40,6 @@
                                                         <div class="col-12 col-lg-3 borde mt-2 ">
                                                             <p class="card-text"><b>Color:</b>&nbsp;
                                                                 @if ($c->options->color == null)
-
                                                                 @else
                                                                     {{ $c->options->color }}
                                                                 @endif
@@ -47,7 +48,6 @@
                                                         <div class="col-12 col-lg-3 borde mt-2">
                                                             <p class="card-text"><b>Talla:</b>&nbsp;
                                                                 @if ($c->options->size == null)
-
                                                                 @else
                                                                     {{ $c->options->size }}
                                                                 @endif
@@ -58,7 +58,8 @@
                                                         </div>
                                                         <div class="col-12 col-lg-3 borde mt-2">
                                                             <p class="card-text">
-                                                                <b>Precio:</b>&nbsp;${{ $c->price }}</p>
+                                                                <b>Precio:</b>&nbsp;${{ $c->price }}
+                                                            </p>
                                                         </div>
                                                         <div class="col-12 col-lg-3 borde mt-2">
                                                         </div>
@@ -83,22 +84,20 @@
                         <hr>
                         <ul class="list-group col-lg-8" style="float: right;">
                             <li class="list-group-item"><b>Costo de envio: <span style="float: right;">${{ $charge }}
-                                    </span></b></B> 
+                                    </span></b></B>
                             </li>
-                            <li class="list-group-item"><b>IVA: <span style="float: right;">Incluye IVA 
-                                </b></span> 
+                            <li class="list-group-item"><b>IVA: <span style="float: right;">Incluye IVA
+                                </b></span>
                             </li>
                             <li class="list-group-item"><b>SubTotal: <span style="float: right;">${{ Cart::Subtotal() }}
-                                </b></span> 
+                                </b></span>
                             </li>
-                            {{-- <li class="list-group-item">Total : <span style="float: right;">${{ Cart::Subtotal() + $charge }} </span> </li> --}}
-                            <li class="list-group-item"><b>Total a pagar: 
-                                <span style="float: right;">${{ Cart::Subtotal() + $charge }} </b></span> 
+                            <li class="list-group-item"><b>Total a pagar:
+                                    <span style="float: right;">${{ Cart::Subtotal() + $charge }} </b></span>
                             </li>
                         </ul>
                     </div>
                 </div>
-                {{-- Seccion de ingreso de datos personales y direcciones --}}
                 <div class="col-lg-4 ml-2" style="border: 1px solid grey; padding: 20px; border-radius: 25px;">
                     <div class="contact_form_container">
                         <div class="contact_form_title text-center">Dirección de Envío</div>
@@ -129,34 +128,57 @@
                                 <input type="text" class="form-control" aria-describedby="emailHelp"
                                     placeholder="Ingrese su dirección domiciliaria" name="ship_address" required="">
                             </div>
-                            <div class="contact_form_title text-center"> Pago por </div>
+                            <div class="contact_form_title text-center"> Metodo de Pago </div>
                             <div class="form-group">
                                 <ul class="logos_list text-center">
-                                    <li><input type="radio" name="payment_type" value="paypal"><i style="color: #1675e0 "
-                                            class="fab fa-cc-paypal fa-w-18 fa-3x ml-2"></i> <br><b>Paypal</b></li>
-                                    {{-- <li><input type="radio" name="payment_type" value="delivery"><i style="color: #3A68D5 "  class="fas fa-truck fa-w-18 fa-3x ml-2"></i> <br><b>Delivery</b></li> --}}
+                                    <li><input type="radio" name="payment_type" value="paypal"><i
+                                            style="color: #1675e0 " class="fab fa-cc-paypal fa-w-18 fa-3x ml-2"></i>
+                                        <br><b>Paypal</b></li>
                                     <li><input type="radio" name="payment_type" value="transferencia"><i
                                             style="color: #339768 " class="fas fa-money-check-alt fa-w-18 fa-3x ml-2"></i>
-                                        <br><b>Tranferencia Bancaria</b></li>
+                                        <br><b>Tranferencia Bancaria</b>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="contact_form_button text-center">
                                 <button type="submit" class="btn btn-info">Pagar ahora</button>
                             </div>
                         </form>
-                        <p style="font-size: 10px; margin-top: 15px"><b>Nota:</b> Las compras que esten dentro de la ciudad
-                            el envio sera gratuito los de fuera de la ciudad tendran sobrecargo de envio</p>
-
+                        <p style="font-size: 10px; margin-top: 15px">
+                            <b>Nota:</b>
+                            Las compras que esten dentro de la ciudad
+                            el envio sera gratuito los de fuera de la ciudad tendran sobrecargo de envio
+                        </p>
                     </div>
                 </div>
-
-
             </div>
         </div>
         <div class="panel"></div>
     </div>
 
-    <script>
-
-    </script>
-@endsection
+    @push('js')
+        <script
+            src="https://www.paypal.com/sdk/js?client-id={{ config('services.paypal.client_id') }}&currency=USD&locale=es_EC">
+        </script>
+        <script>
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: '{{ Cart::Subtotal() + $charge }}'
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        Livewire.emit('payPlan')
+                        /* console.log(details); */
+                        //alert('exito'+ details.payer.name.given_name);
+                    });
+                }
+            }).render('#paypal-button-container');
+        </script>
+    @endpush --}}
+@endsection 

@@ -15,13 +15,20 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('vat')->nullable();
             $table->string('shipping_charge')->nullable();
             $table->string('shopname')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('adderss')->nullable();
-            $table->string('logo')->nullable();
+            $table->string('banco')->nullable();
+            $table->string('cuenta')->nullable();
+            $table->string('tipocuenta')->nullable();
+            $table->string('beneficiario')->nullable();
+            $table->string('cedula')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('whatsapp')->nullable();
+            
             $table->timestamps();
         });
     }

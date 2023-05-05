@@ -31,7 +31,7 @@
                           @endforeach
                         </ul>
                     </div>
-                    <div class="sidebar_section">
+                   {{--  <div class="sidebar_section">
                         <div class="sidebar_subtitle brands_subtitle">Marcas</div>
                         <ul class="brands_list">
                             @php
@@ -41,7 +41,7 @@
                             <li class="brand"><a href="#">{{ $b->brand_name }}</a></li>
                             @endforeach
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div style="margin-top: -25px" class="col-lg-9  order-lg-2  order-first">

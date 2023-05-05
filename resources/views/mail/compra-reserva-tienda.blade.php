@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -70,8 +70,8 @@
 </head>
 
 <body>
-    <h1 class="titulopro">Saludos {{ Auth::user()->name }}</h1>
-    <p>
+    <h1 class="titulopro">Saludos {{ $shipping->ship_name }}</h1>
+     <p>
         Enhorabuena tu orden fue aprobada y receptado el pago en breve se procedera a despachar su pedido, gracias por preferirnos.
     </p>
     
@@ -121,11 +121,16 @@
 
                 </div>
             @endforeach
-
+                
                 <div class="barra">
                     <hr>
-                       <b>Sub total: </b> ${{ $data->subtotal }}<br>
-                       <b>Costo de envío: </b> ${{ number_format($data->shipping, 2) }}<br>
+                       <b>Sub total: </b> $ {{ $data->subtotal }}<br>
+                       
+                       @if ($data->shipping == 0)
+                            <b>Sin Costo de envio debe recoger sus productos en la tienda </b> <br>
+                       @else
+                            <b>Costo de envío: </b> ${{ number_format($data->shipping, 2) }}<br>
+                       @endif
                        <b>Total de compra: </b> $ {{ number_format($data->total, 2) }}<br> 
                     <hr>
                 </div>
@@ -137,15 +142,16 @@
 
         </div>
     </div>
+    
     <br>
     <div class="espacio">
         <h2 class="titulo9"><strong>FitKig</strong></h2>
         <p>Los mejores planes y productos para tu físico ideal</p>
         <p>
-            <b>Teléfono:</b> <a class="titulo1" href="tel:+ 1 (203) 948-4970">+ 593 983935029</a><br>
-            <b>E-mail:</b> <a class="titulo1" href="mailto:admin@dr-pools.com">fitking@gmail.com</a><br>
-            <b>Web:</b> <a class="titulo1" href="http://www.dr-pools.com" target="_blank"
-                rel="noopener noreferrer"></a>www.fitking.com
+            <b>Teléfono:</b> <a class="titulo1" href="tel:{{ $settings['phone'] }}">{{ $settings['phone'] }}</a><br>
+            <b>E-mail:</b> <a class="titulo1" href="mailto:{{ $settings['email'] }}">{{ $settings['email'] }}</a><br>
+            <b>Web:</b> <a class="titulo1" href="https://{{$_SERVER [ 'HTTP_HOST' ];}}" target="_blank"
+                rel="noopener noreferrer"></a>{{$_SERVER [ 'HTTP_HOST' ];}}
         </p>
     </div>
 </body>

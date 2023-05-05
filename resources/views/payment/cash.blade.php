@@ -55,30 +55,26 @@
                     </div>
                 </div>  --}}
                 <div class="container px-4 md:px-0 max-w-6xl mx-auto -mt-24">
-
                     <div class="mx-0 sm:mx-6">
-
                         <div class="bg-gray-200 w-full text-xl md:text-2xl text-gray-800 leading-normal rounded-t">
-            
                             <!--Lead Card-->
                             <div class="flex  bg-white rounded overflow-hidden shadow-lg">
                                 <div class="flex flex-wrap">
                                     <div class="w-full md:w-2/3 rounded-t">
                                         <img class="w-full shadow object-cover" src="{{Storage::url($plan->image->url)}}" alt="">
                                     </div>
-            
                                     <div class="w-full md:w-1/3 flex flex-col flex-grow flex-shrink ">
                                         <div class="flex-1 w-full rounded-t rounded-b-none overflow-hidden shadow-lg">
                                             <p class="w-full text-gray-600 text-xs md:text-sm pt-4 px-6"></p>
                                             <div class="w-full font-bold text-xl text-gray-900 px-6">{{$plan->title}}</div>
                                             <hr class="my-2">
-                                            <p class="text-gray-700 text-sm px-6 mb-1  "><strong>Nombre del beneficiario:</strong> Stalin King sPilco Cacuango</p>
-                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Banco:</strong> PICHINCHA</h1>
-                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Numero de cuenta:</strong> 00000000000000</h1>
-                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Tipo de cuenta:</strong> Ahorro</h1>
-                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Cedula:</strong> 06000000000</h1>
-                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Correo:</strong> stalin@hotmail.com</h1>
-                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Whatsapp:</strong> 09999999999</h1>
+                                            <p class="text-gray-700 text-sm px-6 mb-1  "><strong>Nombre del beneficiario:</strong> {{ $settings['beneficiario'] }}</p>
+                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Banco:</strong> {{ $settings['banco'] }}</h1>
+                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Numero de cuenta:</strong> {{ $settings['cuenta'] }}</h1>
+                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Tipo de cuenta:</strong> {{ $settings['tipocuenta'] }}</h1>
+                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Cedula:</strong> {{ $settings['cedula'] }}</h1>
+                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Correo:</strong> {{ $settings['email'] }}</h1>
+                                            <h1 class="text-gray-700 text-sm px-6 mb-1 "><strong>Whatsapp:</strong> {{ $settings['phone'] }}</h1>
                                             <hr class="my-1">
                                             
                                             
@@ -95,13 +91,12 @@
                                                     
                                                     <form action="{{ route('payment.pago', $plan) }}" method="POST">
                                                         @csrf 
-                                                        <button type="submit" class="text-center text-white shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 rounded-full bg-blue-600 h-10 w-28 ">Reservar Plan</button>
+                                                        <button type="submit" class="text-center text-white shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 rounded-sm bg-blue-600 h-10 w-28 ">Reservar Plan</button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-            
                                 </div>
                             </div>
                             <!--/Lead Card-->

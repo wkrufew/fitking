@@ -10,12 +10,15 @@ class Setting extends Model
     use HasFactory;
 
     protected $fillable = [
-        'vat', 
+        'banco', 
         'shipping_charge', 
         'shopname', 
         'email', 
         'phone', 
         'adderss', 
-        'logo'
+        'cuenta',
+        'tipocuenta',
+        'beneficiario',
+        'cedula'
     ];
 }

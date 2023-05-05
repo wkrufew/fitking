@@ -5,51 +5,51 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'FitKing') }}</title>
-    <!-- icono de la app -->
-    <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/marca1.webp') }}" type="image/x-icon">
-    <meta name="description" content="Una plataforma fitnes donde puedes encontrar el curso ideal para tu cuerpo para verte saludable y bien">
-    <!-- Styles -->
-    {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
-    @stack('css')
-    <!-- Scripts -->
-    {{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
-    {{-- <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js') }}" defer></script> --}}
-    <script src="{{ asset('https://unpkg.com/swiper@7/swiper-bundle.min.js') }}" defer></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- SEO -->
-    {{-- <meta name="DC.Language" scheme="RFC1766" content="Spanish">
-    <meta http-equiv="content-language" content="es">
-    <meta name="author" content="Stalin Pilco">
-    <meta name="copyright" content="fitking">
-    <meta name="reply-to" content="fitking@hotmail.com">
-    <link REV="made" href="mailto:fitking@hotmail.com">
-    <meta name="description" content="Pagina donde puedes conseguir el plan ideal para llevar tu cuerpo al siguiente nivel estando bien por fuera y por dentro.">
-    <meta name="keywords" content="planes,plataforma de  planes,fitness,entrenamientos personalizados,productos fitness,venta de accesorios fitness,venta de suplementos,gym">
-    <meta name="Resource-type" content="Document">
-    <meta name="DateCreated" content="Tue, 25 January 2022 00:00:00 GMT+1">
-    <meta name="Revisit-after" content="1 days">
-    <meta http-equiv="cache-control" content="cache">
-    <meta name="robots" content="all"> --}}
 
-    <!-- Open Graph data -->
-    {{-- <meta property="og:title" content="fitking" />
-    <meta property="og:type" content="sport" />
-    <meta property="og:url" content="{{ config('app.url', 'FitKing') }}" /> --}}
-    {{-- FOTO DONDE SALE LA BIOGRAFIA --}}
-    {{-- <meta property="og:image" content="{{ asset('img/home/marca1.webp') }}" />
-    <meta property="og:description" content="Pagina donde puedes conseguir el plan ideal para llevar tu cuerpo al siguiente nivel estando bien por fuera y por dentro." /> --}}
+    <!-- icono de la app -->
+    <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/logo4.webp') }}" type="image/x-icon">
+    <!-- Styles -->
+    {{-- <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}"> --}}
+    <link rel="stylesheet"
+        href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css') }}"integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+    {{-- <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css') }}"/> --}}
+    @stack('css')
+    
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @livewireStyles
+
+    <!-- Scripts -->
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js') }}"
+        integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="{{ asset('https://code.jquery.com/jquery-3.4.1.min.js') }}"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="{{ asset('//cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
+
+    <title>{{ $settings['shopname'] }} - @yield('title')</title>
+    {{-- SEO --}}
+        {{-- <title>{{ $settings['shopname'] }} - @yield('title')</title>
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="STALIN PHILCO">
+        <meta name="description" content="@yield('description', '')">
+
+        <meta property="og:title" content="{{ $settings['shopname'] }} - @yield('title', 'Inicio')">
+        <meta property="og:type" content="article">
+        <meta property="og:description" content="@yield('description', '')">
+        <meta property="og:url" content="@yield('url', config('app.url'))">
+        <meta property="og:img" content="@yield('img', asset('img/home/sports.jpg'))">
+        <meta property="og:site_name" content="{{ $settings['shopname'] }}"/>
+        <meta name="keywords" content="FITKING, KINGBARBER, BARBERIA KING, VENTAS DE PRODUCTOS FITNESS, FITNESS, ENTENAMIENTOS PERSONALIZADOS, EJERCICIOS, GYM, INSTRUCTOR"> --}}
+    {{-- FIN DEL SEO --}}
 </head>
 
 <body class="font-sans antialiased">
     {{-- <x-jet-banner /> --}}
-
     <div class="min-h-screen bg-white">
         @livewire('navigation-menu')
         <!-- Page Content -->
@@ -58,116 +58,24 @@
         </main>
     </div>
     <!-- Pie de pagina  -->
-    <footer class="relative bg-black pt-10 pb-1 border-t-2 border-yellow-500">
-
-        <div class="container justify-center">
-            <div class="flex flex-wrap justify-between">
-                <div class="w-full lg:w-3/12 px-6 text-center">
-                    <div
-                        class="text-gray-900 p-3 w-8 h-8 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                        <i class="fas fa-at text-xl"></i>
-                    </div>
-                    <h5 class="text-xs md:text-sm mt-2 font-semibold text-white select-none">
-                        Correo Electronico
-                    </h5>
-                    <p class="mt-2 mb-4 text-xs text-white hover:text-yellow-500 cursor-pointer">
-                        kitking@hotmail.com
-                    </p>
-                </div>
-                <div class="w-full lg:w-3/12 px-4 text-center">
-                    <div
-                        class="text-gray-900 p-3 w-8 h-8 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                        <i class="fas fa-phone text-xl"></i>
-                    </div>
-                    <h5 class="text-xs md:text-sm mt-2 font-semibold text-white select-none">
-                        Telefono
-                    </h5>
-                    <p class="mt-2 text-xs mb-4 text-white hover:text-yellow-500 cursor-pointer">
-                        0999999999
-                    </p>
-                </div>
-                <div class="w-full lg:w-3/12 px-4 text-center">
-                    <div
-                        class="text-gray-900 p-3 w-8 h-8 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                        <i class="fas fa-route text-xl"></i>
-                    </div>
-                    <h5 class="text-xs md:text-sm mt-2 font-semibold text-white select-none">Direccion domiciliaria</h5>
-                    <p class="mt-2 text-xs mb-4 text-white hover:text-yellow-500 cursor-pointer">
-                        Av. Los Puentas
-                    </p>
-                </div>
-            </div>
-            <div class="flex justify-center items-center text-center mt-2">
-                <div class="w-full lg:w-6/12 px-4 ">
-                    <h4 class="text-xs md:text-sm font-semibold text-white">Sigueme en mis redes sociales!</h4>
-
-                    <div class="mt-3 justify-between items-center text-center">
-                        <a href=""
-                            class="text-gray-900 mr-2 w-10 h-10 shadow-lg m-auto rounded-full inline-flex items-center justify-center">
-                            <i class="fab fa-facebook text-lg text-white hover:text-yellow-500"></i>
-                        </a>
-                        <a href=""
-                            class="text-gray-900 mr-2 w-10 h-10 shadow-lg m-auto rounded-full inline-flex items-center justify-center">
-                            <i class="fab fa-instagram text-lg text-white hover:text-yellow-500"></i>
-                        </a>
-                        <a href=""
-                            class="text-gray-900 w-10 h-10 shadow-lg m-auto rounded-full inline-flex items-center justify-center">
-                            <i class="fab fa-whatsapp text-lg text-white hover:text-yellow-500"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <hr class="border-yellow-500 mb-2 mt-4" />
-
-            <div class="flex items-center md:justify-between justify-center">
-                <div class="w-full md:w-4/12 px-4 lg:w-auto mx-auto text-center">
-                    <div class="text-xs text-white font-semibold py-1">
-                        Copyright © 2022 Todos los derechos reservados por FitKing
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-wrap items-center md:justify-between justify-center mt-2">
-                <div class="w-full md:w-4/12  mx-auto text-center">
-                    <div class="text-xs text-white font-semibold py-1">
-                        Desarrollado por:
-                        <a href="https://www.facebook.com/smith.aviles3" class="text-white hover:text-yellow-500">Ing.
-                            Smith Aviles</a>
-                        <a href="https://www.facebook.com/smith.aviles3"
-                            class="text-white hover:text-yellow-500 p-3 w-1 h-1 overflow-hidden  shadow-lg  rounded-full inline-flex items-center justify-center">
-                            <i class="fab fa-facebook text-lg"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </footer>
-
+    <x-footer />
     @stack('modals')
-
     @livewireScripts
-   {{--  <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
-        data-turbolinks-eval="false" data-turbo-eval="false"></script> --}}
     {{-- @isset($js)
         {{ $js }}
     @endisset --}}
-
     @stack('js')
     <script>
         /* @if (Session::has('mensaje2'))
             Swal.fire({
-            position: 'top-end',
-            width: 400,
-            toast: true,
-            timerProgressBar: true,
-            icon: 'success',
-            title: 'Datos guardados!',
-            showConfirmButton: false,
-            timer: 4000
+                position: 'top-end',
+                width: 400,
+                toast: true,
+                timerProgressBar: true,
+                icon: 'success',
+                title: 'Datos guardados!',
+                showConfirmButton: false,
+                timer: 4000
             })
         @endif */
         //esto es para el smooth    

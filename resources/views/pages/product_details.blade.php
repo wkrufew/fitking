@@ -3,6 +3,13 @@
 @section('content')
 @include('layouts.menubar')
 
+{{-- INICIO SEO --}}
+    @section('title',  $product->product_name )
+    @section('description',  $product->product_details )
+    @section('url',  url('product/details/'.$product->id.'/'.$product->product_name) )
+    @section('img', Storage::url($product->image_one))
+{{-- FIN SEO --}}
+
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_responsive.css') }}">
 
@@ -13,15 +20,16 @@
             <!-- Images -->
             {{-- <div class="col-lg-2 order-lg-1 order-2">
                 <ul class="image_list">
-                    <li data-image="images/single_4.jpg"><img src="images/single_4.jpg" alt=""></li>
+                    <li data-image="images/single_4.jpg"><img src="{{asset('images/single_4.jpg')}}" alt=""></li>
                     <li data-image="images/single_2.jpg"><img src="images/single_2.jpg" alt=""></li>
                     <li data-image="images/single_3.jpg"><img src="images/single_3.jpg" alt=""></li>
                 </ul>
             </div> --}}
 
+
             <!-- Selected Image -->
             <div class="col-lg-5 order-lg-2 order-1">
-                <div class="image_selected"><img style="width: 300px;" src="{{Storage::url($product->image_one)}}" alt=""></div>
+                <div class="image_selected"><img {{-- style="width: 300px;" --}} src="{{Storage::url($product->image_one)}}" alt=""></div>
             </div>
 
             <!-- Description -->

@@ -16,6 +16,9 @@
         }
     }
 </style>        
+    @push('css')
+    <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css') }}"/>
+    @endpush
     <section class="altura portada filo relative bg-black">
         @if (count($sliders))
         <div class="swiper">
@@ -32,5 +35,30 @@
                 <div class="animate-spin ease duration-300 w-16 h-16 border-2 border-yellow-500"></div>
             </div>
         @endif 
-    </section>            
+    </section>  
+    @push('js')
+        <script src="{{ asset('https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js') }}"></script>
+        <script>
+            Livewire.on('swiper', function() {
+                var swiper = new Swiper('.swiper', {
+                    effect: "fade",
+                    loop: true,
+                    autoplay: true,
+                    speed: 1000,
+                    parallax: true,
+                    centeredSlides: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    /* navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                        nextEl: false,
+                        prevEl: false,
+                    }, */
+                });
+            });
+        </script>
+    @endpush          
 </div>

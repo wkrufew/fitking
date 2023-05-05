@@ -1,5 +1,5 @@
 <section class="pb-6">
-    <h1 class="font-bold text-blue-500 text-lg md:text-xl mb-2 mt-0">Calificaciones</h1>
+    <h1 class="font-bold text-blue-500 text-base md:text-lg mb-2 mt-0">Calificaciones</h1>
 
     @can('enrolled', $course)
         <article class="mb-3">
