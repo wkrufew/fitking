@@ -15,7 +15,7 @@ class LessonObserve
         if($platform_id == 1){
             $patron = '%^ (?:https?://)? (?:www\.)? (?: youtu\.be/ | youtube\.com (?: /embed/ | /v/ | /watch\?v= ) ) ([\w-]{10,12}) $%x';
             $array = preg_match($patron, $url, $parte);
-            $lesson->iframe = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'. $parte[1] .'?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>';
+            $lesson->iframe = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'. $parte[1] .'?enablejsapi=0&showinfo=0&modestbranding=1&rel=0&fs=0&autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;" allowfullscreen></iframe>';
         }else{
             $patron = '/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/';
             $array = preg_match($patron, $url, $parte);
@@ -32,7 +32,7 @@ class LessonObserve
         if($platform_id == 1){
             $patron = '%^ (?:https?://)? (?:www\.)? (?: youtu\.be/ | youtube\.com (?: /embed/ | /v/ | /watch\?v= ) ) ([\w-]{10,12}) $%x';
             $array = preg_match($patron, $url, $parte);
-            $lesson->iframe = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'. $parte[1] .'?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            $lesson->iframe = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'. $parte[1] .'?enablejsapi=0&showinfo=0&modestbranding=1&rel=0&fs=0&autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;" allowfullscreen></iframe>';
         }else{
             $patron = '/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/';
             $array = preg_match($patron, $url, $parte);

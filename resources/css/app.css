@@ -30,7 +30,7 @@
     }
 
     .card {
-        @apply bg-white shadow-2xl rounded-xl overflow-hidden;
+        @apply bg-white shadow-2xl rounded-md overflow-hidden;
     }
 
     .card-body {

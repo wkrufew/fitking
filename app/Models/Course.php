@@ -10,7 +10,7 @@ class Course extends Model
 
     protected $guarded = ['id','status'];
 
-    protected $withCount = ['students', 'reviews'];
+    protected $withCount = [/* 'students', */ 'reviews'];
 
     use HasFactory;
 

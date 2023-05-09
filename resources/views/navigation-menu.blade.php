@@ -236,10 +236,10 @@
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
         if (scroll >= 25) {
-            navigation.addClass("bg-black xl:py-0 shadow-md border-b-2 border-yellow-500 rounded-b-xl");
+            navigation.addClass("bg-black xl:py-0 shadow-md border-b-2 border-yellow-500 rounded-b-md");
             navigation.removeClass("xl:py-4 bg-transparent");
         } else {
-            navigation.removeClass("bg-black xl:py-4 shadow-md border-b-2 border-yellow-500 rounded-b-xl");
+            navigation.removeClass("bg-black xl:py-4 shadow-md border-b-2 border-yellow-500 rounded-b-md");
             navigation.addClass("xl:py-4");
         }
     });

@@ -1,4 +1,4 @@
-<footer class="relative bg-black pt-10 pb-1 border-t-2 border-yellow-500 rounded-t-xl">
+<footer class="relative bg-black pt-10 pb-1 border-t-2 border-yellow-500 rounded-t-md">
 
     <div class="container justify-center">
         <div class="flex flex-wrap justify-between">

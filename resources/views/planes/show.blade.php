@@ -10,11 +10,11 @@
     {{-- SECCION PARA COMPRAR EL CURSO EN DISPOSITIVOS MOVILES --}}
     <section class="overflow-hidden block md:hidden">
         <div
-            class="fixed z-50 right-0 bottom-1 w-full -mb-2 shadow-xl bg-black border-t-2 border-yellow-500 rounded-t-2xl">
+            class="fixed z-50 right-0 bottom-1 w-full -mb-2 shadow-xl bg-black border-t-2 border-yellow-500 rounded-t-md">
             <div class="px-4 pb-7">
                 @auth
                     @can('enrolled', $plan)
-                        <a class="px-4 py-2 border-2 mt-6 border-yellow-500 text-yellow-500 btn-block"
+                        <a class="px-4 py-2 border-2 mt-6 border-yellow-500 text-yellow-500 btn-block rounded-md"
                             href="{{ route('planes.status', $plan) }}">Continue con su plan</a>
                     @else
                         @if ($plan->price->value == 0)
@@ -25,7 +25,7 @@
                             <form action="{{ route('planes.enrolled', $plan) }}" method="POST">
                                 @csrf
                                 <button type="submit"
-                                    class="px-4 py-2 border-2 border-yellow-500 text-yellow-500 btn-block">Adquiere
+                                    class="px-4 py-2 border-2 border-yellow-500 text-yellow-500 btn-block rounded-md">Adquiere
                                     este plan</button>
                             </form>
                         @else
@@ -35,7 +35,7 @@
                                     {{ $plan->price->value }}</p>
                             </div>
                             <a href="{{ route('payment.checkout', $plan) }}"
-                                class="px-4 py-2 border-2 border-yellow-500 text-yellow-500 btn-block">Comprar este curso</a>
+                                class="px-4 py-2 border-2 border-yellow-500 text-yellow-500 btn-block rounded-md">Comprar este curso</a>
                         @endif
                     @endcan
                 @else
@@ -57,10 +57,10 @@
     </section>
     {{-- SECCION PORTADA --}}
     <section
-        class="bg-black pb-4 md:pb-8 mb-8 md:mb-12 pt-20 md:pt-32 relative rounded-b-2xl border-b-2 border-yellow-500 select-none">
+        class="bg-black pb-4 md:pb-8 mb-8 md:mb-12 pt-20 md:pt-32 relative rounded-b-md border-b-2 border-yellow-500 select-none">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-16">
             <figure>
-                <img class="h-auto md:h-72 w-full object-cover bg-cover border-2 border-yellow-500 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+                <img class="h-auto md:h-72 w-full object-cover rounded-md bg-cover border-2 border-yellow-500 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
                     src="{{ Storage::url($plan->image->url) }}" alt="{{$plan->slug}}">
             </figure>
             <div class="text-white px-2 md:px-0 my-auto">
@@ -166,7 +166,7 @@
                     <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 list-outside">
                         @foreach ($plan->goals as $goal)
                             <li class="text-gray-700 text-sm md:text-base">
-                                <i class="fas text-xs fa-check text-gray-600 mr-1"></i>
+                                <i class="text-xs fa-solid fa-circle-check text-yellow-500 mr-1"></i>
                                 {{ $goal->name }}
                             </li>
                         @endforeach
@@ -218,7 +218,7 @@
                 <ul class="list-none list-inside">
                     @foreach ($plan->requirements as $requirement)
                         <li class="text-gray-700 text-sm md:text-base">
-                            <i class="fas text-xs fa-check text-gray-600 mr-2"></i>{{ $requirement->name }}
+                            <i class="text-xs fa-solid fa-circle-check text-yellow-500 mr-2"></i>{{ $requirement->name }}
                         </li>
                     @endforeach
                 </ul>
@@ -234,10 +234,10 @@
             <section class="card p-5 select-none mb-10 bg-white">
                 <h1 class="font-bold text-base md:text-lg  mb-2 text-gray-700">Para quien es este plan?</h1>
                 <div class="text-gray-700 text-base">
-                    <ul class="list-none list-inside">
+                    <ul class="list-none list-outside list-image-none">
                         @foreach ($plan->audiences as $au)
                             <li class="text-gray-700 text-sm md:text-base">
-                                <i class="fas text-xs fa-check text-gray-600 mr-2"></i>{{ $au->name }}
+                                <i class="fas text-xs fa-solid fa-circle-check text-yellow-500 mr-2"></i><span>{{ $au->name }}</span>
                             </li>
                         @endforeach
                     </ul>
@@ -262,7 +262,7 @@
                     </div>
                     @auth
                         @can('enrolled', $plan)
-                            <a class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 btn btn-primary btn-block mt-4"
+                            <a class="transition duration-500 ease-in-out transform hover:-translate-y-1 rounded-md hover:scale-105 btn btn-primary btn-block mt-4"
                                 href="{{ route('planes.status', $plan) }}">Continua con el plan</a>
                         @else
                             @if ($plan->price->value == 0)
@@ -270,14 +270,14 @@
                                 <form action="{{ route('planes.enrolled', $plan) }}" method="POST">
                                     @csrf
                                     <button type="submit"
-                                        class="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 py-2 px-4 text-center rounded btn-block mt-4 bg-green-700 text-white">Adquiere
+                                        class="transition rounded-md duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 py-2 px-4 text-center btn-block mt-4 bg-green-700 text-white">Adquiere
                                         este plan</button>
                                 </form>
                             @else
                                 <p class="text-gray-800 text-lg mt-4 mb-2 font-bold my-2">
                                     Precio:&nbsp;${{ $plan->price->value }}</p>
                                 <a href="{{ route('payment.checkout', $plan) }}"
-                                    class="font-bold py-2 px-4 bg-black text-yellow-600 text-center rounded block mt-4 hover:bg-green-700 hover:text-white">Comprar
+                                    class="font-bold py-2 px-4 bg-black text-yellow-600 text-center rounded-md block mt-4 hover:bg-green-700 hover:text-white">Comprar
                                     este curso</a>
                             @endif
                         @endcan
@@ -292,7 +292,7 @@
                             <b>Nota:</b> Para adquirir este plan debe estar registrado y haber iniciado sesion
                         </div>
                         <a href="{{ route('login') }}"
-                            class="font-bold py-2 px-4 underline bg-black text-yellow-600 text-center rounded block mt-4 hover:bg-green-700 hover:text-white">
+                            class="font-bold py-2 px-4 underline bg-black text-yellow-600 text-center rounded-md block mt-4 hover:bg-green-700 hover:text-white">
                             Iniciar Sesión
                         </a>
                     @endauth

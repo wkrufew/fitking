@@ -54,8 +54,8 @@
                         alt="img-propietario">
                 </figure>
             </article> --}}
-            <div >
-                <figure class="border-4 border-yellow-500 overflow-hidden h-full relative">
+            <div class="">
+                <figure class="border-4 border-yellow-500 overflow-hidden h-full relative rounded-md">
                     {{-- <img class="w-auto h-auto object-cover" src="{{ asset('img/home/stalin.jpg') }}" alt="img-propietario"> --}}
                         <img class="w-auto h-auto object-cover" src="{{ asset('img/home/stalin.jpg') }}" alt="img-propietario">
                     <div class="opacity-0 hover:opacity-100 transition duration-300 ease">
@@ -64,7 +64,7 @@
                     </div>
                 </figure>
             </div>
-            <article class="my-auto">
+            <article class="my-auto md:sticky md:top-16">
                 <header class="py-2">
                     <h2 class="text-center font-semibold text-3xl text-yellow-500">STALIN PHILCO
                     </h2>
@@ -81,7 +81,6 @@
             </article>
         </div>
     </section>
-
     {{-- SECCION DE LO QUE OFRECE EL SISTEMA --}}
     <section class="bg-black py-10 select-none relative -mt-0.5 md:-mt-0">
         <div>
@@ -91,7 +90,7 @@
         </div>
         
         <div class="relative max-w-7xl mx-auto px-8 py-10 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            <article class="h-80 border-2 hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
+            <article class="h-80 border-2 rounded-md overflow-hidden hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
                 <figure class="relative">
                     <img class="h-36 w-full object-cover" src="{{ asset('https://cdn.pixabay.com/photo/2015/03/28/10/21/diet-695723_1280.jpg') }}" alt="PLAN NUTRICIONAL">
                    {{--  <div class="absolute flex justify-center left-0 top-0 h-10 w-10 bg-red-500 rounded-full text-xs text-center">
@@ -108,7 +107,7 @@
                     Vamos a brindar los mejores menus con varias opciones para que faciliten tu alimentación
                 </p>
             </article>
-            <article class="h-80 border-2 hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
+            <article class="h-80 border-2 rounded-md overflow-hidden hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
                 <figure>
                     <img class="h-36 w-full object-cover" src="{{ asset('https://images.pexels.com/photos/116077/pexels-photo-116077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') }}" alt="ENTRENAMIENTO">
                 </figure>
@@ -120,7 +119,7 @@
                     Entrenamiento dirigido por mi con tecnicas y guias para garantizar tus resultados
                 </p>
             </article>
-            <article class="h-80 border-2 hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
+            <article class="h-80 border-2 rounded-md overflow-hidden hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
                 <figure>
                     <img class="h-36 w-full object-cover" src="{{ asset('https://cdn.pixabay.com/photo/2016/08/31/23/16/motivation-1634875_1280.jpg') }}" alt="VIDEOS INSTRUCTIVOS">
                 </figure>
@@ -132,7 +131,7 @@
                     Videos personalizados acorde a cada dia de entrenamiento
                 </p>
             </article>  
-            <article class="h-80 border-2 hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
+            <article class="h-80 border-2 rounded-md overflow-hidden hover:border-4 border-yellow-500 transition duration-300 ease transform hover:translate-y-0 hover:scale-105">
                 <figure>
                     <img class="h-36 w-full object-cover" src="{{ asset('https://cdn.pixabay.com/photo/2017/04/25/20/18/woman-2260736_1280.jpg') }}" alt="SEGUIMIENTO">
                 </figure>
@@ -158,7 +157,7 @@
         </p>
         <div class="flex justify-center mt-8">
             <a href="{{ route('cursos.index') }}"
-                class="transition duration-300 ease transform hover:-translate-y-1 hover:scale-110 center py-3 px-5 bg-black text-yellow-500 font-semibold border border-yellow-500 shadow-md hover:bg-yellow-500 hover:text-black focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-75">
+                class="transition rounded-md duration-300 ease transform hover:-translate-y-1 hover:scale-110 center py-3 px-5 bg-black text-yellow-500 font-semibold border border-yellow-500 shadow-md hover:bg-yellow-500 hover:text-black focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-75">
                 ENTRENA CONMIGO
             </a>
         </div>
