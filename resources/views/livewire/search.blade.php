@@ -5,7 +5,7 @@
                 <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
         </span>
-        <input wire:model.debounce.500ms="search" class="focus:bg-white pl-10 pr-4 rounded-md border-2 border-yellow-500 focus:ring-yellow-500 focus:outline-none focus:border-yellow-500 focus:ring-1 w-full h-10 px-5 text-sm"
+        <input wire:model.debounce.500ms="search" class="focus:bg-white pl-10 pr-4 rounded-md border-2 border-yellow-500 focus:ring-yellow-500 focus:outline-none focus:border-yellow-500 focus:ring-1 w-full h-8 md:h-10 px-5 text-xs md:text-sm"
          type="search" name="search" placeholder="Ingresa el nombre de un plan ...">
     </div>
      @if ($search)
@@ -23,11 +23,11 @@
                         </div>
                     </div>
                 </div>
-                <li wire:loading.remove class="leading-8 px-5 text-sm cursor-pointer hover:bg-gray-300 hover:text-gray-700">
+                <li wire:loading.remove class="leading-8 px-5 py-1 text-xs md:text-sm cursor-pointer hover:bg-gray-300 hover:text-gray-700">
                     <a class="w-full block" href="{{ route('planes.show', $result) }}">{{ $result->title }}</a>
                 </li>
             @empty
-                <li class="leading-8 px-5 text-sm cursor-pointer hover:bg-gray-300">
+                <li class="leading-8 px-5 py-1 text-xs md:text-sm cursor-pointer hover:bg-gray-300">
                     No se encontraron coincidencias
                 </li>
             @endforelse

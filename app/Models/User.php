@@ -95,11 +95,11 @@ class User extends Authenticatable
 
     public function courses_enrollet()
     {
-        return $this->belongsToMany('App\Models\Profile');
+        return $this->belongsToMany('App\Models\Course');
     }
 
     public function lessons()
     {
-        return $this->belongsToMany('App\Models\Lesson');
+        return $this->belongsToMany('App\Models\Lesson','lesson_user');
     }
 }

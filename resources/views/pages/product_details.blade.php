@@ -4,7 +4,7 @@
 @include('layouts.menubar')
 
 {{-- INICIO SEO --}}
-    @section('title',  $product->product_name )
+    @section('title', '- '.  $product->product_name )
     @section('description',  $product->product_details )
     @section('url',  url('product/details/'.$product->id.'/'.$product->product_name) )
     @section('img', Storage::url($product->image_one))

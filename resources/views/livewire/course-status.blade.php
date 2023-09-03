@@ -1,4 +1,6 @@
 <div class="">
+    @section('title', $plan->title)
+
     <div class="relative h-16 lg:h-20 w-full bg-black mb-4">
     </div>
 
@@ -21,18 +23,19 @@
             </div>
         @endif
     </div>
-    
+
     <div class="container mx-auto px-4 lg:px-8 mb-4">
         <div class="">
-            <a class="w-24 lg:w-28 flex text-neutral-300 bg-black p-2 rounded-md hover:text-yellow-500 cursor-pointer group" href="{{route('planes.show', $plan)}}">
+            <a class="w-24 lg:w-28 flex text-neutral-300 bg-black p-2 rounded-md hover:text-yellow-500 cursor-pointer group"
+                href="{{ route('planes.show', $plan) }}">
                 <span>
                     <svg class="w-4 h-4 lg:w-6 lg:h-6 transform rotate-90 my-auto mr-2 group-hover:w-7 transition-all"
-                        fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                        stroke="currentColor">
+                        fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                     </svg>
                 </span>
-                <span class="text-xs lg:text-base">Regresar</span> 
+                <span class="text-xs lg:text-base">Regresar</span>
             </a>
         </div>
     </div>
@@ -41,17 +44,19 @@
         <div class="lg:col-span-2 mb-0 lg:mb-4">
             <div class="md:sticky md:top-16">
                 <div class="card rounded-md relative overflow-hidden">
-                        <div class="relative">
-                            <div class="embed-responsive relative w-full aspect-video px-36 md:px-16 lg:px-44 rounded-t-lg select-none">
-                                {!! $current->iframe !!}
-                            </div>
-                            <div class="block lg:hidden">
-                                <div style="z-index: 900" class="absolute top-0 left-0 w-full h-full px-36 md:px-16 lg:px-44 rounded-t-lg select-none portrait:hidden bg-gray-800 text-white">
-                                    <h2 class="flex justify-center items-center h-full my-auto">Por favor girar el dispositivo para poder ver el video</h2>
-                                </div>
+                    <div class="relative">
+                        <div class="embed-responsive relative w-full aspect-video px-36 md:px-16 lg:px-44 rounded-t-lg select-none">
+                            {!! $current->iframe !!}
+                        </div>
+                        <div class="block lg:hidden">
+                            <div style="z-index: 900"
+                                class="absolute top-0 left-0 w-full h-full px-36 md:px-16 lg:px-44 rounded-t-lg select-none portrait:hidden bg-gray-800 text-white">
+                                <h2 class="flex justify-center items-center h-full my-auto">
+                                    Por favor girar el dispositivo para poder ver el video
+                                </h2>
                             </div>
                         </div>
-
+                    </div>
                     <div class="bg-black relative">
                         <h2 class="text-sm mx-auto md:text-lg text-yellow-500 font-bold py-2 text-center">
                             {{ $current->name }}
@@ -59,37 +64,27 @@
                     </div>
                     <div class="absolute top-0 left-0 w-full h-[80px] lg:h-[400px]" style="z-index: 900">
                     </div>
-                    <div class="block md:hidden absolute top-0 right-0 w-28 h-[140px] lg:h-[400px]" style="z-index: 910">
+                    <div class="block md:hidden absolute top-0 right-0 w-28 h-[140px] lg:h-[400px]"
+                        style="z-index: 910">
                     </div>
                 </div>
-                {{-- @if ($current->description)
-                    <div class="text-gray-800 text-xs font-semibold md:text-base text-justify">
-                        {!! $current->description->name !!}
-                    </div>
-                @endif --}}
                 <div class="flex justify-between">
-                    {{-- Seccion de marca seccion como culminada --}}
-                    <div class="card rounded-md bg-black px-4 py-2 w-full  justify-center flex flex-1 items-center mt-4 cursor-pointer "
-                        wire:click="completed">
+                    <div wire:click="completed" wire:loading.attr="disabled" class="card rounded-md bg-black px-4 py-2 w-full justify-center flex flex-1 items-center mt-4 cursor-pointer text-gray-300 font-bold hover:text-yellow-500">
                         @if ($current->completed)
                             <i class="fas fa-toggle-on text-2xl text-yellow-600"></i>
-                            <p class="text-xs md:text-sm  ml-2 text-gray-300 font-bold">
-                                Leccón culminada
-                            </p>
+                            <p class="text-xs md:text-sm ml-2"> Lección culminada</p>
                         @else
                             <i class="fas fa-toggle-off text-2xl text-gray-300"></i>
-                            <p class="text-xs md:text-sm ml-2 text-gray-300 font-bold">
-                                Marcar como terminada
-                            </p>
+                            <p class="text-xs md:text-sm ml-2">Marcar como terminada</p>
                         @endif
                     </div>
                     {{-- boton para descargar el recurso --}}
                     @if ($current->resource)
-                        <div class="card rounded-md px-4 ml-4 py-2 w-full  justify-center flex flex-1 items-center mt-4 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-                            <div class="flex items-center text-blue-500 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+                        <div class="card bg-black rounded-md px-4 ml-4 py-2 w-full  justify-center flex flex-1 items-center mt-4 cursor-pointer text-white hover:text-yellow-500">
+                            <div class="flex items-center"
                                 wire:click="download">
                                 <i class="fas fa-download text-lg"></i>
-                                <p class="text-xs md:text-sm ml-2 font-bold">Descargar recurso</p>
+                                <p class="text-xs md:text-sm ml-2 font-bold">Descargar Archivo</p>
                             </div>
                         </div>
                     @endif
@@ -98,12 +93,12 @@
                     <div class="card-body bg-black flex text-gray-50 text-xs font-bold">
                         @if ($this->previous)
                             <a wire:click="changeLesson({{ $this->previous }})"
-                                class="bg-neutral-800 rounded-full px-4 py-1.5 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
+                                class="bg-neutral-700 rounded-full px-4 py-1.5 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
                                 < Anterior</a>
                         @endif
                         @if ($this->next)
                             <a wire:click="changeLesson({{ $this->next }})"
-                                class="ml-auto bg-neutral-800 rounded-full px-4 py-1.5  cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">Siguiente
+                                class="ml-auto bg-neutral-700 rounded-full px-4 py-1.5  cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">Siguiente
                                 ></a>
                         @endif
                     </div>
@@ -122,9 +117,11 @@
 
                                 <div class="p-4 my-auto">
                                     <div class="flex items-center justify-center">
-                                        <h1 class="text-base md:text-xl font-bold mb-2 md:mb-3 text-center">Dieta diaria
+                                        <h1 class="text-base md:text-xl font-bold mb-2 md:mb-3 text-center">Dieta
+                                            diaria
                                         </h1>
-                                        <i class="text-lg md:text-2xl text-red-800 fas fa-apple-alt text-center mb-2 md:mb-5 ml-2"></i>
+                                        <i
+                                            class="text-lg md:text-2xl text-red-800 fas fa-apple-alt text-center mb-2 md:mb-5 ml-2"></i>
                                     </div>
                                     <div class="tracking-widest text-xs md:text-sm font-semibold text-justify">
                                         {{ $current->description->name }}
@@ -139,7 +136,7 @@
         </div>
         <div class="mb-4">
             <div class="">
-               <div class="hidden md:block card card-body rounded-md mb-4 bg-black">
+                <div class="hidden md:block card card-body rounded-md mb-4 bg-black">
                     <div class="flex items-center justify-center">
                         <figure>
                             <img class="h-12 w-12 mr-4 rounded-full object-cover"
@@ -148,25 +145,28 @@
                         <div>
                             <p class="text-xs md:text-base font-bold text-gray-200">{{ $plan->teacher->name }}</p>
                             <a class="text-neutral-400 text-xs md:text-base">Instructor</a>
-                                {{-- class="text-yellow-500 text-xs md:text-base">{{ '@' . Str::slug($plan->teacher->name, '') }}</a> --}}
+                            {{-- class="text-yellow-500 text-xs md:text-base">{{ '@' . Str::slug($plan->teacher->name, '') }}</a> --}}
                         </div>
                     </div>
-               </div>
-                
+                </div>
+
                 <div class="">
                     <div class="card rounded-md p-3 mb-4 bg-black">
-                        <h1 class="text-sm md:text-lg font-bold text-gray-300 pb-2 text-center">{{ $plan->title }}</h1>
+                        <h1 class="text-sm md:text-lg font-bold text-gray-300 pb-2 text-center">{{ $plan->title }}
+                        </h1>
                         <!--BARRA DE PROGRESO-->
                         {{-- <p class="text-gray-700 text-xs md:text-sm font-bold">{{ $this->advance . '%' . ' ' }}Completado --}}
                         </p>
                         <div class="relative">
                             {{-- imagen de felicidades --}}
                             @if ($this->advance == 100)
-                                <p class="text-blue-500 text-lg font-bold">Felicidades has concluido con el plan..!!</p>
+                                <p class="text-blue-500 text-lg font-bold">Felicidades has concluido con el plan..!!
+                                </p>
                                 <img src="{{ asset('img/home/felicidades.gif') }}" alt="aplausos">
                             @else
-                            {{-- barra de prograso --}}
-                                <div class="overflow-hidden h-6 text-xs flex rounded-md bg-neutral-800 border border-neutral-700">
+                                {{-- barra de prograso --}}
+                                <div
+                                    class="overflow-hidden h-6 text-xs flex rounded-md bg-neutral-800 border border-neutral-700">
                                     <div style="width:{{ $this->advance . '%' }}"
                                         class="{{-- animate-pulse --}} rounded-r-md shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500 transition-all duration-700">
                                         <span class="text-xs p-1 text-center">
@@ -179,48 +179,26 @@
                     </div>
                     <ul class="bg-black p-3 rounded-md">
                         <div class="hidden md:block">
-                            <h2 class="text-sm md:text-lg font-bold text-gray-300 pb-2 text-center">Lecciones del Plan</h2>
+                            <h2 class="text-sm md:text-lg font-bold text-gray-300 pb-2 text-center">Cronograma de Entrenamiento
+                            </h2>
                             <hr class=" pb-2">
                         </div>
                         @foreach ($plan->sections as $section)
-                            <li class="text-gray-600 mb-4 rounded-md">{{-- toda la seccion --}}
+                            <li class="text-gray-600 mb-4 rounded-md">
                                 <a class="font-medium text-sm md:text-base inline-block mb-3 text-gray-300">{{ $section->name }}</a>
-                                <ul class="{{-- bg-blue-500 --}} space-y-1"> {{-- todas las lecciones --}}
+                                <ul class="space-y-1">
                                     @foreach ($section->lessons as $lesson)
-                                        <li class="flex bg-neutral-800 border border-neutral-700  rounded-md py-1 items-center cursor-pointer hover:bg-neutral-700" wire:click="changeLesson({{ $lesson }})">
-                                            <div class="">
+                                        <li wire:click="changeLesson({{ $lesson }})" class="flex bg-neutral-800 border border-neutral-700 rounded-md py-1 items-center cursor-pointer hover:bg-neutral-700">
+                                            <div>
                                                 @if ($lesson->completed)
-                                                    @if ($current->id == $lesson->id)
-                                                        {{-- <span class="inline-block w-4 h-4 border-2 border-yellow-400 rounded-full mx-2 mt-1"></span> --}}
-                                                        <i class="inline-block w-4 h-4 mx-2 mt-1 fas fa-play-circle text-yellow-500 animate-pulse"></i>
-                                                        {{-- aqui va cuando esta completada y viendose --}}
-                                                    @else
-                                                        {{-- <span class="inline-block w-4 h-4 bg-yellow-500 rounded-full mx-2 mt-1"></span> --}}
-                                                        <i class="inline-block w-4 h-4 mx-2 mt-1 fa-solid fa-circle-check text-yellow-500"></i>
-                                                    @endif
-                                                    <a  class="text-xs md:text-sm {{$current->id == $lesson->id ? 'text-yellow-500 animate-pulse' : 'text-gray-100 line-through'}}" title="{{ $lesson->name }}">
-                                                        {{Str::limit($lesson->name, 43)}}
-                                                    </a>
+                                                    <i class="inline-block w-4 h-4 mx-2 mt-1 {{ $current->id == $lesson->id ? 'fas fa-play-circle text-yellow-500 animate-pulse' : 'fa-solid fa-circle-check text-yellow-500' }}"></i>
                                                 @else
-                                                    @if ($current->id == $lesson->id)
-                                                        {{-- <span class="inline-block w-4 h-4 border-2 border-neutral-500 rounded-full mx-2 mt-1 animate-pulse"></span> --}}
-                                                        <i class="inline-block w-4 h-4 mx-2 mt-1 fas fa-play-circle text-yellow-500 animate-pulse"></i>
-                                                    @else
-                                                        {{-- <span class="inline-block w-4 h-4 bg-neutral-500 rounded-full mx-2 mt-1"></span> --}}
-                                                        <i class="inline-block w-4 h-4 mx-2 mt-1 fa-solid fa-circle-check text-neutral-500"></i>
-                                                        {{-- aqui va cuando no esta visto ni en reproduccion --}}
-                                                    @endif
-                                                    <a  class="hidden lg:inline-block text-xs md:text-sm {{$current->id == $lesson->id ? 'text-yellow-500 animate-pulse' : 'text-gray-100'}}" title="{{ $lesson->name }}">
-                                                            {{Str::limit($lesson->name, 43)}}
-                                                    </a>
-                                                    <a  class=" inline-block lg:hidden text-xs md:text-sm {{$current->id == $lesson->id ? 'text-yellow-500 animate-pulse' : 'text-gray-100'}}" title="{{ $lesson->name }}">
-                                                            {{Str::limit($lesson->name, 32)}}
-                                                    </a>
+                                                    <i class="inline-block w-4 h-4 mx-2 mt-1 {{ $current->id == $lesson->id ? 'fas fa-play-circle text-yellow-500 animate-pulse' : 'fa-solid fa-circle-check text-neutral-500' }}"></i>
                                                 @endif
+                                                <a class="{{ $current->id == $lesson->id ? 'text-xs md:text-sm text-yellow-500 animate-pulse' : 'text-xs md:text-sm text-gray-100' }}" title="{{ $lesson->name }}">
+                                                    {{ Str::limit($lesson->name, $current->id == $lesson->id ? 43 : 32) }}
+                                                </a>
                                             </div>
-                                            {{-- <a  class="text-xs md:text-sm {{$current->id == $lesson->id ? 'text-yellow-500 animate-pulse' : 'text-gray-100'}}" title="{{ $lesson->name }}">
-                                                {{Str::limit($lesson->name, 43)}}
-                                            </a> --}}
                                         </li>
                                     @endforeach
                                 </ul>

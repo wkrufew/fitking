@@ -8,28 +8,24 @@ use Livewire\Component;
 
 class CoursesRivews extends Component
 {
-    public $course_id, $comment;
-
+    public $course, $comment;
     public $rating = 5;
 
     public function mount(Course $plan)
     {
-        $this->course_id = $plan->id;
-
-        //dd($this->course_id);
+        $this->course = $plan;
     }
     public function render()
     {
-        $course = Course::find($this->course_id);
-        //$course->where('id',$this->course_id)->with('reviews','reviews.user')->get();
-        //dd($course->where('id',$this->course_id)->with('reviews','students')->get());
+        $course = $this->course->load(['students:id,name','reviews' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }]);
+
         return view('livewire.courses-rivews', compact('course'));
     }
     public function store()
     {
-        $course = Course::find($this->course_id);
-
-        $course->reviews()->create([
+       $this->course->reviews()->create([
             'comment' => $this->comment,
             'rating' => $this->rating,
             'user_id' => auth()->user()->id
@@ -42,3 +38,40 @@ class CoursesRivews extends Component
         $review->delete();
     }
 }
+
+
+/* public $course, $comment;
+    public $rating = 5;
+
+    protected $listeners = ['reviewAdded' => 'refreshReviews'];
+
+    public function mount(Course $plan)
+    {
+        $this->course = $plan->load(['students:id,name','reviews' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }]);
+    }
+    public function render()
+    {
+        return view('livewire.courses-rivews');
+    }
+    public function store()
+    {
+       $this->course->reviews()->create([
+            'comment' => $this->comment,
+            'rating' => $this->rating,
+            'user_id' => auth()->user()->id
+        ]);
+
+        $this->reset('comment', 'rating');
+        $this->emit('reviewAdded');
+    }
+    public function destroy(Review $review)
+    {
+        $review->delete();
+        $this->emit('reviewAdded');
+    }
+    public function refreshReviews()
+    {
+        $this->course->refresh();
+    } */

@@ -10,32 +10,20 @@
 
         <div class="card-body">
             {!! Form::open(['route' => 'admin.sliders.store', 'files' => true, 'autocomplete' => 'off']) !!}
-            <div class="form-group">
-                {!! Form::label('orden', 'Orden: ') !!}
-                {!! Form::number('orden', null, ['class' => 'form-control' . ($errors->has('orden') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el orden ...', 'autocomplete' => 'off']) !!}
-                @error('orden')
-                    <div class="alert alert-danger mt-1" role="alert">
-                        <strong>Ups!</strong>{{ $message }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @enderror
-            </div>
-            <div class="form-group">
-                {!! Form::label('foto', 'Image: ') !!}
-                <p class=""><b>Nota:</b> seleccione una imagen rectangular (1920 x 1080)px</p>
-                {!! Form::file('file', ['class' => 'form-input', 'accept' => 'image', 'id' => 'file']) !!}
-                @error('file')
-                    <div class="
-                    alert alert-danger mt-1" role="alert">
-                        <strong>Ups!</strong>{{ $message }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @enderror
-            </div>
+                <div class="form-group">
+                    {!! Form::label('foto', 'Image: ') !!}
+                    <p class=""><b>Nota:</b> seleccione una imagen rectangular (1920 x 1080)px</p>
+                    {!! Form::file('file', ['class' => 'form-input', 'accept' => 'image', 'id' => 'file']) !!}
+                    @error('file')
+                        <div class="
+                        alert alert-danger mt-1" role="alert">
+                            <strong>Ups!</strong>{{ $message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @enderror
+                </div>
         </div>
         <div class="text-center">
 

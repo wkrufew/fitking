@@ -10,7 +10,7 @@ class Course extends Model
 
     protected $guarded = ['id','status'];
 
-    protected $withCount = [/* 'students', */ 'reviews'];
+    /* protected $withCount = ['students','reviews']; */
 
     use HasFactory;
 
@@ -18,32 +18,33 @@ class Course extends Model
     const REVISION = 2;
     const PUBLICADO = 3;
 
-    public function getRatingAttribute()
+    /* public function getRatingAttribute()
     {
         if($this->reviews_count)
         {
             return round($this->reviews->avg('rating'),1);
         }else{
             return 5;
-        }
-         
-    }
-
-    /* public function scopeCategory($query, $categoria_id)
-    {
-        if($categoria_id)
-        {
-            return $query->where('category_id', $categoria_id);
-        }
-    }
-
-    public function scopeLevel($query, $nivel_id)
-    {
-        if($nivel_id)
-        {
-            return $query->where('level_id', $nivel_id);
-        }
+        }  
     } */
+    /* return $query->whereIn('category_id', $categorias); */
+    public function scopeCategorias($query, $categorias)
+    {
+        if ($categorias) {
+            return $query->where('category_id', $categorias);
+        }
+        
+        return $query;
+    }
+
+    public function scopeNiveles($query, $niveles)
+    {
+        if ($niveles) {
+            return $query->where('level_id', $niveles);
+        }
+        
+        return $query;
+    }
 
     public function getRouteKeyName()
     {
@@ -114,5 +115,9 @@ class Course extends Model
     public function lessons()
     {
         return $this->hasManyThrough('App\Models\Lesson', 'App\Models\Section');
+    }
+    public function resource()
+    {
+        return $this->morphOne('App\Models\Resource', 'resourceable');
     }
 }

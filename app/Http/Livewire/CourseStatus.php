@@ -17,20 +17,12 @@ class CourseStatus extends Component
 
     public function mount(Course $plan)
     {
-
-        $this->plan = /* $plan;
-        $plan = */ $plan->where('id',$plan->id)/* ->with('sections','sections.lessons','students') */
-                        
-                        ->first();
-        foreach ($plan->lessons as $lesson) {
-            if (!$lesson->completed) {
-                $this->current = $lesson;
-                break;
-            }
-        }
-        if (!$this->current) {
-            $this->current = $plan->lessons->last();
-        }
+        $plan->load('sections.lessons.users');
+       
+        $this->current = $this->plan->lessons->first(function ($lesson) {
+            return !$lesson->completed;
+        }) ?? $this->plan->lessons->last();
+        
         $this->authorize('enrolled', $plan);
     }
 
@@ -39,14 +31,78 @@ class CourseStatus extends Component
         return view('livewire.course-status');
     }
 
-    //Metodos 
-
     public function changeLesson(Lesson $lesson)
     {
         $this->current = $lesson;
     }
 
     public function completed()
+    {
+        if ($this->current->completed) {
+            $this->current->users()->detach(auth()->user()->id);
+        } else {
+            $this->current->users()->attach(auth()->user()->id);
+        }
+        $this->current = $this->current->fresh();
+        $this->plan = $this->plan->fresh();
+    }
+
+    // Propiedades computadas
+
+    public function getIndexProperty()
+    {
+        return $this->plan->lessons->pluck('id')->search($this->current->id);
+    }
+
+    public function getPreviousProperty()
+    {
+        if ($this->index === 0) {
+            return null;
+        }
+
+        return $this->plan->lessons[$this->index - 1];
+    }
+
+    public function getNextProperty()
+    {
+        if ($this->index === $this->plan->lessons->count() - 1) {
+            return null;
+        }
+
+        return $this->plan->lessons[$this->index + 1];
+    }
+
+    public function getAdvanceProperty()
+    {
+        $completedCount = $this->plan->lessons->where('completed', true)->count();
+        $totalLessonsCount = $this->plan->lessons->count();
+
+        $advance = ($completedCount * 100) / $totalLessonsCount;
+
+        return round($advance, 2);
+    }
+    public function download()
+    {
+        return response()->download(storage_path('app/public/' . $this->current->resource->url));
+    }
+    /*
+     public function mount(Course $plan)
+    {
+        $plan->load('sections.lessons','lessons.users');
+       
+        foreach ($plan->lessons as $lesson) {
+            if (!$lesson->completed) {
+                $this->current = $lesson;
+                break;
+            }
+        }
+
+        if (!$this->current) {
+            $this->current = $plan->lessons->last();
+        }
+    
+    }
+     public function completed()
     {
         if ($this->current->completed) {
             //eliminar registro
@@ -98,9 +154,5 @@ class CourseStatus extends Component
 
         return round($advance, 2); 
     }
-
-    public function download()
-    {
-        return response()->download(storage_path('app/public/' . $this->current->resource->url));
-    }
+ */
 }

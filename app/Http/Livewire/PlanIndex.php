@@ -3,40 +3,75 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
-use Livewire\Component;
 use App\Models\Course;
 use App\Models\Level;
-use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Contracts\View\View;
+use Livewire\Component;
 use Livewire\WithPagination;
 
 class PlanIndex extends Component
 {
     use WithPagination;
 
-    public $orden = 'DESC';
-    public $categoria = [];
+    public $orden = 'desc';
+    public $categorias;
+    public $niveles;
+    public $eliminandoFiltros = false;
 
-    public function render()
+    protected $queryString = [
+        'orden' => ['except' => 'desc'],
+        'categorias',
+        'niveles',
+    ];
+
+    public function mount()
     {
-        $categories = Category::select('id', 'name')->where('estado', NULL)->get();
+        $this->categorias = [];
+        $this->niveles = [];
+    }
 
-        if (count($this->categoria) > 0) {
-            $planes = Course::where('status', 3)->with(['image', 'price:id,value,name'])->whereIn('category_id', $this->categoria)
-                ->withCount('students')
-                ->orderBy('id', $this->orden)
-                ->paginate(6);
-        } else {
-            $planes = Course::where('status', 3)->with(['image', 'price:id,value,name'])
-                ->withCount('students')
-                ->orderBy('id', $this->orden)
-                ->paginate(6);
-        }
-        return view('livewire.plan-index', compact('planes', 'categories'));
+    public function render(): View
+    {
+        $cacheKey = 'plan-index:' . md5(json_encode([
+            'categorias' => $this->categorias,
+            'niveles' => $this->niveles,
+            'orden' => $this->orden,
+            'page' => $this->page,
+        ]));
+
+        $planes = Cache::remember($cacheKey, 3600, function () {
+            $query = Course::with(['image', 'price:id,value'])
+                ->withCount(['students'])
+                ->withAvg('reviews', 'rating')
+                ->where('status', Course::PUBLICADO)
+                ->categorias($this->categorias)
+                ->niveles($this->niveles)
+                ->orderBy('id', $this->orden);
+
+            if ($this->eliminandoFiltros) {
+                $this->resetPage();
+                $this->eliminandoFiltros = false;
+            }
+
+            return $query->paginate(6);
+        });
+
+        $categories = Cache::remember('categories', 3600, function () {
+            return Category::select('id', 'name')->whereNull('estado')->get();
+        });
+
+        $levels = Cache::remember('levels', 3600, function () {
+            return Level::select('id', 'name')->get();
+        });
+
+        return view('livewire.plan-index', compact('planes', 'categories', 'levels'));
     }
 
     public function limpiar()
     {
-        $this->orden = 'DESC';
-        $this->categoria = [];
+        $this->reset(['categorias', 'niveles']);
+        $this->orden = 'desc';
+        $this->eliminandoFiltros = true;
     }
 }

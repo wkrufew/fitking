@@ -23,7 +23,7 @@ class CreateLessonsTable extends Migration
             $table->unsignedBigInteger('platform_id')->nullable();
             $table->unsignedBigInteger('section_id');
 
-            $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('set null');
+            $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('cascade');
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
 
             $table->timestamps();

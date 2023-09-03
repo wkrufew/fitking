@@ -21659,3 +21659,66 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	
 /******/ })()
 ;
+
+//esto es para el smooth    
+$('a[href*="#"]')
+// Remove links that don't actually link to anything
+.not('[href="#"]')
+.not('[href="#0"]')
+.click(function(event) {
+    // On-page links
+    if (
+        location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+        location.hostname == this.hostname
+    ) {
+        // Figure out element to scroll to
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        // Does a scroll target exist?
+        if (target.length) {
+            // Only prevent default if animation is actually gonna happen
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: target.offset().top
+            }, 1000, function() {
+                // Callback after animation
+                // Must change focus!
+                var $target = $(target);
+                $target.focus();
+                if ($target.is(":focus")) { // Checking if the target was focused
+                    return false;
+                } else {
+                    $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                    $target.focus(); // Set focus again
+                };
+            });
+        }
+    }
+});
+
+/* mensaje en las pestañas */
+let docTitle = document.title;
+window.addEventListener("blur", () => {
+document.title = "Vuelve Pronto";
+})
+window.addEventListener("focus", () => {
+document.title = docTitle;
+})
+
+window.addEventListener('mensaje', event => {
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
+Toast.fire({
+    icon: event.detail.icon,
+    title: event.detail.title
+})
+})

@@ -3,32 +3,38 @@
     @include('layouts.menubar')
     @include('layouts.slider')
     @php
-    $featured = DB::table('products')
-        ->where('status', 1)
-        ->orderBy('id', 'desc')
-        ->limit(12)
-        ->get();
-    $trend = DB::table('products')
-        ->where('status', 1)
-        ->where('trend', 1)
-        ->orderBy('id', 'desc')
-        ->limit(8)
-        ->get();
-    $best = DB::table('products')
-        ->where('status', 1)
-        ->where('best_rated', 1)
-        ->orderBy('id', 'desc')
-        ->limit(8)
-        ->get();
-    $hot = DB::table('products')
-        ->join('brands', 'products.brand_id', 'brands.id')
-        ->select('products.*', 'brands.brand_name')
-        ->where('products.status', 1)
-        ->where('hot_deal', 1)
-        ->orderBy('id', 'desc')
-        ->limit(3)
-        ->get();
+        $featured = DB::table('products')
+            ->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->limit(12)
+            ->get();
+        $trend = DB::table('products')
+            ->where('status', 1)
+            ->where('trend', 1)
+            ->orderBy('id', 'desc')
+            ->limit(8)
+            ->get();
+        $best = DB::table('products')
+            ->where('status', 1)
+            ->where('best_rated', 1)
+            ->orderBy('id', 'desc')
+            ->limit(8)
+            ->get();
+        $hot = DB::table('products')
+            ->join('brands', 'products.brand_id', 'brands.id')
+            ->select('products.*', 'brands.brand_name')
+            ->where('products.status', 1)
+            ->where('hot_deal', 1)
+            ->orderBy('id', 'desc')
+            ->limit(3)
+            ->get();
     @endphp
+    {{-- INICIO SEO --}}
+        @section('title', '')
+        @section('description', 'FITKING, venta de productos fitness como proteinas, creatinas, pre-entrenos entre otros.')
+        @section('url', route('home'))
+        @section('img', asset('img/home/logo2.webp'))
+    {{-- FIN SEO --}}
     <!-- Deals of the week -->
     <div class="deals_featured">
         <div class="container">

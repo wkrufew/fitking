@@ -19,6 +19,7 @@ class PaymentOrder extends Component
     }
     public function render()
     {
+
         return view('livewire.payment-order');
     }
 

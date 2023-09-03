@@ -115,26 +115,19 @@
                     <div class="relative pt-10">
                         
                         <div class="mx-auto justify-center relative">
-                           {{--  <div class="relative translate-x-32 -translate-y-full">
-                                <div class="absolute top-0 z-20 w-32 p-2 -mt-1 text-sm leading-tight text-center -translate-x-32 -translate-y-full text-white transform  bg-blue-500 rounded-lg shadow-lg">
-                                    Estas aqui
-                                </div>
-                                <svg class="absolute z-10 w-6 h-6 text-blue-500 transform -translate-x-20 -translate-y-3 fill-current stroke-current" width="8" height="8">
-                                    <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
-                                </svg>
-                            </div> --}}
                             @if ($imc >= 18.6 && $imc <= 24.9)
-                                       
+                         
                             @endif
+                            
                             @if ($imc <= 18.5)
-                            <div class="relative">
-                                <div class="absolute top-0 z-20 w-28 p-2 -mt-1 text-sm leading-tight text-center translate-x-0 -translate-y-full text-white transform  bg-yellow-500 rounded-lg shadow-lg">
-                                    Estas aqui
-                                </div>
-                                <svg class="absolute z-10 w-6 h-6 text-yellow-500 transform translate-x-10 -translate-y-3 fill-current stroke-current" width="8" height="8">
-                                    <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
-                                </svg>
-                            </div> 
+                                <div class="relative">
+                                    <div class="absolute top-0 z-20 w-28 p-2 -mt-1 text-sm leading-tight text-center translate-x-0 -translate-y-full text-white transform  bg-yellow-500 rounded-lg shadow-lg">
+                                        Estas aqui
+                                    </div>
+                                    <svg class="absolute z-10 w-6 h-6 text-yellow-500 transform translate-x-10 -translate-y-3 fill-current stroke-current" width="8" height="8">
+                                        <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
+                                    </svg>
+                                </div> 
                             @elseif($imc >= 18.6 && $imc <= 24.9)
                             <div class="relative">
                                 <div class="absolute top-0 z-20 w-32 p-2 -mt-1 text-sm leading-tight text-center translate-x-32 -translate-y-full text-white transform  bg-green-500 rounded-lg shadow-lg">
@@ -187,23 +180,12 @@
                 @endif
             </div>
 
-
-            {{-- <div x-data="{ open: false }">
-                <button @click="open = true">Show More...</button>
-         
-                <ul x-show="open" @click.away="open = false">
-                    <li><button wire:click="archive">Archive</button></li>
-                    <li><button wire:click="delete">Delete</button></li>
-                </ul>
-            </div> --}}
-
             <div>
                 <x-jet-label for="observacion" value="Observacion" />
                 <textarea class="mb-2 block w-full rounded-lg border border-gray-300" rows="2" wire:model.defer="Observacion"></textarea>
                 <x-jet-input-error for="observacion" class="mt-2" />
             </div>
         </div>
-
         {{-- <div class="grid sm:grid-cols-1 md:grid-cols-2  gap-4">
             <div>
                 <x-jet-label for="fantes" value="Foto Antes" />
@@ -231,7 +213,6 @@
                     
             </div>
         </div> --}}
-
        <div class="justify-end flex mt-6 ">
             <div>
                 @if (session()->has('mensaje'))

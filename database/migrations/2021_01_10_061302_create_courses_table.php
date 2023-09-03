@@ -18,15 +18,14 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-
             $table->string('title');
             $table->string('subtitle');
             $table->text('description');
-            $table->enum('status',[Course::BORRADOR, Course::REVISION, Course::PUBLICADO])->default(Course::PUBLICADO);
+            $table->enum('status',[Course::BORRADOR, Course::REVISION, Course::PUBLICADO])->default(Course::PUBLICADO)->index();;
             $table->string('slug');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('level_id')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('level_id')->nullable()->index();;
+            $table->unsignedBigInteger('category_id')->nullable()->index();;
             $table->unsignedBigInteger('price_id')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

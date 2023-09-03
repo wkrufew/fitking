@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class CategoryController extends Controller
 {
@@ -52,6 +53,8 @@ class CategoryController extends Controller
         
         $cat = $request->name;
         $notificacion="La categoria $cat  se ha añadido correctamente";
+
+        Cache::forget('categories');
 
         return redirect()->route('admin.categories.index')->with(compact('notificacion'));
 
@@ -102,6 +105,8 @@ class CategoryController extends Controller
         $cat = $request->name;
         $notificacion="La categoria  $cat  se ha actualizado correctamente";
 
+        Cache::forget('categories');
+
         return redirect()->route('admin.categories.index')->with(compact('notificacion'));
     }
 
@@ -117,6 +122,8 @@ class CategoryController extends Controller
 
         $cat = $category->name;
         $notificacion="La categoria  $cat  se ha eliminado correctamente";
+
+        Cache::forget('categories');
 
         return redirect()->route('admin.categories.index')->with(compact('notificacion'));
     }

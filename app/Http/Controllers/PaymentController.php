@@ -17,9 +17,9 @@ use PayPal\Api\Plan;
 
 class PaymentController extends Controller
 {
-    public function checkout(Course $plan)
+    public function verification(Course $plan)
     {
-        return view('payment.checkout', compact('plan'));
+        return redirect()->route('planes.show', $plan);
     }
 
     public function pay(Course $plan)
@@ -81,7 +81,7 @@ class PaymentController extends Controller
             $execution->setPayerId($_GET['PayerID']);
 
             $payment->execute($execution, $apiContext);
-             Mail::to(auth()->user()->email)
+            Mail::to(auth()->user()->email)
                 ->cc('smith93svam@gmail.com')
                 ->send(new CorreoPlan($plan));
 
@@ -102,61 +102,32 @@ class PaymentController extends Controller
     /* RESERVA DEL PLAN FUNCION QUE ENVIA RESERVA */
     public function pago(Course $plan)
     {
-        $pago = new Comprador();
+        $user = auth()->user();
+        try {
+            $exists  = Comprador::where('id_usuario', $user->id)->where('id_plan', $plan->id)->exists();
 
-        $pago->nombre_usuario = auth()->user()->name;
-        $pago->nombre_curso = $plan->title;
-        $pago->id_usuario = auth()->user()->id;
-        $pago->id_plan = $plan->id;
-
-        $objetoA = Comprador::where('nombre_usuario', auth()->user()->name)->first();
-
-        if ($objetoA) {
-            $nombre = $objetoA->nombre_usuario;
-        } else {
-            $nombre = "A";
-        }
-        $objetoB = Comprador::where('nombre_curso', $plan->title)->first();
-
-        if ($objetoB) {
-            $curso = $objetoB->nombre_curso;
-        } else {
-            $curso = "B";
-        }
-
-        if (($pago->nombre_usuario == $nombre) && ($pago->nombre_curso == $curso)) {
-            $nombre = $pago->nombre_usuario;
-            $notificacion2 = "$nombre  ya tienes una reserva de este plan por favor elige otro de nuestro catalogo de planes";
-
-            return redirect()->route('planes.show', $plan)->with(compact('notificacion2'));
-        } else {
-
-            try {
-
-                DB::beginTransaction();
-
-                $pago->save();
-
-                DB::afterCommit(function () use ($plan) {
-                    Mail::to(auth()->user()->email)
-                    ->cc('smith93svam@gmail.com')
-                    ->send(new CorreoTransferencia($plan));
-                });
-
-                DB::commit();
-                
-
-                
-                $nombre = $pago->nombre_usuario;
-                $nombre_plan = $pago->nombre_curso;
-                $notificacion = "Felicidades $nombre  los pasos para la reserva del plan  $nombre_plan seran enviados a tu correo";
-
-                return redirect()->route('planes.show', $plan)->with(compact('notificacion'));
-            } catch (\Throwable $th) {
-                DB::rollBack();
-                $notificacionreserva = "A ocurrido un error al realizar el proceso de reserva por favor vuelve a intentarlo mas tarde";
-                return redirect()->route('planes.show', $plan)->with(compact('notificacionreserva'));
+            if ($exists ) {
+                $notificacion2 = "$user->name ya tienes una reserva de este plan, por favor elige otro de nuestro catálogo de planes.";
+                return redirect()->route('planes.show', $plan)->with(compact('notificacion2'));
             }
+
+            $reserva = new Comprador();
+            $reserva->nombre_usuario = $user->name;
+            $reserva->nombre_curso = $plan->title;
+            $reserva->id_usuario = $user->id;
+            $reserva->id_plan = $plan->id;
+            $reserva->save();
+
+            Mail::to($user->email)
+                ->cc('smith93svam@gmail.com')
+                ->send(new CorreoTransferencia($plan));
+
+            $notificacion = "Felicidades $user->name los pasos para la reserva del plan $plan->title seran enviados a tu correo";
+            return redirect()->route('planes.show', $plan)->with(compact('notificacion'));
+            
+        } catch (\Throwable $th) {
+            $notificacionreserva = "A ocurrido un error al realizar el proceso de reserva, por favor vuelve a intentarlo más tarde.";
+            return redirect()->route('planes.show', $plan)->with(compact('notificacionreserva'));
         }
     }
 

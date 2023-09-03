@@ -61,7 +61,7 @@
         <div class="flex items-center md:justify-between justify-center">
             <div class="w-full md:w-4/12 px-4 lg:w-auto mx-auto text-center">
                 <div class="text-xs text-white font-semibold py-1">
-                    Copyright © {{ date('Y') }} FitKing - Todos los derechos reservados
+                    Copyright © {{ date('Y') }} {{ $settings['shopname'] }} - Todos los derechos reservados
                 </div>
             </div>
         </div>

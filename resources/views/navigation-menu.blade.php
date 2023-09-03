@@ -116,10 +116,10 @@
                             </x-jet-dropdown>
                         @else
                             <div class="flex">
-                                <div class="p-1 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black">
+                                <div class="p-1 border-2 border-yellow-500 rounded-md rounded-r-none text-yellow-500 hover:bg-yellow-500 hover:text-black">
                                     <a href="{{ route('login') }}" class="text-sm font-semibold">INGRESAR</a>
                                 </div>
-                                <div class="p-1 border-2 border-yellow-500 bg-yellow-500 text-black border-l-0 hover:text-yellow-500 hover:bg-transparent">
+                                <div class="p-1 border-2 border-yellow-500 rounded-md rounded-l-none bg-yellow-500 text-black border-l-0 hover:text-yellow-500 hover:bg-transparent">
                                     <a href="{{ route('register') }}" class="text-sm font-semibold">REGISTRARME</a>
                                 </div>
                             </div>

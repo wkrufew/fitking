@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Level;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class LevelController extends Controller
 {
@@ -51,6 +52,8 @@ class LevelController extends Controller
         
         $level = $request->name;
         $notificacion="El nivel $level se ha añadido correctamente";
+
+        Cache::forget('levels');
 
         return redirect()->route('admin.levels.index')->with(compact('notificacion'));
 
@@ -101,6 +104,8 @@ class LevelController extends Controller
         $level = $request->name;
         $notificacion="El nivel  $level  se ha actualizado correctamente";
 
+        Cache::forget('levels');
+
         return redirect()->route('admin.levels.index')->with(compact('notificacion'));
     }
 
@@ -116,6 +121,8 @@ class LevelController extends Controller
 
         $lev = $level->name;
         $notificacion="El nivel  $lev  se ha eliminado correctamente";
+
+        Cache::forget('levels');
 
         return redirect()->route('admin.levels.index')->with(compact('notificacion'));
     }

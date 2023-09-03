@@ -6,7 +6,12 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/shop_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/shop_responsive.css') }}">
 
-
+{{-- INICIO SEO --}}
+@section('title', '')
+@section('description', 'FITKING, venta de productos fitness como proteinas, creatinas, pre-entrenos entre otros.')
+@section('url', route('home'))
+@section('img', asset('img/home/logo2.webp'))
+{{-- FIN SEO --}}
 <div class="home">                                                                  
     <div class="home_background parallax-window" data-parallax="scroll" data-image-src="{{ asset('frontend/images/shop_background.jpg') }}"></div>
     <div class="home_overlay"></div>

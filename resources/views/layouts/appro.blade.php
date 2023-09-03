@@ -8,24 +8,19 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/logo4.webp') }}" type="image/x-icon">
-    <title>{{ $settings['shopname'] }} - @yield('title', 'Inicio')</title>
-    <!-- icono de la app -->
-    {{-- <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/logo4.webp') }}" type="image/x-icon">
-    <title>{{ $settings['shopname'] }} - @yield('title', 'Inicio')</title>
+    {{-- SEO --}}
+    <title>{{ $settings['shopname'] }} @yield('title')</title>
     <meta name="robots" content="index, follow">
     <meta name="author" content="STALIN PHILCO">
-    <meta name="description" content="@yield('description', 'Tienda de productos como proteinas, creatinas , pre-entrenos y vestimenta deportiva.')">
-
-    <meta property="og:title" content="{{ $settings['shopname'] }} - @yield('title', 'Inicio')">
+    <meta name="description" content="@yield('description', '')">
+    <meta property="og:title" content="{{ $settings['shopname'] }} @yield('title'/* , 'Inicio' */)">
     <meta property="og:type" content="article">
-    <meta property="og:description" content="@yield('description', 'Tienda de productos como proteinas, creatinas , pre-entrenos y vestimenta deportiva.')">
+    <meta property="og:description" content="@yield('description', '')">
     <meta property="og:url" content="@yield('url', config('app.url'))">
-    <meta property="og:img" content="@yield('img', asset('img/home/logo4.webp'))">
-    <meta property="og:site_name" content="{{ $settings['shopname'] }}"/>
-    <meta name="keywords" content="FITKING, KINGBARBER, BARBERIA KING, VENTAS DE PRODUCTOS FITNESS, FITNESS, ENTENAMIENTOS PERSONALIZADOS, EJERCICIOS, GYM, INSTRUCTOR"> --}}
-    
-    <!-- icono de la app -->
-    <link rel="shortcut icon" class="rounded-full" href="{{ asset('img/home/logo4.webp') }}" type="image/x-icon">
+    <meta property="og:image" content="@yield('img', asset('img/home/sports.jpg'))">
+    <meta property="og:site_name" content="{{ $settings['shopname'] }}" />
+    <meta name="keywords" content="FITKING, KINGBARBER, BARBERIA KING, VENTAS DE PRODUCTOS FITNESS, FITNESS, ENTENAMIENTOS PERSONALIZADOS, EJERCICIOS, GYM, INSTRUCTOR">
+{{-- FIN DEL SEO --}}
     <style>
         ::-webkit-scrollbar{
             width: 15px;
@@ -239,14 +234,13 @@
                                 </div>
                                 <div class="footer_social">
                                     <ul>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                                        <li><a href="https://www.facebook.com/kingstalin23"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="https://www.instagram.com/stalinphilco/"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="https://api.whatsapp.com/send?phone={{ $settings['phone'] }}&text=Hola%20Kings%20.."><i class="fab fa-whatsapp"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </footer>
@@ -279,7 +273,7 @@
             </div>
     </div>
     <!--Order Traking Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -290,7 +284,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{-- <form method="post" action="{{ route('order.tracking') }}"> --}}
                     <form method="post" action="#">
                         @csrf
                         <div class="modal-body">
@@ -302,7 +295,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('frontend/styles/bootstrap4/popper.js') }}"></script>
     <script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script>

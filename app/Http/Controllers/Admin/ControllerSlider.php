@@ -25,18 +25,14 @@ class ControllerSlider extends Controller
     public function store(Request $request)
     {
         
-        $messages = [
-            'orden.required' => 'Este campo es requerido',
-        ];
         $rules = [
-            'orden'=> array('required'),
             'file'=>array('image', 'required'),
         ];
         
-        $this->validate($request, $rules,$messages);
+        $this->validate($request, $rules);
         
         
-        $slider = new Slider($request->only('orden','file'));
+        $slider = new Slider($request->only('file'));
 
         if($request->file('file'))
         {
@@ -59,14 +55,6 @@ class ControllerSlider extends Controller
 
     public function update(Slider $slider, Request $request)
     {
-        $messages = [
-            'orden.required' => 'Este campo es requerido',
-        ];
-        $rules = [
-            'orden'=> array('required'),
-        ];
-        
-        $this->validate($request, $rules, $messages);
 
         if($request->file('file'))
         {
@@ -82,11 +70,11 @@ class ControllerSlider extends Controller
             }
         }
 
-        $slider->update($request->only('orden','file'));
+        $slider->update($request->only('file'));
 
         Cache::forget('welcome');
 
-        return redirect()->route('admin.sliders.index')->with('mensaje1','ok');
+        return redirect()->route('admin.sliders.index');
     }
 
     public function destroy(Slider $slider)
@@ -94,6 +82,6 @@ class ControllerSlider extends Controller
         Storage::delete($slider->imagen);
         $slider->delete();
         Cache::forget('welcome');
-        return redirect()->route('admin.sliders.index')->with('mensaje1','ok');
+        return redirect()->route('admin.sliders.index');
     }
 }
